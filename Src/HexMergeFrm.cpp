@@ -83,9 +83,9 @@ void CHexMergeFrame::CreateHexWndStatusBar(CStatusBar &wndStatusBar, CWnd *pwndP
 	auto pointToPixel = [lpx](int point) { return MulDiv(point, lpx, 72); };
 	wndStatusBar.Create(pwndPane, WS_CHILD|WS_VISIBLE);
 	wndStatusBar.SetIndicators(0, 3);
-	wndStatusBar.SetPaneInfo(0, 0, SBPS_STRETCH, 0);
-	wndStatusBar.SetPaneInfo(1, 0, 0, pointToPixel(60));
-	wndStatusBar.SetPaneInfo(2, 0, 0, pointToPixel(60));
+	wndStatusBar.SetPaneInfo(0, 0, SBPS_STRETCH | SBPS_CLICKABLE, 0);
+	wndStatusBar.SetPaneInfo(1, 0, SBPS_CLICKABLE, pointToPixel(60));
+	wndStatusBar.SetPaneInfo(2, 0, SBPS_CLICKABLE, pointToPixel(60));
 	wndStatusBar.SetParent(this);
 	wndStatusBar.SetWindowPos(&wndBottom, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 }
@@ -269,9 +269,9 @@ void CHexMergeFrame::UpdateHeaderSizes()
 		}
 	}
 	
-	if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount - 1, w))
+	if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount, w))
 	{
-		std::copy_n(w, nPaneCount - 1, m_nLastSplitPos);
+		std::copy_n(w, nPaneCount, m_nLastSplitPos);
 
 		// resize controls in header dialog bar
 		m_wndFilePathBar.Resize(w);

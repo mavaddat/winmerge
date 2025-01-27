@@ -61,6 +61,18 @@ msgstr "Kopioi valittu(t) rivi(t) vasemmalle"
 msgid "Copy Selected Line(s) from Left"
 msgstr "Kopioi valittu(t) rivi(t) vasemmalta"
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 msgid "Select Line &Difference\tF4"
 msgstr "Valitse riviero\tF4"
 
@@ -217,6 +229,15 @@ msgstr "A&seta taustaväri"
 msgid "&Vector Image Scaling"
 msgstr "&Vektorikuvan skaalaus"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Vertaa kuvista poimittua &tekstiä"
 
@@ -244,7 +265,7 @@ msgstr "&Koko"
 msgid "Fit to Window"
 msgstr "Sovita ikkunaan"
 
-msgid "&Event Synchronization"
+msgid "&Event Sync"
 msgstr ""
 
 msgid "&Enabled"
@@ -337,11 +358,23 @@ msgstr "Asetukset..."
 msgid "&View"
 msgstr "Näkymä"
 
+msgid "Ta&b Bar"
+msgstr "Välilehdet"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "Työkalurivi"
 
 msgid "&Small"
 msgstr "Pieni"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "Iso"
@@ -349,11 +382,11 @@ msgstr "Iso"
 msgid "&Huge"
 msgstr "&Valtava"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "Tilarivi"
-
-msgid "Ta&b Bar"
-msgstr "Välilehdet"
 
 msgid "&Tools"
 msgstr "Työkalut"
@@ -841,6 +874,12 @@ msgstr "Käytä &ennakointia..."
 msgid "&Transform with editor script..."
 msgstr "&Muunna editoriskriptillä..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "J&aa"
 
@@ -1062,6 +1101,9 @@ msgstr "Jätä nume&rot huomiotta"
 msgid "Ignore c&omment differences"
 msgstr "Jätä k&ommenttien erot huomiotta"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "Sisällytä alihakemistot"
 
@@ -1088,6 +1130,81 @@ msgstr "Koko"
 
 msgid "&Load Project..."
 msgstr "&Lataa projekti..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "Tietoja WinMergestä"
@@ -1199,6 +1316,9 @@ msgstr ""
 
 msgid "Language:"
 msgstr "Kieli:"
+
+msgid "Defaults"
+msgstr "Oletukset"
 
 msgid "Find"
 msgstr "Etsi"
@@ -1348,6 +1468,66 @@ msgstr "Sanaero:"
 msgid "Selected Word Diff:"
 msgstr "Valittu sanaero:"
 
+msgid "Dialog"
+msgstr "Valintaikkuna"
+
+msgid "Keywords:"
+msgstr "Avainsanat:"
+
+msgid "Function names:"
+msgstr "Funktionimet:"
+
+msgid "Comments:"
+msgstr "Kommentit:"
+
+msgid "Numbers:"
+msgstr "Numerot:"
+
+msgid "Operators:"
+msgstr "Operaattorit:"
+
+msgid "Strings:"
+msgstr "Merkkijonot:"
+
+msgid "Preprocessor:"
+msgstr "Esikäsittelijä:"
+
+msgid "User 1:"
+msgstr "Käyttäjä 1:"
+
+msgid "User 2:"
+msgstr "Käyttäjä 2:"
+
+msgid "Bold"
+msgstr "Lihavoitu"
+
+msgid "&Use customized text colors"
+msgstr "Käytä mukautettuja tekstivärejä"
+
+msgid "Whitespace:"
+msgstr "Välilyönti:"
+
+msgid "Regular text:"
+msgstr "Normaali teksti:"
+
+msgid "Selection:"
+msgstr "Valinta:"
+
+msgid "Margin:"
+msgstr "Marginaali:"
+
+msgid "Search Marker:"
+msgstr "Hakumerkki:"
+
+msgid "User Defined Marker1:"
+msgstr "Käyttäjän määrittämä merkintä1:"
+
+msgid "User Defined Marker2:"
+msgstr "Käyttäjän määrittämä merkintä2:"
+
+msgid "User Defined Marker3:"
+msgstr "Käyttäjän määrittämä merkintä3:"
+
 msgid "&Use folder compare colors"
 msgstr "Käytä kansiovertailun värejä"
 
@@ -1363,8 +1543,8 @@ msgstr "Kaikki kohteet, joita ei ole:"
 msgid "Items filtered:"
 msgstr "Suodatetut kohteet:"
 
-msgid "Margin:"
-msgstr "Marginaali:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "Järjestelmä"
@@ -1429,9 +1609,6 @@ msgstr "Sisällytä komentorivi"
 msgid "Open to e&xternal editor"
 msgstr "Avaa ulkoiseen editoriin"
 
-msgid "Defaults"
-msgstr "Oletukset"
-
 msgid "Display Columns"
 msgstr "Näytä sarakkeet"
 
@@ -1447,20 +1624,14 @@ msgstr "&Lisäominaisuudet"
 msgid "Additional Properties"
 msgstr "Lisäominaisuudet"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Valitse laajennus (Plugin)"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "Laajennuksen &nimi:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "Päätelista:"
@@ -1478,11 +1649,11 @@ msgid "&Open files in the same window type after unpacking"
 msgstr ""
 "Avaa tied&ostot samassa ikkunatyypissä pakkauksen purkamisen jälkeen"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "&Laajennusputki:"
 
-msgid "&Add pipe"
-msgstr "&Lisää putki"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "Pysäytä"
@@ -1559,9 +1730,6 @@ msgstr "Muokkain"
 msgid "&Highlight syntax"
 msgstr "Korosta syntaksi"
 
-msgid "&Automatic rescan"
-msgstr "Automaattinen uusi haku"
-
 msgid "&Preserve original EOL chars"
 msgstr "Säilytä alkuperäiset EOL merkit"
 
@@ -1577,6 +1745,15 @@ msgstr "Lisää välilehtiä"
 msgid "Insert &Spaces"
 msgstr "Lisää välilyöntejä"
 
+msgid "&Rendering Mode:"
+msgstr "&Hahmonnustila:"
+
+msgid "&Automatic rescan"
+msgstr "Automaattinen uusi haku"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "Rivierojen väritys"
 
@@ -1591,9 +1768,6 @@ msgstr "&Sanataso:"
 
 msgid "W&ord break characters:"
 msgstr "Sanakatk&on merkit:"
-
-msgid "&Rendering Mode:"
-msgstr "&Hahmonnustila:"
 
 msgid ""
 "WinMerge allows hiding some common message boxes. Press the Reset button to "
@@ -1688,51 +1862,6 @@ msgstr "Tuo..."
 
 msgid "Export..."
 msgstr "Vie..."
-
-msgid "Dialog"
-msgstr "Valintaikkuna"
-
-msgid "Keywords:"
-msgstr "Avainsanat:"
-
-msgid "Function names:"
-msgstr "Funktionimet:"
-
-msgid "Comments:"
-msgstr "Kommentit:"
-
-msgid "Numbers:"
-msgstr "Numerot:"
-
-msgid "Operators:"
-msgstr "Operaattorit:"
-
-msgid "Strings:"
-msgstr "Merkkijonot:"
-
-msgid "Preprocessor:"
-msgstr "Esikäsittelijä:"
-
-msgid "User 1:"
-msgstr "Käyttäjä 1:"
-
-msgid "User 2:"
-msgstr "Käyttäjä 2:"
-
-msgid "Bold"
-msgstr "Lihavoitu"
-
-msgid "Search Marker:"
-msgstr "Hakumerkki:"
-
-msgid "User Defined Marker1:"
-msgstr "Käyttäjän määrittämä merkintä1:"
-
-msgid "User Defined Marker2:"
-msgstr "Käyttäjän määrittämä merkintä2:"
-
-msgid "User Defined Marker3:"
-msgstr "Käyttäjän määrittämä merkintä3:"
 
 msgid "Folder Compare Report"
 msgstr "Kansiovertailun raportti"
@@ -1881,18 +2010,6 @@ msgstr "&Salli uudet rivit lainauksissa"
 msgid "&Quote character:"
 msgstr "&Lainausmerkki:"
 
-msgid "&Use customized text colors"
-msgstr "Käytä mukautettuja tekstivärejä"
-
-msgid "Whitespace:"
-msgstr "Välilyönti:"
-
-msgid "Regular text:"
-msgstr "Normaali teksti:"
-
-msgid "Selection:"
-msgstr "Valinta:"
-
 msgid "Backup Files"
 msgstr "Varmuuskopiot"
 
@@ -1949,6 +2066,9 @@ msgstr "Lisäosat"
 
 msgid "&Enable plugins"
 msgstr "Ota laajennukset käyttöön"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "Tiedostosuodattimet:"
@@ -2083,6 +2203,36 @@ msgstr "&Erilliset käyttäjätietokansiot jokaiselle ruudulle"
 
 msgid "&Hex View"
 msgstr "&Hexanäkymä"
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
 
 msgid "EXT"
 msgstr "EXT"
@@ -2229,6 +2379,9 @@ msgid "Don't display this &message again."
 msgstr "Älä näytä tätä ilmoitusta uudestaan."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
+msgstr ""
+
+msgid "Compare/Merge"
 msgstr ""
 
 msgid "Syntax"
@@ -2847,6 +3000,9 @@ msgstr "Kaikki... (%1)"
 #, c-format
 msgid "Differences to... (%1)"
 msgstr "Erot... (%1)"
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr ""
 
 #, c-format
 msgid "Left (%1)"
@@ -3856,8 +4012,8 @@ msgstr "Ver&kkosivu"
 msgid "W&rap Text"
 msgstr ""
 
-msgid "Frhed is not installed."
-msgstr "Frhed ei ole asennettu."
+msgid "%1 is not installed."
+msgstr "%1 ei ole asennettu."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4078,6 +4234,10 @@ msgstr "Puuttuva lisäosan nimi laajennusputkessa: %1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Puuttuva lainausmerkki laajennusputkessa: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "Määritä laajennuksen argumentit"
 
@@ -4095,6 +4255,56 @@ msgstr ""
 
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
+msgstr ""
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
 msgstr ""
 
 msgid "Filter applied"
@@ -4158,6 +4368,42 @@ msgstr ""
 msgid "Zoom &Out"
 msgstr ""
 
+msgid "Comparing..."
+msgstr ""
+
+msgid "Zoom:"
+msgstr ""
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "Kaunistelu"
 
@@ -4178,6 +4424,9 @@ msgstr "Purkaminen"
 
 msgid "URL Handling"
 msgstr "URL käsittely"
+
+msgid "Decoding / Encoding"
+msgstr ""
 
 msgid "Make Uppercase"
 msgstr "Isot kirjaimet"
@@ -4293,6 +4542,12 @@ msgstr "Pura IL-koodi"
 msgid "Disassemble Native Code"
 msgstr "Pura natiivikoodi"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "Isot kirjaimet"
 
@@ -4317,20 +4572,16 @@ msgstr "Käänteiset sarakkeet"
 msgid "Reverse lines"
 msgstr "Käänteiset rivit"
 
-msgid ""
-"Replace text with another text.\r\n"
-"Usage: Replace [-i] [-e] FIND REPLACE\r\n"
-"  FIND    - text to find\r\n"
-"  REPLACE - text to replace\r\n"
-"  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 "Korvaa teksti toisella tekstillä.\r\n"
-"Käyttö: Korvaa [-i ] [-e] FIND REPLACE\r\n"
+"Käyttö: Replace [-i ] [-e] FIND REPLACE\r\n"
+"   or: Replace -s\r\n"
 "  FIND    - etsittävä teksti\r\n"
 "  REPLACE - korvattava teksti\r\n"
 "  -i - ohita kirjainkoko (vain -e:lle)\r\n"
-"  -e - käsittelee määritettyä tekstiä säännöllisenä lausekkeena"
+"  -e - käsittelee määritettyä tekstiä säännöllisenä lausekkeena\r\n"
+"  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid ""
@@ -4543,8 +4794,8 @@ msgstr ""
 msgid "Prediff Line Filter"
 msgstr "Prediff-rivisuodatin"
 
-msgid "Basic text functions for the context menu"
-msgstr "Kontekstivalikon perustekstitoiminnot"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid ""
 "HTTP URL Scheme Handler with curl. \r\n"
@@ -4559,6 +4810,18 @@ msgid ""
 msgstr ""
 "Windowsin rekisterin URL-suunnitelman käsittelijä\r\n"
 "Argumentit: Komentorivin asetukset, jotka välitetään reg.exe-komentoon."
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
+msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr ""
@@ -4685,4 +4948,32 @@ msgid "Folder '%1' does not exist"
 msgstr ""
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
+msgstr ""
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
 msgstr ""

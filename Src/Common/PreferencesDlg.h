@@ -14,6 +14,7 @@
 #include "PropCompare.h"
 #include "PropMessageBoxes.h"
 #include "PropEditor.h"
+#include "PropEditorCompareMerge.h"
 #include "PropEditorSyntax.h"
 #include "PropRegistry.h"
 #include "PropColorSchemes.h"
@@ -22,6 +23,7 @@
 #include "PropSyntaxColors.h"
 #include "PropMarkerColors.h"
 #include "PropDirColors.h"
+#include "PropSysColors.h"
 #include "PropCodepage.h"
 #include "PropArchive.h"
 #include "PropProject.h"
@@ -51,6 +53,12 @@ public:
 		UINT nMenuID = 0, CWnd* pParent = nullptr);   // standard constructor
 	virtual ~CPreferencesDlg();
 
+private:
+	COptionsMgr *m_pOptionsMgr;
+	std::unique_ptr<SyntaxColors> m_pSyntaxColors;
+	SyntaxColors* m_pSyntaxColorsOrg;
+	prdlg::CMoveConstraint m_constraint; /**< Resizes dialog controls when dialog resized */
+
 protected:
 // Dialog Data
 	//{{AFX_DATA(CPreferencesDlg)
@@ -63,6 +71,7 @@ protected:
 	PropCompare m_pageCompare;
 	PropMessageBoxes m_pageMessageBoxes;
 	PropEditor m_pageEditor;
+	PropEditorCompareMerge m_pageEditorCompareMerge;
 	PropEditorSyntax m_pageEditorSyntax;
 	PropRegistry m_pageSystem;
 	PropCodepage m_pageCodepage;
@@ -72,6 +81,7 @@ protected:
 	PropSyntaxColors m_pageSyntaxColors;
 	PropMarkerColors m_pageMarkerColors;
 	PropDirColors m_pageDirColors;
+	PropSysColors m_pageSysColors;
 	PropArchive m_pageArchive;
 	PropProject m_pageProject;
 	PropBackups m_pageBackups;
@@ -115,9 +125,4 @@ protected:
 	void ReadOptions(bool bUpdate = false);
 	void SaveOptions();
 	void SafeUpdatePage(CPropertyPage* pPage, bool bSaveAndValidate);
-
-private:
-	COptionsMgr *m_pOptionsMgr;
-	SyntaxColors *m_pSyntaxColors;
-	prdlg::CMoveConstraint m_constraint; /**< Resizes dialog controls when dialog resized */
 };

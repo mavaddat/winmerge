@@ -6,7 +6,6 @@
 
 #include "pch.h"
 #include <vector>
-#include <typeinfo>
 #include "OptionsDef.h"
 #include "OptionsMgr.h"
 #include "RegOptionsMgr.h"
@@ -20,7 +19,6 @@
 #include "DiffWrapper.h" // CMP_CONTENT
 #include "paths.h"
 #include "Environment.h"
-#include "FileTransform.h"
 #include "Constants.h"
 
 // Functions to copy values set by installer from HKLM to HKCU.
@@ -63,9 +61,11 @@ void Init(COptionsMgr *pOptions)
 	pOptions->InitOption(OPT_SHOW_MISSING_MIDDLE_ONLY, true);
 	pOptions->InitOption(OPT_SHOW_MISSING_RIGHT_ONLY, true);
 
+	pOptions->InitOption(OPT_SHOW_MENUBAR, true);
 	pOptions->InitOption(OPT_SHOW_TOOLBAR, true);
 	pOptions->InitOption(OPT_SHOW_STATUSBAR, true);
 	pOptions->InitOption(OPT_SHOW_TABBAR, true);
+	pOptions->InitOption(OPT_REBAR_STATE, _T(""));
 	pOptions->InitOption(OPT_TOOLBAR_SIZE, 0, 0, 2);
 	pOptions->InitOption(OPT_RESIZE_PANES, false);
 
@@ -119,7 +119,7 @@ void Init(COptionsMgr *pOptions)
 
 	pOptions->InitOption(OPT_AUTOMATIC_RESCAN, false);
 	pOptions->InitOption(OPT_ALLOW_MIXED_EOL, false);
-	pOptions->InitOption(OPT_COPY_FULL_LINE, false);
+	pOptions->InitOption(OPT_COPY_GRANULARITY, 3/*Character*/);
 	pOptions->InitOption(OPT_TAB_SIZE, (int)4, 0, 64);
 	pOptions->InitOption(OPT_TAB_TYPE, (int)0, 0, 1);	// 0 means tabs inserted
 
@@ -140,7 +140,7 @@ void Init(COptionsMgr *pOptions)
 
 	pOptions->InitOption(OPT_CMP_METHOD, (int)CMP_CONTENT, 0, CMP_SIZE);
 	pOptions->InitOption(OPT_CMP_MOVED_BLOCKS, false);
-	pOptions->InitOption(OPT_CMP_MATCH_SIMILAR_LINES, false);
+	pOptions->InitOption(OPT_CMP_ALIGN_SIMILAR_LINES, false);
 	pOptions->InitOption(OPT_CMP_STOP_AFTER_FIRST, false);
 	pOptions->InitOption(OPT_CMP_QUICK_LIMIT, 4 * 1024 * 1024); // 4 Megs
 	pOptions->InitOption(OPT_CMP_BINARY_LIMIT, 64 * 1024 * 1024); // 64 Megs
@@ -174,6 +174,8 @@ void Init(COptionsMgr *pOptions)
 	pOptions->InitOption(OPT_CMP_IMG_THRESHOLD, 0, 0, 442 * 1000);
 	pOptions->InitOption(OPT_CMP_IMG_INSERTIONDELETIONDETECTION_MODE, 0, 0, 2);
 	pOptions->InitOption(OPT_CMP_IMG_VECTOR_IMAGE_ZOOM_RATIO, 1000, 1, 8000);
+	pOptions->InitOption(OPT_CMP_IMG_BLINKINTERVAL, 800, 200, 8000);
+	pOptions->InitOption(OPT_CMP_IMG_OVERLAYANIMATIONINTERVAL, 1000, 200, 8000);
 	pOptions->InitOption(OPT_CMP_IMG_OCR_RESULT_TYPE, 0, 0, 2);
 
 	pOptions->InitOption(OPT_CMP_WEB_USERDATAFOLDER_TYPE, 0, 0, 1);
@@ -186,7 +188,7 @@ void Init(COptionsMgr *pOptions)
 	pOptions->InitOption(OPT_CMP_WEB_USER_AGENT, _T(""));
 	pOptions->InitOption(OPT_CMP_WEB_URL_PATTERN_TO_INCLUDE, _T(""));
 	pOptions->InitOption(OPT_CMP_WEB_URL_PATTERN_TO_EXCLUDE, _T(""));
-	pOptions->InitOption(OPT_CMP_WEB_SYNC_EVENTS, false);
+	pOptions->InitOption(OPT_CMP_WEB_SYNC_EVENTS, true);
 	pOptions->InitOption(OPT_CMP_WEB_SYNC_EVENT_FLAGS, 0xff);
 
 	pOptions->InitOption(OPT_PROJECTS_PATH, _T(""));
@@ -234,6 +236,7 @@ void Init(COptionsMgr *pOptions)
 	pOptions->InitOption(OPT_PATCHCREATOR_INCLUDE_CMD_LINE, false);
 	pOptions->InitOption(OPT_PATCHCREATOR_COPY_TO_CLIPBOARD, false);
 
+	pOptions->InitOption(OPT_TABBAR_ON_TITLEBAR, true);
 	pOptions->InitOption(OPT_TABBAR_AUTO_MAXWIDTH, true);
 	pOptions->InitOption(OPT_ACTIVE_FRAME_MAX, true);
 	pOptions->InitOption(OPT_ACTIVE_PANE, 0, 0, 2);
@@ -241,6 +244,11 @@ void Init(COptionsMgr *pOptions)
 	pOptions->InitOption(OPT_MRU_MAX, 9, 0, 128);
 
 	pOptions->InitOption(OPT_COLOR_SCHEME, _T("Default"));
+
+	pOptions->InitOption(OPT_SYSCOLOR_HOOK_ENABLED, false);
+	pOptions->InitOption(OPT_SYSCOLOR_HOOK_COLORS, _T(""));
+
+	pOptions->InitOption(OPT_MOUSE_HOOK_ENABLED, true);
 
 	Options::CustomColors::Init(pOptions);
 	Options::DiffOptions::Init(pOptions);

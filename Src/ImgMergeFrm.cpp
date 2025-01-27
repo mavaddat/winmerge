@@ -38,6 +38,8 @@
 #define new DEBUG_NEW
 #endif
 
+static const int INTERVALS[] = { 200, 400, 600, 800, 1000, 1200, 1500, 2000, 3000, 4000 };
+
 /////////////////////////////////////////////////////////////////////////////
 // CImgMergeFrame
 
@@ -157,6 +159,10 @@ BEGIN_MESSAGE_MAP(CImgMergeFrame, CMergeFrameCommon)
 	ON_UPDATE_COMMAND_UI(ID_IMG_USEBACKCOLOR, OnUpdateImgUseBackColor)
 	ON_COMMAND_RANGE(ID_IMG_VECTORIMAGESCALING_25, ID_IMG_VECTORIMAGESCALING_800, OnImgVectorImageScaling)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_IMG_VECTORIMAGESCALING_25, ID_IMG_VECTORIMAGESCALING_800, OnUpdateImgVectorImageScaling)
+	ON_COMMAND_RANGE(ID_IMG_BLINKINTERVAL_200, ID_IMG_BLINKINTERVAL_4000, OnImgBlinkInterval)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_IMG_BLINKINTERVAL_200, ID_IMG_BLINKINTERVAL_4000, OnUpdateImgBlinkInterval)
+	ON_COMMAND_RANGE(ID_IMG_OVERLAYANIMINTERVAL_200, ID_IMG_OVERLAYANIMINTERVAL_4000, OnImgOverlayAnimationInterval)
+	ON_UPDATE_COMMAND_UI_RANGE(ID_IMG_OVERLAYANIMINTERVAL_200, ID_IMG_OVERLAYANIMINTERVAL_4000, OnUpdateImgOverlayAnimationInterval)
 	ON_COMMAND(ID_IMG_COMPARE_EXTRACTED_TEXT, OnImgCompareExtractedText)
 	// [Tools] menu
 	ON_COMMAND(ID_TOOLS_GENERATEREPORT, OnToolsGenerateReport)
@@ -646,6 +652,8 @@ void CImgMergeFrame::LoadOptions()
 	m_pImgMergeWindow->SetColorDistanceThreshold(GetOptionsMgr()->GetInt(OPT_CMP_IMG_THRESHOLD) / 1000.0);
 	m_pImgMergeWindow->SetInsertionDeletionDetectionMode(static_cast<IImgMergeWindow::INSERTION_DELETION_DETECTION_MODE>(GetOptionsMgr()->GetInt(OPT_CMP_IMG_INSERTIONDELETIONDETECTION_MODE)));
 	m_pImgMergeWindow->SetVectorImageZoomRatio(GetOptionsMgr()->GetInt(OPT_CMP_IMG_VECTOR_IMAGE_ZOOM_RATIO) / 1000.0f);
+	m_pImgMergeWindow->SetBlinkInterval(GetOptionsMgr()->GetInt(OPT_CMP_IMG_BLINKINTERVAL));
+	m_pImgMergeWindow->SetOverlayAnimationInterval(GetOptionsMgr()->GetInt(OPT_CMP_IMG_OVERLAYANIMATIONINTERVAL));
 }
 
 void CImgMergeFrame::SaveOptions()
@@ -663,6 +671,8 @@ void CImgMergeFrame::SaveOptions()
 	GetOptionsMgr()->SaveOption(OPT_CMP_IMG_THRESHOLD, static_cast<int>(m_pImgMergeWindow->GetColorDistanceThreshold() * 1000));
 	GetOptionsMgr()->SaveOption(OPT_CMP_IMG_INSERTIONDELETIONDETECTION_MODE, static_cast<int>(m_pImgMergeWindow->GetInsertionDeletionDetectionMode()));
 	GetOptionsMgr()->SaveOption(OPT_CMP_IMG_VECTOR_IMAGE_ZOOM_RATIO, static_cast<int>(m_pImgMergeWindow->GetVectorImageZoomRatio() * 1000));
+	GetOptionsMgr()->SaveOption(OPT_CMP_IMG_BLINKINTERVAL, m_pImgMergeWindow->GetBlinkInterval());
+	GetOptionsMgr()->SaveOption(OPT_CMP_IMG_OVERLAYANIMATIONINTERVAL, m_pImgMergeWindow->GetOverlayAnimationInterval());
 }
 /**
  * @brief Save coordinates of the frame, splitters, and bars
@@ -745,7 +755,7 @@ bool CImgMergeFrame::DoFileSave(int pane)
 				m_filePaths[pane] = m_strSaveAsPath;
 			if (filename != m_filePaths[pane])
 			{
-				if (!m_infoUnpacker.Packing(filename, m_filePaths[pane], m_unpackerSubcodes[pane], { m_filePaths[pane] }))
+				if (!m_infoUnpacker.Packing(pane, filename, m_filePaths[pane], m_unpackerSubcodes[pane], { m_filePaths[pane] }))
 				{
 					// Restore save point
 					m_pImgMergeWindow->SetSavePoint(pane, savepoint);
@@ -774,7 +784,7 @@ bool CImgMergeFrame::DoFileSave(int pane)
 
 bool CImgMergeFrame::DoFileSaveAs(int pane, bool packing)
 {
-	const String path = m_filePaths.GetPath(pane) + (m_pImgMergeWindow->IsSaveSupported(pane) ? _T("") : _T(".png"));
+	const String path = m_filePaths.GetPath(pane);
 	String strPath;
 	String title;
 	if (pane == 0)
@@ -784,7 +794,8 @@ bool CImgMergeFrame::DoFileSaveAs(int pane, bool packing)
 	else
 		title = _("Save Middle File As");
 RETRY:
-	if (SelectFile(AfxGetMainWnd()->GetSafeHwnd(), strPath, false, path.c_str(), title))
+	if (SelectFile(AfxGetMainWnd()->GetSafeHwnd(), strPath, false, 
+		(path +(m_pImgMergeWindow->IsSaveSupported(pane) ? _T("") : _T(".png"))).c_str(), title))
 	{
 		std::wstring filename = ucr::toUTF16(strPath);
 		if (packing && !m_infoUnpacker.GetPluginPipeline().empty())
@@ -804,7 +815,7 @@ RETRY:
 		}
 		if (filename != strPath)
 		{
-			if (!m_infoUnpacker.Packing(filename, strPath, m_unpackerSubcodes[pane], { strPath }))
+			if (!m_infoUnpacker.Packing(pane, filename, strPath, m_unpackerSubcodes[pane], { strPath }))
 			{
 				// Restore save point
 				m_pImgMergeWindow->SetSavePoint(pane, savepoint);
@@ -1088,6 +1099,7 @@ void CImgMergeFrame::UpdateHeaderSizes()
 		CRect rc, rcMergeWindow;
 		int nPaneCount = m_pImgMergeWindow->GetPaneCount();
 		GetClientRect(&rc);
+		CRect rcClient = rc;
 		::GetWindowRect(m_pImgMergeWindow->GetHWND(), &rcMergeWindow);
 		ScreenToClient(rcMergeWindow);
 		if (!m_pImgMergeWindow->GetHorizontalSplit())
@@ -1107,9 +1119,9 @@ void CImgMergeFrame::UpdateHeaderSizes()
 				w[pane] = (rcMergeWindow.Width() - scrollbarWidth) / nPaneCount - 6;
 		}
 
-		if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount - 1, w))
+		if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + nPaneCount, w))
 		{
-			std::copy_n(w, nPaneCount - 1, m_nLastSplitPos);
+			std::copy_n(w, nPaneCount, m_nLastSplitPos);
 
 			// resize controls in header dialog bar
 			m_wndFilePathBar.Resize(w);
@@ -1119,7 +1131,10 @@ void CImgMergeFrame::UpdateHeaderSizes()
 			rc.right = rc.left;
 			for (int pane = 0; pane < nPaneCount; pane++)
 			{
-				rc.right += w[pane] + 4 + 2;
+				if (pane == nPaneCount - 1)
+					rc.right = rcClient.right + 1;
+				else
+					rc.right += w[pane] + 4 + 2;
 				m_wndStatusBar[pane].MoveWindow(&rc);
 				rc.left = rc.right;
 			}
@@ -1161,7 +1176,7 @@ bool CImgMergeFrame::OpenImages()
 	for (int pane = 0; pane < m_filePaths.GetSize(); ++pane)
 	{
 		strTempFileName[pane] = m_filePaths[pane];
-		if (!m_infoUnpacker.Unpacking(&m_unpackerSubcodes[pane], strTempFileName[pane], filteredFilenames, { strTempFileName[pane] }))
+		if (!m_infoUnpacker.Unpacking(pane, &m_unpackerSubcodes[pane], strTempFileName[pane], filteredFilenames, { strTempFileName[pane] }))
 		{
 			//return false;
 		}
@@ -2189,6 +2204,28 @@ void CImgMergeFrame::OnUpdateImgVectorImageScaling(CCmdUI* pCmdUI)
 	pCmdUI->SetRadio(pow(2.0, int(pCmdUI->m_nID - ID_IMG_VECTORIMAGESCALING_100)) == m_pImgMergeWindow->GetVectorImageZoomRatio());
 }
 
+void CImgMergeFrame::OnImgBlinkInterval(UINT nId)
+{
+	m_pImgMergeWindow->SetBlinkInterval(INTERVALS[nId - ID_IMG_BLINKINTERVAL_200]);
+	SaveOptions();
+}
+
+void CImgMergeFrame::OnUpdateImgBlinkInterval(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetRadio(INTERVALS[pCmdUI->m_nID - ID_IMG_BLINKINTERVAL_200] == m_pImgMergeWindow->GetBlinkInterval());
+}
+
+void CImgMergeFrame::OnImgOverlayAnimationInterval(UINT nId)
+{
+	m_pImgMergeWindow->SetOverlayAnimationInterval(INTERVALS[nId - ID_IMG_OVERLAYANIMINTERVAL_200]);
+	SaveOptions();
+}
+
+void CImgMergeFrame::OnUpdateImgOverlayAnimationInterval(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetRadio(INTERVALS[pCmdUI->m_nID - ID_IMG_OVERLAYANIMINTERVAL_200] == m_pImgMergeWindow->GetOverlayAnimationInterval());
+}
+
 void CImgMergeFrame::OnImgCompareExtractedText()
 {
 	String text[3];
@@ -2220,7 +2257,7 @@ bool CImgMergeFrame::GenerateReport(const String& sFileName) const
 bool CImgMergeFrame::GenerateReport(const String& sFileName, bool allPages) const
 {
 	String imgdir_full, imgdir, path, name, ext;
-	String imgfilepath[3];
+	String title[3];
 	std::vector<std::array<String, 3>> diffimg_filename;
 	paths::SplitFilename(sFileName, &path, &name, &ext);
 	imgdir_full = paths::ConcatPath(path, name) + _T(".files");
@@ -2238,7 +2275,7 @@ bool CImgMergeFrame::GenerateReport(const String& sFileName, bool allPages) cons
 			m_pImgMergeWindow->SetCurrentPageAll(page);
 			for (int pane = 0; pane < m_pImgMergeWindow->GetPaneCount(); ++pane)
 			{
-				imgfilepath[pane] = ucr::toTString(m_pImgMergeWindow->GetFileName(pane));
+				title[pane] = m_strDesc[pane].empty() ? ucr::toTString(m_pImgMergeWindow->GetFileName(pane)) : m_strDesc[pane];
 				const int curPage = m_pImgMergeWindow->GetCurrentPage(pane) + 1;
 				diffimg_filename[page][pane] = strutils::format(_T("%s/%d_%d.png"),
 					imgdir, pane + 1, curPage);
@@ -2253,7 +2290,7 @@ bool CImgMergeFrame::GenerateReport(const String& sFileName, bool allPages) cons
 		diffimg_filename.resize(1);
 		for (int pane = 0; pane < m_pImgMergeWindow->GetPaneCount(); ++pane)
 		{
-			imgfilepath[pane] = ucr::toTString(m_pImgMergeWindow->GetFileName(pane));
+			title[pane] = m_strDesc[pane].empty() ? ucr::toTString(m_pImgMergeWindow->GetFileName(pane)) : m_strDesc[pane];
 			const int curPage = m_pImgMergeWindow->GetCurrentPage(pane) + 1;
 			diffimg_filename[0][pane] = strutils::format(_T("%s/%d_%d.png"),
 				imgdir, pane + 1, curPage);
@@ -2295,7 +2332,7 @@ bool CImgMergeFrame::GenerateReport(const String& sFileName, bool allPages) cons
 		_T("<table>\n")
 		_T("<tr>\n"));
 	for (int pane = 0; pane < m_pImgMergeWindow->GetPaneCount(); ++pane)
-		file.WriteString(strutils::format(_T("<th class=\"title\">%s</th>\n"), imgfilepath[pane]));
+		file.WriteString(strutils::format(_T("<th class=\"title\">%s</th>\n"), title[pane]));
 	file.WriteString(_T("</tr>\n"));
 	for (const auto filenames: diffimg_filename)
 	{
@@ -2304,7 +2341,7 @@ bool CImgMergeFrame::GenerateReport(const String& sFileName, bool allPages) cons
 		for (int pane = 0; pane < m_pImgMergeWindow->GetPaneCount(); ++pane)
 			file.WriteString(
 				strutils::format(_T("<td><div class=\"img\"><img src=\"%s\" alt=\"%s\"></div></td>\n"),
-					filenames[pane], filenames[pane]));
+					paths::urlEncodeFileName(filenames[pane]), filenames[pane]));
 		file.WriteString(
 			_T("</tr>\n"));
 	}

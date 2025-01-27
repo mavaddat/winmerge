@@ -60,6 +60,18 @@ msgstr ""
 msgid "Copy Selected Line(s) from Left"
 msgstr ""
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 #, c-format
 msgid "Select Line &Difference\tF4"
 msgstr "Истакни &разлику реда\tF4"
@@ -242,6 +254,15 @@ msgstr ""
 msgid "&Vector Image Scaling"
 msgstr ""
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr ""
 
@@ -269,7 +290,7 @@ msgstr ""
 msgid "Fit to Window"
 msgstr ""
 
-msgid "&Event Synchronization"
+msgid "&Event Sync"
 msgstr ""
 
 msgid "&Enabled"
@@ -377,12 +398,25 @@ msgid "&View"
 msgstr "При&каз"
 
 #, c-format
+msgid "Ta&b Bar"
+msgstr "Тра&ка језичака"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
+#, c-format
 msgid "&Toolbar"
 msgstr "&Трака алата"
 
 #, c-format
 msgid "&Small"
 msgstr "&Мала"
+
+msgid "&Medium"
+msgstr ""
 
 #, c-format
 msgid "&Big"
@@ -392,13 +426,12 @@ msgstr "&Велика"
 msgid "&Huge"
 msgstr ""
 
+msgid "Men&u Bar"
+msgstr ""
+
 #, c-format
 msgid "&Status Bar"
 msgstr "&Статусна трака"
-
-#, c-format
-msgid "Ta&b Bar"
-msgstr "Тра&ка језичака"
 
 #, c-format
 msgid "&Tools"
@@ -1018,6 +1051,12 @@ msgstr ""
 msgid "&Transform with editor script..."
 msgstr ""
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr ""
 
@@ -1278,6 +1317,9 @@ msgstr ""
 msgid "Ignore c&omment differences"
 msgstr ""
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 #, c-format
 msgid "&Include subfolders"
 msgstr "Укључи и потфасцикле"
@@ -1311,6 +1353,81 @@ msgid "Size"
 msgstr "Величина"
 
 msgid "&Load Project..."
+msgstr ""
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
 msgstr ""
 
 #, c-format
@@ -1444,6 +1561,10 @@ msgstr ""
 #, c-format
 msgid "Language:"
 msgstr ""
+
+#, c-format
+msgid "Defaults"
+msgstr "Подразумевано"
 
 #, c-format
 msgid "Find"
@@ -1627,6 +1748,86 @@ msgstr "Различите речи:"
 msgid "Selected Word Diff:"
 msgstr "Одабери различите речи:"
 
+#, c-format
+msgid "Dialog"
+msgstr "Разговор"
+
+#, c-format
+msgid "Keywords:"
+msgstr "Кључне речи:"
+
+#, c-format
+msgid "Function names:"
+msgstr "Имена функција:"
+
+#, c-format
+msgid "Comments:"
+msgstr "Напомене:"
+
+#, c-format
+msgid "Numbers:"
+msgstr "Бројеви:"
+
+#, c-format
+msgid "Operators:"
+msgstr "Оператери:"
+
+#, c-format
+msgid "Strings:"
+msgstr "Појмови:"
+
+#, c-format
+msgid "Preprocessor:"
+msgstr "Претпроцесор:"
+
+#, c-format
+msgid "User 1:"
+msgstr "Корисник 1:"
+
+#, c-format
+msgid "User 2:"
+msgstr "Корисник 2:"
+
+#, c-format
+msgid "Bold"
+msgstr "Подебљано"
+
+#, c-format
+msgid "&Use customized text colors"
+msgstr "Користи жељене боје текста"
+
+#, c-format
+msgid "Whitespace:"
+msgstr "Размак:"
+
+#, c-format
+msgid "Regular text:"
+msgstr "Правилан текст:"
+
+#, c-format
+msgid "Selection:"
+msgstr "Изабери:"
+
+#, c-format
+msgid "Margin:"
+msgstr ""
+
+#, c-format
+msgid "Search Marker:"
+msgstr ""
+
+#, c-format
+msgid "User Defined Marker1:"
+msgstr ""
+
+#, c-format
+msgid "User Defined Marker2:"
+msgstr ""
+
+#, c-format
+msgid "User Defined Marker3:"
+msgstr ""
+
 msgid "&Use folder compare colors"
 msgstr ""
 
@@ -1642,8 +1843,7 @@ msgstr ""
 msgid "Items filtered:"
 msgstr ""
 
-#, c-format
-msgid "Margin:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
 msgstr ""
 
 #, c-format
@@ -1731,10 +1931,6 @@ msgid "Open to e&xternal editor"
 msgstr "Отвори у другом уре&ђивачу"
 
 #, c-format
-msgid "Defaults"
-msgstr "Подразумевано"
-
-#, c-format
 msgid "Display Columns"
 msgstr "Прикажи стубце"
 
@@ -1752,19 +1948,13 @@ msgstr ""
 msgid "Additional Properties"
 msgstr ""
 
-msgid "&>"
-msgstr ""
-
-msgid "&<"
-msgstr ""
-
-msgid "<<"
-msgstr ""
-
 msgid "Select Plugin"
 msgstr ""
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
+msgstr ""
+
+msgid "&Target files:"
 msgstr ""
 
 #, c-format
@@ -1784,10 +1974,10 @@ msgstr ""
 msgid "&Open files in the same window type after unpacking"
 msgstr ""
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr ""
 
-msgid "&Add pipe"
+msgid "&Alias..."
 msgstr ""
 
 #, c-format
@@ -1880,10 +2070,6 @@ msgid "&Highlight syntax"
 msgstr "Нагласи склоп речи"
 
 #, c-format
-msgid "&Automatic rescan"
-msgstr "&Аутоматски поново претражи"
-
-#, c-format
 msgid "&Preserve original EOL chars"
 msgstr "Задр&жи изворно означавање краја реда"
 
@@ -1903,6 +2089,16 @@ msgstr "Уметни језичке"
 msgid "Insert &Spaces"
 msgstr "Уметни размак"
 
+msgid "&Rendering Mode:"
+msgstr ""
+
+#, c-format
+msgid "&Automatic rescan"
+msgstr "&Аутоматски поново претражи"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 #, c-format
 msgid "Line Difference Coloring"
 msgstr "Обоји различите редове"
@@ -1921,9 +2117,6 @@ msgstr "Ранг ре&чи:"
 
 #, c-format
 msgid "W&ord break characters:"
-msgstr ""
-
-msgid "&Rendering Mode:"
 msgstr ""
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
@@ -2042,66 +2235,6 @@ msgstr "Увези..."
 #, c-format
 msgid "Export..."
 msgstr "Извези..."
-
-#, c-format
-msgid "Dialog"
-msgstr "Разговор"
-
-#, c-format
-msgid "Keywords:"
-msgstr "Кључне речи:"
-
-#, c-format
-msgid "Function names:"
-msgstr "Имена функција:"
-
-#, c-format
-msgid "Comments:"
-msgstr "Напомене:"
-
-#, c-format
-msgid "Numbers:"
-msgstr "Бројеви:"
-
-#, c-format
-msgid "Operators:"
-msgstr "Оператери:"
-
-#, c-format
-msgid "Strings:"
-msgstr "Појмови:"
-
-#, c-format
-msgid "Preprocessor:"
-msgstr "Претпроцесор:"
-
-#, c-format
-msgid "User 1:"
-msgstr "Корисник 1:"
-
-#, c-format
-msgid "User 2:"
-msgstr "Корисник 2:"
-
-#, c-format
-msgid "Bold"
-msgstr "Подебљано"
-
-#, c-format
-msgid "Search Marker:"
-msgstr ""
-
-#, c-format
-msgid "User Defined Marker1:"
-msgstr ""
-
-#, c-format
-msgid "User Defined Marker2:"
-msgstr ""
-
-#, c-format
-msgid "User Defined Marker3:"
-msgstr ""
 
 #, c-format
 msgid "Folder Compare Report"
@@ -2290,22 +2423,6 @@ msgid "&Quote character:"
 msgstr ""
 
 #, c-format
-msgid "&Use customized text colors"
-msgstr "Користи жељене боје текста"
-
-#, c-format
-msgid "Whitespace:"
-msgstr "Размак:"
-
-#, c-format
-msgid "Regular text:"
-msgstr "Правилан текст:"
-
-#, c-format
-msgid "Selection:"
-msgstr "Изабери:"
-
-#, c-format
 msgid "Backup Files"
 msgstr "Резервне датотеке"
 
@@ -2379,6 +2496,9 @@ msgstr "Додаци"
 #, c-format
 msgid "&Enable plugins"
 msgstr "Омогући додатк&е"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr ""
@@ -2523,6 +2643,36 @@ msgstr ""
 
 #, c-format
 msgid "&Hex View"
+msgstr ""
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
 msgstr ""
 
 #, c-format
@@ -2672,6 +2822,9 @@ msgid "Don't display this &message again."
 msgstr "Не приказуј ову поруку поново."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
+msgstr ""
+
+msgid "Compare/Merge"
 msgstr ""
 
 #, c-format
@@ -3296,6 +3449,9 @@ msgstr ""
 
 #, c-format
 msgid "Differences to... (%1)"
+msgstr ""
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
 msgstr ""
 
 #, c-format
@@ -4342,7 +4498,7 @@ msgstr ""
 msgid "W&rap Text"
 msgstr ""
 
-msgid "Frhed is not installed."
+msgid "%1 is not installed."
 msgstr ""
 
 #, c-format
@@ -4558,6 +4714,10 @@ msgstr ""
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr ""
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr ""
 
@@ -4575,6 +4735,56 @@ msgstr ""
 
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
+msgstr ""
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
 msgstr ""
 
 msgid "Filter applied"
@@ -4632,6 +4842,42 @@ msgstr ""
 msgid "Zoom &Out"
 msgstr ""
 
+msgid "Comparing..."
+msgstr ""
+
+msgid "Zoom:"
+msgstr ""
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr ""
 
@@ -4651,6 +4897,9 @@ msgid "Decompilation"
 msgstr ""
 
 msgid "URL Handling"
+msgstr ""
+
+msgid "Decoding / Encoding"
 msgstr ""
 
 msgid "Make Uppercase"
@@ -4767,6 +5016,12 @@ msgstr ""
 msgid "Disassemble Native Code"
 msgstr ""
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr ""
 
@@ -4791,7 +5046,7 @@ msgstr ""
 msgid "Reverse lines"
 msgstr ""
 
-msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 
 #, c-format
@@ -4888,13 +5143,25 @@ msgstr ""
 msgid "Prediff Line Filter"
 msgstr ""
 
-msgid "Basic text functions for the context menu"
+msgid "Date and time insertion function"
 msgstr ""
 
 msgid "HTTP URL Scheme Handler with curl. \r\nArguments: Command line options passed to the curl command."
 msgstr ""
 
 msgid "Windows Registry URL Scheme Handler. \r\nArguments: Command line options passed to the reg.exe command."
+msgstr ""
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
 msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
@@ -5022,4 +5289,32 @@ msgid "Folder '%1' does not exist"
 msgstr ""
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
+msgstr ""
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
 msgstr ""

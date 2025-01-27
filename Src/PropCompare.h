@@ -35,9 +35,10 @@ public:
 	bool    m_bIgnoreCase;
 	bool    m_bIgnoreNumbers;
 	bool    m_bIgnoreBlankLines;
+	int     m_bIgnoreMissingTrailingEol;
 	int     m_nIgnoreWhite;
 	bool    m_bMovedBlocks;
-	bool    m_bMatchSimilarLines;
+	bool    m_bAlignSimilarLines;
 	bool    m_bFilterCommentsLines;
 	int     m_nDiffAlgorithm;
 	bool    m_bIndentHeuristic;

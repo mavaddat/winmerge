@@ -207,6 +207,12 @@ IDB_FILE_NEW3_WEBPAGE   BITMAP                  "res\\new3_webpage.bmp"
 
 IDR_MARGIN_CURSOR       CURSOR                  "res\\mg_cur.cur"
 
+/////////////////////////////////////////////////////////////////////////////
+//
+// TypeLib
+//
+1 TYPELIB "Merge.tlb"
+
 #ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -235,7 +241,7 @@ BEGIN
             VALUE "FileDescription", "WinMerge\0"
             VALUE "FileVersion", STRFILEVER
             VALUE "InternalName", "WinMerge\0"
-            VALUE "LegalCopyright", "(c) 1996-2023 Dean P. Grimm / Thingamahoochie Software\0"
+            VALUE "LegalCopyright", "(c) 1996-2025 Dean P. Grimm / Thingamahoochie Software\0"
             VALUE "OriginalFilename", "WinMergeU.EXE\0"
             VALUE "PrivateBuild", STRPRIVATEBUILD
             VALUE "ProductName", "WinMerge\0"

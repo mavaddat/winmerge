@@ -15,11 +15,9 @@
 #define POCO_NO_UNWINDOWS 1
 #include <vector>
 #include <list>
-#include <unordered_set>
+#include <unordered_map>
 #include <algorithm>
 #include <cassert>
-#include <iostream>
-#include <sstream>
 #include <set>
 #include <Poco/Mutex.h>
 #include <Poco/ScopedLock.h>
@@ -29,13 +27,11 @@
 #include "unicoder.h"
 #include "FileFilterMgr.h"
 #include "lwdisp.h"
-#include "resource.h"
 #include "Exceptions.h"
 #include "RegKey.h"
 #include "paths.h"
 #include "Environment.h"
 #include "FileFilter.h"
-#include "coretools.h"
 #include "OptionsMgr.h"
 #include "OptionsDef.h"
 
@@ -303,9 +299,9 @@ bool PluginInfo::TestAgainstRegList(const String& szTest) const
 	return false;
 }
 
-std::optional<StringView> PluginInfo::GetExtendedPropertyValue(const String& name) const
+std::optional<StringView> PluginInfo::GetExtendedPropertyValue(const String& extendedProperties, const String& name)
 {
-	for (auto& item : strutils::split(m_extendedProperties, ';'))
+	for (auto& item : strutils::split(extendedProperties, ';'))
 	{
 		auto keyvalue = strutils::split(item, '=');
 		if (keyvalue[0] == name)
@@ -440,7 +436,7 @@ struct ScriptInfo
  *
  * @return 1 if loaded plugin successfully, negatives for errors
  */
-int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch)
+int PluginInfo::MakeInfo(const String& scriptletFilepath, const String& name, IDispatch *lpDispatch)
 {
 	// set up object in case we need to log info
 	ScriptInfo scinfo(scriptletFilepath);
@@ -483,6 +479,7 @@ int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch
 	// Check that the plugin offers the requested functions
 	// set the mode for the events which uses it
 	bool bFound = true;
+	bool bHasPluginPipeline = false;
 	if (m_event == _T("BUFFER_PREDIFF"))
 	{
 		bFound &= SearchScriptForMethodName(L"PrediffBufferW");
@@ -508,6 +505,11 @@ int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch
 		bFound &= SearchScriptForMethodName(L"PackFile");
 		bFound &= SearchScriptForMethodName(L"UnpackFolder");
 		bFound &= SearchScriptForMethodName(L"PackFolder");
+	}
+	else if (m_event == _T("ALIAS_PACK_UNPACK") || m_event == _T("ALIAS_PREDIFF") || m_event == _T("ALIAS_EDITOR_SCRIPT"))
+	{
+		bHasPluginPipeline = SearchScriptForDefinedProperties(L"PluginPipeline");
+		bFound &= bHasPluginPipeline;
 	}
 	if (!bFound)
 	{
@@ -540,8 +542,8 @@ int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch
 	}
 	else
 	{
-		// no description, use filename
-		m_description = paths::FindFileName(scriptletFilepath);
+		// no description, use name
+		m_description = name;
 	}
 	VariantClear(&ret);
 
@@ -641,6 +643,7 @@ int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch
 		m_argumentsDefault.clear();
 		m_hasArgumentsProperty = false;
 	}
+	VariantClear(&ret);
 
 	// get optional property PluginVariables
 	m_hasVariablesProperty = SearchScriptForDefinedProperties(L"PluginVariables");
@@ -656,9 +659,24 @@ int PluginInfo::MakeInfo(const String & scriptletFilepath, IDispatch *lpDispatch
 		}
 	}
 
-	// keep the filename
-	m_name = paths::FindFileName(scriptletFilepath);
+	// get optional property PluginPipeline
+	if (bHasPluginPipeline)
+	{
+		h = ::invokeW(lpDispatch, &ret, L"PluginPipeline", opGet[0], nullptr);
+		if (FAILED(h) || ret.vt != VT_BSTR)
+		{
+			scinfo.Log(_T("Plugin had PluginPipeline property, but error getting its value"));
+			return -140; // error (Plugin had PluginPipeline property, but error getting its value)
+		}
+		m_pipeline = ucr::toTString(ret.bstrVal);
+	}
+	else
+	{
+		m_pipeline.clear();
+	}
+	VariantClear(&ret);
 
+	m_name = name;
 	// Clear the autorelease holder
 	drv.p = nullptr;
 
@@ -686,7 +704,7 @@ int PluginInfo::LoadPlugin(const String & scriptletFilepath)
 		return -10; // error
 	}
 
-	return MakeInfo(scriptletFilepath, lpDispatch);
+	return MakeInfo(scriptletFilepath, paths::FindFileName(scriptletFilepath), lpDispatch);
 }
 
 static void ReportPluginLoadFailure(const String & scriptletFilepath, const SE_Exception& se)
@@ -820,13 +838,7 @@ static void RemoveScriptletCandidate(const String &scriptletFilepath)
 
 static void ResolveNameConflict(std::map<std::wstring, PluginArrayPtr> plugins)
 {
-	std::vector<std::vector<String>> eventsAry = 
-	{
-		{ L"URL_PACK_UNPACK", L"FILE_FOLDER_PACK_UNPACK", L"FILE_PACK_UNPACK", L"BUFFER_PACK_UNPACK"},
-		{ L"FILE_PREDIFF", L"BUFFER_PREDIFF" },
-		{ L"EDITOR_SCRIPT"},
-	};
-	for (const auto& events: eventsAry)
+	for (const auto& events: { plugin::UnpackerEventNames, plugin::PredifferEventNames, plugin::EditorScriptEventNames })
 	{
 		std::set<String> pluginNames;
 		for (const auto& event : events)
@@ -863,7 +875,7 @@ static void ResolveNameConflict(std::map<std::wstring, PluginArrayPtr> plugins)
 	}
 }
 
-static void LoadCustomSettings(std::map<std::wstring, PluginArrayPtr> plugins)
+static void LoadCustomSettings(const std::map<std::wstring, PluginArrayPtr>& plugins)
 {
 	for (const auto& [event, pluginAry] : plugins)
 	{
@@ -1154,12 +1166,6 @@ void CAllThreadsScripts::ReloadCustomSettings()
 		LoadCustomSettings(thread->m_aPluginsByEvent);
 }
 
-void CAllThreadsScripts::ReloadAllScripts()
-{
-	for (auto& thread : m_aAvailableThreads)
-		thread->ReloadAllScripts();
-}
-
 ////////////////////////////////////////////////////////////////////////////////////
 // class CAssureScriptsForThread : control creation/destruction of CScriptsOfThread
 
@@ -1182,8 +1188,9 @@ CAssureScriptsForThread::~CAssureScriptsForThread()
 		return;
 	if (scripts->Unlock())
 	{
+		auto* scriptsSaved = scripts;
 		delete scripts;
-		CAllThreadsScripts::Remove(scripts);
+		CAllThreadsScripts::Remove(scriptsSaved);
 	}
 }
 

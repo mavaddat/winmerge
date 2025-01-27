@@ -85,6 +85,7 @@ static const tchar_t * s_apszPhpKeywordList[] =
     _T ("private"),
     _T ("protected"),
     _T ("public"),
+    _T ("readonly"),        // as of PHP 8.1.0
     _T ("require"),
     _T ("require_once"),
     _T ("return"),
@@ -168,6 +169,7 @@ static const tchar_t * s_apszPredefinedConstantList[] =
     _T ("PEAR_INSTALL_DIR"),
     _T ("PHP_BINARY"),
     _T ("PHP_BINDIR"),
+    _T ("PHP_CLI_PROCESS_TITLE"),
     _T ("PHP_CONFIG_FILE_PATH"),
     _T ("PHP_CONFIG_FILE_SCAN_DIR"),
     _T ("PHP_DATADIR"),
@@ -201,7 +203,12 @@ static const tchar_t * s_apszPredefinedConstantList[] =
     _T ("PHP_WINDOWS_EVENT_CTRL_BREAK"),    // as of PHP 7.4.0
     _T ("PHP_WINDOWS_EVENT_CTRL_C"),        // as of PHP 7.4.0
     _T ("PHP_ZTS"),                         // as of PHP 5.2.7
+    _T ("STDERR"),
+    _T ("STDIN"),
+    _T ("STDOUT"),
     _T ("true"),
+    _T ("ZEND_DEBUG_BUILD"),
+    _T ("ZEND_THREAD_SAFE"),
   };
 
 // Reserved words
@@ -209,11 +216,13 @@ static const tchar_t * s_apszPredefinedConstantList[] =
 static const tchar_t * s_apszReservedWordList[] =
   {
     _T ("bool"),        // as of PHP 7
+    _T ("enum"),
 //  _T ("false"),       // as of PHP 7.  This is also defined as a predefined constant, so comment it out.
     _T ("float"),       // as of PHP 7
     _T ("int"),         // as of PHP 7
     _T ("iterable"),    // as of PHP 7.1
     _T ("mixed"),       // as of PHP 7
+    _T ("never"),       // as of PHP 8.1
 //  _T ("null"),        // as of PHP 7.  This is also defined as a predefined constant, so comment it out.
     _T ("numeric"),     // as of PHP 7
     _T ("object"),      // as of PHP 7.2
@@ -242,6 +251,51 @@ IsPhp2Keyword (const tchar_t *pszChars, int nLength)
   return ISXKEYWORDI (s_apszCompileTimeConstantList, pszChars, nLength) ||
          ISXKEYWORDI (s_apszPredefinedClassList, pszChars, nLength) ||
          ISXKEYWORDI (s_apszPredefinedConstantList, pszChars, nLength);
+}
+
+static inline void
+DefineIdentiferBlock(const tchar_t *pszChars, int nLength, CrystalLineParser::TEXTBLOCK * pBuf, int &nActualItems, int nIdentBegin, int I, DWORD dwCookie)
+{
+  if (dwCookie & COOKIE_USER2)
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER1);
+    }
+  if (IsPhpKeyword (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
+    }
+  else if (IsPhp1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_OPERATOR);
+    }
+  else if (IsPhp2Keyword (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER2);
+    }
+  else if (CrystalLineParser::IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
+    }
+  else
+    {
+      bool bFunction = false;
+
+      for (int j = I; j < nLength; j++)
+        {
+          if (!xisspace (pszChars[j]))
+            {
+              if (pszChars[j] == '(')
+                {
+                  bFunction = true;
+                }
+              break;
+            }
+        }
+      if (bFunction)
+        {
+          DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
+        }
+    }
 }
 
 unsigned
@@ -408,46 +462,7 @@ out:
         {
           if (nIdentBegin >= 0)
             {
-              if (dwCookie & COOKIE_USER2)
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER1);
-                }
-              if (IsPhpKeyword (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
-                }
-              else if (IsPhp1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_OPERATOR);
-                }
-              else if (IsPhp2Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER2);
-                }
-              else if (IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
-                }
-              else
-                {
-                  bool bFunction = false;
-
-                  for (int j = I; j < nLength; j++)
-                    {
-                      if (!xisspace (pszChars[j]))
-                        {
-                          if (pszChars[j] == '(')
-                            {
-                              bFunction = true;
-                            }
-                          break;
-                        }
-                    }
-                  if (bFunction)
-                    {
-                      DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
-                    }
-                }
+              DefineIdentiferBlock(pszChars, nLength, pBuf, nActualItems, nIdentBegin, I, dwCookie);
               bRedefineBlock = true;
               bDecIndex = true;
               nIdentBegin = -1;
@@ -476,46 +491,7 @@ out:
 
   if (nIdentBegin >= 0)
     {
-      if (dwCookie & COOKIE_USER2)
-        {
-          DEFINE_BLOCK(nIdentBegin, COLORINDEX_USER1);
-        }
-      if (IsPhpKeyword (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
-        }
-      else if (IsPhp1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_OPERATOR);
-        }
-      else if (IsPhp2Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER2);
-        }
-      else if (IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
-        }
-      else
-        {
-          bool bFunction = false;
-
-          for (int j = I; j < nLength; j++)
-            {
-              if (!xisspace (pszChars[j]))
-                {
-                  if (pszChars[j] == '(')
-                    {
-                      bFunction = true;
-                    }
-                  break;
-                }
-            }
-          if (bFunction)
-            {
-              DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
-            }
-        }
+      DefineIdentiferBlock(pszChars, nLength, pBuf, nActualItems, nIdentBegin, I, dwCookie);
     }
 
   dwCookie &= (COOKIE_EXT_COMMENT | COOKIE_STRING | COOKIE_CHAR);

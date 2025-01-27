@@ -252,10 +252,11 @@ UPDATEITEM_TYPE UpdateDiffAfterOperation(const FileActionItem & act, CDiffContex
 	// UI dependent.
 	switch (act.UIResult)
 	{
-	case FileActionItem::UI_SYNC:
+	case FileActionItem::UI_COPY:
+	case FileActionItem::UI_COPY_DIFFITEMS:
 		bUpdateSrc = true;
 		bUpdateDest = true;
-		CopyDiffSideAndProperties(di, act.UIOrigin, act.UIDestination);
+		CopyDiffSideAndProperties(ctxt, di, act.UIOrigin, act.UIDestination, act.UIResult);
 		if (ctxt.GetCompareDirs() > 2)
 			SetDiffCompare(di, DIFFCODE::NOCMP);
 		else
@@ -266,8 +267,8 @@ UPDATEITEM_TYPE UpdateDiffAfterOperation(const FileActionItem & act, CDiffContex
 	case FileActionItem::UI_MOVE:
 		bUpdateSrc = true;
 		bUpdateDest = true;
-		CopyDiffSideAndProperties(di, act.UIOrigin, act.UIDestination);
-		UnsetDiffSide(di, act.UIOrigin);
+		CopyDiffSideAndProperties(ctxt, di, act.UIOrigin, act.UIDestination, act.UIResult);
+		UnsetDiffSide(ctxt, di, act.UIOrigin);
 		SetDiffCompare(di, DIFFCODE::NOCMP);
 		break;
 
@@ -278,7 +279,7 @@ UPDATEITEM_TYPE UpdateDiffAfterOperation(const FileActionItem & act, CDiffContex
 		}
 		else
 		{
-			UnsetDiffSide(di, act.UIOrigin);
+			UnsetDiffSide(ctxt, di, act.UIOrigin);
 			SetDiffCompare(di, DIFFCODE::NOCMP);
 			bUpdateSrc = true;
 		}
@@ -356,13 +357,17 @@ DIFFITEM *FindItemFromPaths(const CDiffContext& ctxt, const PathContext& paths)
 	return 0;
 }
 
-/// is it possible to copy item to left ?
-bool IsItemCopyable(const DIFFITEM &di, int index)
+bool IsItemCopyable(const DIFFITEM &di, int index, bool copyOnlyDiffItems)
 {
-	// don't let them mess with error items
-	if (di.diffcode.isResultError()) return false;
-	// can't copy same items
-	if (di.diffcode.isResultSame()) return false;
+	if (copyOnlyDiffItems)
+	{
+		// don't let them mess with error items
+		if (di.diffcode.isResultError()) return false;
+		// can't copy same items
+		if (di.diffcode.isResultSame()) return false;
+		// can't copy skipped items
+		if (di.diffcode.isResultFiltered()) return false;
+	}
 	// impossible if not existing
 	if (!di.diffcode.exists(index)) return false;
 	// everything else can be copied to other side
@@ -1068,9 +1073,9 @@ int GetColImage(const DIFFITEM &di)
  * @note This does not update UI - ReloadItemStatus() does
  * @sa CDirDoc::ReloadItemStatus()
  */
-void CopyDiffSideAndProperties(DIFFITEM& di, int src, int dst)
+void CopyDiffSideAndProperties(CDiffContext& ctxt, DIFFITEM& di, int src, int dst, int action)
 {
-	if (di.diffcode.exists(src))
+	if (IsItemCopyable(di, src, action == FileActionItem::UI_COPY_DIFFITEMS))
 	{
 		di.diffcode.diffcode |= (DIFFCODE::FIRST << dst);
 		// copy file properties other than ctime 
@@ -1084,7 +1089,7 @@ void CopyDiffSideAndProperties(DIFFITEM& di, int src, int dst)
 	if (di.HasChildren())
 	{
 		for (DIFFITEM* pdic = di.GetFirstChild(); pdic; pdic = pdic->GetFwdSiblingLink())
-			CopyDiffSideAndProperties(*pdic, src, dst);
+			CopyDiffSideAndProperties(ctxt, *pdic, src, dst, action);
 	}
 }
 
@@ -1093,16 +1098,25 @@ void CopyDiffSideAndProperties(DIFFITEM& di, int src, int dst)
  * @note This does not update UI - ReloadItemStatus() does
  * @sa CDirDoc::ReloadItemStatus()
  */
-void UnsetDiffSide(DIFFITEM& di, int index)
+void UnsetDiffSide(const CDiffContext& ctxt, DIFFITEM& di, int index)
 {
 	di.diffcode.diffcode &= ~(DIFFCODE::FIRST << index);
 	di.diffFileInfo[index].ClearPartial();
+	// https://github.com/WinMerge/winmerge/issues/2599
+	for (int i = 0; i < ctxt.GetCompareDirs(); ++i)
+	{
+		if (di.diffcode.exists(i))
+		{
+			di.diffFileInfo[index].filename = di.diffFileInfo[i].filename;
+			break;
+		}
+	}
 	di.nidiffs = CDiffContext::DIFFS_UNKNOWN_QUICKCOMPARE;
 	di.nsdiffs = CDiffContext::DIFFS_UNKNOWN_QUICKCOMPARE;
 	if (di.HasChildren())
 	{
 		for (DIFFITEM* pdic = di.GetFirstChild(); pdic; pdic = pdic->GetFwdSiblingLink())
-			UnsetDiffSide(*pdic, index);
+			UnsetDiffSide(ctxt, *pdic, index);
 	}
 }
 
@@ -1183,7 +1197,8 @@ int UpdateCompareFlagsAfterSync(DIFFITEM& di, bool bRecursive)
 			di.diffcode.diffcode |= flag;
 		}
 	}
-	else {
+	else
+	{
 		// Update compare flags for files and directories in tree mode.
 		// (Do not update directory compare flags when not in tree mode.)
 		if (!di.diffcode.isDirectory() || bRecursive)

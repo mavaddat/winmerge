@@ -61,6 +61,18 @@ msgstr "Seçilmiş satır(lar)ı sola kopyala"
 msgid "Copy Selected Line(s) from Left"
 msgstr "Seçilmiş satır(lar)ı soldan kopyala"
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 msgid "Select Line &Difference\tF4"
 msgstr "Satır &farkını seç\tF4"
 
@@ -216,6 +228,15 @@ msgstr "Ar&ka plan rengini ayarla"
 msgid "&Vector Image Scaling"
 msgstr "&Vektör görsel ölçekleme"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Görsellerden &ayıklanan metni karşılaştır"
 
@@ -243,8 +264,8 @@ msgstr "&Boyut"
 msgid "Fit to Window"
 msgstr "&Pencereye sığdır"
 
-msgid "&Event Synchronization"
-msgstr "&Etkinlik eşitleme"
+msgid "&Event Sync"
+msgstr ""
 
 msgid "&Enabled"
 msgstr "&Açık"
@@ -336,11 +357,23 @@ msgstr "&Ayarlar..."
 msgid "&View"
 msgstr "&Görünüm"
 
+msgid "Ta&b Bar"
+msgstr "&Sekme çubuğu"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "&Araç çubuğu"
 
 msgid "&Small"
 msgstr "Küçük"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "&Büyük"
@@ -348,11 +381,11 @@ msgstr "&Büyük"
 msgid "&Huge"
 msgstr "Çok &büyük"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "&Durum çubuğu"
-
-msgid "Ta&b Bar"
-msgstr "&Sekme çubuğu"
 
 msgid "&Tools"
 msgstr "&Araçlar"
@@ -840,6 +873,12 @@ msgstr "Ön &farklılaştırıcı uygula..."
 msgid "&Transform with editor script..."
 msgstr "&Düzenleyici betiği ile dönüştür..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "Bö&l"
 
@@ -1061,6 +1100,9 @@ msgstr "&Sayıları yok say"
 msgid "Ignore c&omment differences"
 msgstr "Yo&rum farklılıkları yok sayılsın"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "A&lt klasörler katılsın"
 
@@ -1087,6 +1129,81 @@ msgstr "Boyut"
 
 msgid "&Load Project..."
 msgstr "Proje yük&le..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "WinMerge hakkında"
@@ -1198,6 +1315,9 @@ msgstr "Değiştirilen dosyalar &otomatik yenilensin:"
 
 msgid "Language:"
 msgstr "Dil:"
+
+msgid "Defaults"
+msgstr "Varsayılanlar"
 
 msgid "Find"
 msgstr "Bul"
@@ -1343,6 +1463,66 @@ msgstr "Sözcük farklılığı:"
 msgid "Selected Word Diff:"
 msgstr "Seçilmiş sözcük farklılığı:"
 
+msgid "Dialog"
+msgstr "Pencere"
+
+msgid "Keywords:"
+msgstr "Anahtar sözcükler:"
+
+msgid "Function names:"
+msgstr "İşlev adları:"
+
+msgid "Comments:"
+msgstr "Açıklamalar:"
+
+msgid "Numbers:"
+msgstr "Rakamlar:"
+
+msgid "Operators:"
+msgstr "İşlemler:"
+
+msgid "Strings:"
+msgstr "Dizgeler:"
+
+msgid "Preprocessor:"
+msgstr "Ön işleyici:"
+
+msgid "User 1:"
+msgstr "1. kullanıcı:"
+
+msgid "User 2:"
+msgstr "2. kullanıcı:"
+
+msgid "Bold"
+msgstr "Koyu"
+
+msgid "&Use customized text colors"
+msgstr "Özel metin renkleri k&ullanılsın"
+
+msgid "Whitespace:"
+msgstr "Beyaz boşluk:"
+
+msgid "Regular text:"
+msgstr "Normal metin:"
+
+msgid "Selection:"
+msgstr "Seçim:"
+
+msgid "Margin:"
+msgstr "Kenar boşluğu:"
+
+msgid "Search Marker:"
+msgstr "Arama işaretleyicisi:"
+
+msgid "User Defined Marker1:"
+msgstr "1. kullanıcı işaretleyicisi:"
+
+msgid "User Defined Marker2:"
+msgstr "2. kullanıcı işaretleyicisi:"
+
+msgid "User Defined Marker3:"
+msgstr "3. kullanıcı işaretleyicisi:"
+
 msgid "&Use folder compare colors"
 msgstr "Klasör karşılaştırma renkleri k&ullanılsın"
 
@@ -1358,8 +1538,8 @@ msgstr "Artık var olmayan ögeler:"
 msgid "Items filtered:"
 msgstr "Süzülmüş ögeler:"
 
-msgid "Margin:"
-msgstr "Kenar boşluğu:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "Sistem"
@@ -1424,9 +1604,6 @@ msgstr "Ko&mut satırı katılsın"
 msgid "Open to e&xternal editor"
 msgstr "Dış düzen&leyici ile açılsın"
 
-msgid "Defaults"
-msgstr "Varsayılanlar"
-
 msgid "Display Columns"
 msgstr "Sütunlar görüntülensin"
 
@@ -1442,20 +1619,14 @@ msgstr "&Ek özellikler"
 msgid "Additional Properties"
 msgstr "Ek özellikler"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Eklenti seçin"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "Eklenti &adı:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "Uzantı Listesi:"
@@ -1472,11 +1643,11 @@ msgstr "Uzantıya bakılmadan tüm eklentiler görüntülensin"
 msgid "&Open files in the same window type after unpacking"
 msgstr "Dosyalar &ayıklandıktan sonra aynı pencerede açılsın"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "&Eklenti bağlantı yolu:"
 
-msgid "&Add pipe"
-msgstr "&Bağlantı ekle"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "Durdur"
@@ -1553,9 +1724,6 @@ msgstr "Düzenleyici"
 msgid "&Highlight syntax"
 msgstr "Söz dizimi &vurgulansın"
 
-msgid "&Automatic rescan"
-msgstr "Otomatik olarak yeniden t&aransın"
-
 msgid "&Preserve original EOL chars"
 msgstr "Ö&zgün satır sonu karakterleri korunsun"
 
@@ -1571,6 +1739,15 @@ msgstr "Sekme &olarak"
 msgid "Insert &Spaces"
 msgstr "&Boşluk olarak"
 
+msgid "&Rendering Mode:"
+msgstr "Gö&rüntüleme Kipi:"
+
+msgid "&Automatic rescan"
+msgstr "Otomatik olarak yeniden t&aransın"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "Satır farklılıkları renklendirilsin"
 
@@ -1585,9 +1762,6 @@ msgstr "&Sözcük düzeyinde:"
 
 msgid "W&ord break characters:"
 msgstr "&Sözcük kesme karakterleri:"
-
-msgid "&Rendering Mode:"
-msgstr "Gö&rüntüleme Kipi:"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "WinMerge sık karşılaşılan iletilerin gizlenmesine izin verir. Tüm iletileri yeniden görünür yapmak için Sıfırla düğmesine tıklayın."
@@ -1678,51 +1852,6 @@ msgstr "İçe aktar..."
 
 msgid "Export..."
 msgstr "Dışa aktar..."
-
-msgid "Dialog"
-msgstr "Pencere"
-
-msgid "Keywords:"
-msgstr "Anahtar sözcükler:"
-
-msgid "Function names:"
-msgstr "İşlev adları:"
-
-msgid "Comments:"
-msgstr "Açıklamalar:"
-
-msgid "Numbers:"
-msgstr "Rakamlar:"
-
-msgid "Operators:"
-msgstr "İşlemler:"
-
-msgid "Strings:"
-msgstr "Dizgeler:"
-
-msgid "Preprocessor:"
-msgstr "Ön işleyici:"
-
-msgid "User 1:"
-msgstr "1. kullanıcı:"
-
-msgid "User 2:"
-msgstr "2. kullanıcı:"
-
-msgid "Bold"
-msgstr "Koyu"
-
-msgid "Search Marker:"
-msgstr "Arama işaretleyicisi:"
-
-msgid "User Defined Marker1:"
-msgstr "1. kullanıcı işaretleyicisi:"
-
-msgid "User Defined Marker2:"
-msgstr "2. kullanıcı işaretleyicisi:"
-
-msgid "User Defined Marker3:"
-msgstr "3. kullanıcı işaretleyicisi:"
 
 msgid "Folder Compare Report"
 msgstr "Klasör Karşılaştırma Raporu"
@@ -1871,18 +2000,6 @@ msgstr "Tırnak içinde &yeni satır olabilsin"
 msgid "&Quote character:"
 msgstr "&Tırnak karakteri:"
 
-msgid "&Use customized text colors"
-msgstr "Özel metin renkleri k&ullanılsın"
-
-msgid "Whitespace:"
-msgstr "Beyaz boşluk:"
-
-msgid "Regular text:"
-msgstr "Normal metin:"
-
-msgid "Selection:"
-msgstr "Seçim:"
-
 msgid "Backup Files"
 msgstr "Yedekleme dosyaları"
 
@@ -1939,6 +2056,9 @@ msgstr "Eklentiler"
 
 msgid "&Enable plugins"
 msgstr "&Eklentiler kullanılsın"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "Dosya süzgeçleri:"
@@ -2068,6 +2188,36 @@ msgstr "&Her panonun kullanıcı verileri klasörü ayrı olsun"
 msgid "&Hex View"
 msgstr "Onaltılık &görünüm"
 
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
+
 msgid "EXT"
 msgstr "EXT"
 
@@ -2160,6 +2310,9 @@ msgstr "Bu ileti &yeniden görüntülenmesin."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "Bu ileti kutusunun yeniden görüntülenmesi için Ayarlar bölümünde İleti kutuları grubu altındaki Sıfırla düğmesine tıklayın."
+
+msgid "Compare/Merge"
+msgstr ""
 
 msgid "Syntax"
 msgstr "Söz dizimi"
@@ -2611,6 +2764,9 @@ msgstr "Tümünü... (%1)"
 #, c-format
 msgid "Differences to... (%1)"
 msgstr "Farklı olanları... (%1)"
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr ""
 
 #, c-format
 msgid "Left (%1)"
@@ -3450,8 +3606,8 @@ msgstr "İnternet &sayfası"
 msgid "W&rap Text"
 msgstr "&Metin kaydırılsın"
 
-msgid "Frhed is not installed."
-msgstr "Frhed kurulmamış."
+msgid "%1 is not installed."
+msgstr "%1 kurulmamış."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -3663,6 +3819,10 @@ msgstr "Eklenti bağlantı yolunda eklenti adı eksik: %1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Eklenti bağlantı yolunda tırnak karakteri eksik: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "Eklenti değişkenlerini belirtin"
 
@@ -3681,6 +3841,56 @@ msgstr "'%1' bir ön farklılaştırıcı eklentisi değil"
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
 msgstr "'%1' dosyasında '%2' eklentisi ile ön farklılaştırma yapılırken bir sorun çıktı. Artık ön farklılaştırma uygulanamıyor."
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
+msgstr ""
 
 msgid "Filter applied"
 msgstr "Süzgeç uygulandı"
@@ -3737,6 +3947,42 @@ msgstr "Y&akınlaştır"
 msgid "Zoom &Out"
 msgstr "&Uzaklaştır"
 
+msgid "Comparing..."
+msgstr ""
+
+msgid "Zoom:"
+msgstr ""
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "Sadeleştirme"
 
@@ -3757,6 +4003,9 @@ msgstr "Kod çözme"
 
 msgid "URL Handling"
 msgstr "Adres işleme"
+
+msgid "Decoding / Encoding"
+msgstr ""
 
 msgid "Make Uppercase"
 msgstr "Büyük harflere dönüştür"
@@ -3872,6 +4121,12 @@ msgstr "IL kodunu çözümle"
 msgid "Disassemble Native Code"
 msgstr "Doğal kodu çözümle"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "Büyük harflere dönüştür"
 
@@ -3896,8 +4151,8 @@ msgstr "Sütunları tersine çevir"
 msgid "Reverse lines"
 msgstr "Satırları tersine çevir"
 
-msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression"
-msgstr "Metni başka bir metin ile değiştirir.\r\nKullanımı: Replace [-i] [-e] FIND REPLACE\r\n  FIND    - Aranacak metin\r\n  REPLACE - Değiştirilecek metin\r\n  -i - Büyük/küçük harf yok sayılır (yalnızca -e için)\r\ns  -e - Belirtilen metin kurallı ifade olarak işlenir"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
+msgstr "Metni başka bir metin ile değiştirir.\r\nKullanımı: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - Aranacak metin\r\n  REPLACE - Değiştirilecek metin\r\n  -i - Büyük/küçük harf yok sayılır (yalnızca -e için)\r\ns  -e - Belirtilen metin kurallı ifade olarak işlenir\r\n  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid "Apply filter command. \r\nUsage: ExecFilterCommand COMMAND\r\n  COMMAND - command to execute. %1 in the command is replaced with the filename."
@@ -3993,14 +4248,26 @@ msgstr "Bu eklenti metin dosyalarında baştaki satır numaralarını yok sayar 
 msgid "Prediff Line Filter"
 msgstr "Ön farklılaştırıcı satır süzgeci"
 
-msgid "Basic text functions for the context menu"
-msgstr "İçerik menüsü için temel metin işlevleri"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid "HTTP URL Scheme Handler with curl. \r\nArguments: Command line options passed to the curl command."
 msgstr "cURL ile HTTP URL şema işleyici.\r\nParametreler: curl komutuna aktarılacak komut satırı parametreleri."
 
 msgid "Windows Registry URL Scheme Handler. \r\nArguments: Command line options passed to the reg.exe command."
 msgstr "Windows kayıt defteri adresi şema işleyici. \r\nParametreler: reg.exe komutuna aktarılacak komut satırı parametreleri."
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
+msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr "CompareMSExcelFiles.sct WinMerge eklentisi ayarları"
@@ -4128,3 +4395,31 @@ msgstr "'%1' klasörü bulunamadı"
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
 msgstr "Mutlak yol içeren yama dosyaları için '-p0' komut satırı seçeneğini kullanmayın"
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr "AI.sct WinMerge Eklenti Seçenekleri"
+
+msgid "Enter prompt"
+msgstr "Komut istemini girin"
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr "OpenAI API anahtarınızı girin.\r\n - Bu eklentiyi kullanmak için OpenAI'ya kaydolmanız ve ücret ödemeniz gerekmektedir.\r\n - API anahtarı ortam değişkeni %1'e kaydedilir."
+
+msgid "Environment variable name for OpenAI API key"
+msgstr "OpenAI API anahtarı için ortam değişkeni adı"
+
+msgid "OpenAI API key"
+msgstr "OpenAI API anahtarı"
+
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+msgid "Maximum length"
+msgstr "Maksimum uzunluk"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
+msgstr "OpenAI API anahtarı değişti. Değişiklikleri uygulamak için lütfen WinMerge'i yeniden başlatın."

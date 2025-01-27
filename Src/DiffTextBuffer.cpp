@@ -205,7 +205,7 @@ int CDiffTextBuffer::LoadFromFile(const tchar_t* pszFileNameInit,
 
 	// Unpacking the file here, save the result in a temporary file
 	m_strTempFileName = pszFileNameInit;
-	if (!infoUnpacker.Unpacking(&m_unpackerSubcodes, m_strTempFileName, sToFindUnpacker, { m_strTempFileName }))
+	if (!infoUnpacker.Unpacking(m_nThisPane, &m_unpackerSubcodes, m_strTempFileName, sToFindUnpacker, { m_strTempFileName }))
 	{
 		InitNew(); // leave crystal editor in valid, empty state
 		return FileLoadResult::FRESULT_ERROR_UNPACK;
@@ -516,7 +516,7 @@ int CDiffTextBuffer::SaveToFile (const String& pszFileName,
 		// If we are saving user files
 		// we need an unpacker/packer, at least a "do nothing" one
 		// repack the file here, overwrite the temporary file we did save in
-		bSaveSuccess = infoUnpacker.Packing(sIntermediateFilename, pszFileName, m_unpackerSubcodes, { pszFileName });
+		bSaveSuccess = infoUnpacker.Packing(m_nThisPane, sIntermediateFilename, pszFileName, m_unpackerSubcodes, { pszFileName });
 		if (!bSaveSuccess)
 			sError = GetSysError();
 		try
@@ -561,30 +561,6 @@ int CDiffTextBuffer::SaveToFile (const String& pszFileName,
 		return SAVE_FAILED;
 }
 
-/// Replace line (removing any eol, and only including one if in strText)
-void CDiffTextBuffer::ReplaceFullLines(CDiffTextBuffer& dbuf, CDiffTextBuffer& sbuf, CCrystalTextView * pSource, int nLineBegin, int nLineEnd, int nAction /*=CE_ACTION_UNKNOWN*/)
-{
-	String strText;
-	if (nLineBegin != nLineEnd || sbuf.GetLineLength(nLineEnd) > 0)
-		sbuf.GetTextWithoutEmptys(nLineBegin, 0, nLineEnd, sbuf.GetLineLength(nLineEnd), strText);
-	strText += sbuf.GetLineEol(nLineEnd);
-
-	if (nLineBegin != nLineEnd || dbuf.GetFullLineLength(nLineEnd) > 0)
-	{
-		int nLineEndSource = nLineEnd < dbuf.GetLineCount() ? nLineEnd : dbuf.GetLineCount();
-		if (nLineEnd+1 < GetLineCount())
-			dbuf.DeleteText(pSource, nLineBegin, 0, nLineEndSource + 1, 0, nAction);
-		else
-			dbuf.DeleteText(pSource, nLineBegin, 0, nLineEndSource, dbuf.GetLineLength(nLineEndSource), nAction); 
-	}
-
-	if (size_t cchText = strText.length())
-	{
-		int endl,endc;
-		dbuf.InsertText(pSource, nLineBegin, 0, strText.c_str(), cchText, endl, endc, nAction);
-	}
-}
-
 bool CDiffTextBuffer::curUndoGroup()
 {
 	return (m_aUndoBuf.size() != 0 && m_aUndoBuf[0].m_dwFlags&UNDO_BEGINGROUP);
@@ -594,7 +570,7 @@ bool CDiffTextBuffer::			/* virtual override */
 DeleteText2(CCrystalTextView * pSource, int nStartLine, int nStartChar,
 	int nEndLine, int nEndChar, int nAction /*= CE_ACTION_UNKNOWN*/, bool bHistory /*= true*/)
 {
-	for (auto syncpnt : m_pOwnerDoc->GetSyncPointList())
+	for (const auto& syncpnt : m_pOwnerDoc->GetSyncPointList())
 	{
 		const int nLineSyncPoint = syncpnt[m_nThisPane];
 		if (((nStartChar == 0 && nStartLine == nLineSyncPoint) || nStartLine < nLineSyncPoint) &&

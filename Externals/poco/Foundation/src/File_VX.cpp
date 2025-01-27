@@ -62,6 +62,12 @@ void FileImpl::setPathImpl(const std::string& path)
 }
 
 
+std::string FileImpl::getExecutablePathImpl() const
+{
+	return _path;
+}
+
+
 bool FileImpl::existsImpl() const
 {
 	poco_assert (!_path.empty());
@@ -87,7 +93,7 @@ bool FileImpl::canWriteImpl() const
 }
 
 
-bool FileImpl::canExecuteImpl() const
+bool FileImpl::canExecuteImpl(const std::string& absolutePath) const
 {
 	return false;
 }
@@ -289,7 +295,7 @@ void FileImpl::renameToImpl(const std::string& path, int options)
 	struct stat st;
 
 	if (stat(path.c_str(), &st) == 0 && (options &OPT_FAIL_ON_OVERWRITE_IMPL))
-		throw FileExistsException(path, EEXIST);		
+		throw FileExistsException(path, EEXIST);
 
 	if (rename(_path.c_str(), path.c_str()) != 0)
 		handleLastErrorImpl(_path);

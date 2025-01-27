@@ -13,7 +13,6 @@
 #include "stdafx.h"
 #include "OpenView.h"
 #include <vector>
-#include <sys/stat.h>
 #include "UnicodeString.h"
 #include "Merge.h"
 #include "OpenDoc.h"
@@ -87,6 +86,8 @@ BEGIN_MESSAGE_MAP(COpenView, CFormView)
 	ON_UPDATE_COMMAND_UI(ID_PROJECT_DIFF_OPTIONS_IGNORE_CODEPAGE, OnUpdateDiffIgnoreCP)
 	ON_COMMAND(ID_PROJECT_DIFF_OPTIONS_IGNORE_COMMENTS, OnDiffIgnoreComments)
 	ON_UPDATE_COMMAND_UI(ID_PROJECT_DIFF_OPTIONS_IGNORE_COMMENTS, OnUpdateDiffIgnoreComments)
+	ON_COMMAND(ID_PROJECT_DIFF_OPTIONS_IGNORE_MISSING_TRAILING_EOL, OnDiffIgnoreMissingTrailingEol)
+	ON_UPDATE_COMMAND_UI(ID_PROJECT_DIFF_OPTIONS_IGNORE_MISSING_TRAILING_EOL, OnUpdateDiffIgnoreMissingTrailingEol)
 	ON_COMMAND_RANGE(ID_PROJECT_DIFF_OPTIONS_COMPMETHOD_FULL_CONTENTS, ID_PROJECT_DIFF_OPTIONS_COMPMETHOD_SIZE, OnCompareMethod)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_PROJECT_DIFF_OPTIONS_COMPMETHOD_FULL_CONTENTS, ID_PROJECT_DIFF_OPTIONS_COMPMETHOD_SIZE, OnUpdateCompareMethod)
 	ON_WM_ACTIVATE()
@@ -500,14 +501,17 @@ void COpenView::OnWindowPosChanged(WINDOWPOS* lpwndpos)
 		if (pFrameWnd == GetTopLevelFrame()->GetActiveFrame())
 		{
 			m_constraint.Persist(true, false);
-			WINDOWPLACEMENT wp = { sizeof wp };
-			pFrameWnd->GetWindowPlacement(&wp);
-			CRect rc;
-			GetWindowRect(&rc);
-			pFrameWnd->CalcWindowRect(&rc, CWnd::adjustOutside);
-			wp.rcNormalPosition.right = wp.rcNormalPosition.left + rc.Width();
-			wp.rcNormalPosition.bottom = wp.rcNormalPosition.top + rc.Height();
-			pFrameWnd->SetWindowPlacement(&wp);
+			if (!pFrameWnd->IsZoomed())
+			{
+				WINDOWPLACEMENT wp = { sizeof wp };
+				pFrameWnd->GetWindowPlacement(&wp);
+				CRect rc;
+				GetWindowRect(&rc);
+				pFrameWnd->CalcWindowRect(&rc, CWnd::adjustOutside);
+				wp.rcNormalPosition.right = wp.rcNormalPosition.left + rc.Width();
+				wp.rcNormalPosition.bottom = wp.rcNormalPosition.top + rc.Height();
+				pFrameWnd->SetWindowPlacement(&wp);
+			}
 		}
 	}
 	__super::OnWindowPosChanged(lpwndpos);
@@ -874,6 +878,8 @@ void COpenView::OnLoadProject()
 			m_bIgnoreNumbers = projItem.GetIgnoreNumbers();
 		if (projItem.HasIgnoreCodepage())
 			m_bIgnoreCodepage = projItem.GetIgnoreCodepage();
+		if (projItem.HasIgnoreMissingTrailingEol())
+			m_bIgnoreMissingTrailingEol = projItem.GetIgnoreMissingTrailingEol();
 		if (projItem.HasFilterCommentsLines())
 			m_bFilterCommentsLines = projItem.GetFilterCommentsLines();
 		if (projItem.HasCompareMethod())
@@ -919,6 +925,7 @@ void COpenView::OnSaveProject()
 	projItem.SetSaveIgnoreEol(bSaveCompareOptions);
 	projItem.SetSaveIgnoreNumbers(bSaveCompareOptions);
 	projItem.SetSaveIgnoreCodepage(bSaveCompareOptions);
+	projItem.SetSaveIgnoreMissingTrailingEol(bSaveCompareOptions);
 	projItem.SetSaveFilterCommentsLines(bSaveCompareOptions);
 	projItem.SetSaveCompareMethod(bSaveCompareOptions);
 	projItem.SetSaveHiddenItems(bSaveHiddenItems);
@@ -984,6 +991,7 @@ void COpenView::OnSaveProject()
 		projItem.SetIgnoreEol(m_bIgnoreEol);
 		projItem.SetIgnoreNumbers(m_bIgnoreNumbers);
 		projItem.SetIgnoreCodepage(m_bIgnoreCodepage);
+		projItem.SetIgnoreMissingTrailingEol(m_bIgnoreMissingTrailingEol);
 		projItem.SetFilterCommentsLines(m_bFilterCommentsLines);
 		projItem.SetCompareMethod(m_nCompareMethod);
 	}
@@ -1081,7 +1089,7 @@ void COpenView::SaveComboboxStates()
 
 struct UpdateButtonStatesThreadParams
 {
-	HWND m_hWnd;
+	HWND m_hWnd = nullptr;
 	PathContext m_paths;
 };
 
@@ -1090,11 +1098,12 @@ static UINT UpdateButtonStatesThread(LPVOID lpParam)
 	if (FAILED(CoInitialize(nullptr)))
 		return 0;
 
+	{
 	CAssureScriptsForThread scriptsForRescan(new MergeAppCOMClass());
 	MSG msg;
 	BOOL bRet;
 	while( (bRet = GetMessage( &msg, nullptr, 0, 0 )) != 0)
-	{ 
+	{
 		if (bRet == -1)
 			break;
 		if (msg.message != WM_USER + 2)
@@ -1103,6 +1112,7 @@ static UINT UpdateButtonStatesThread(LPVOID lpParam)
 		bool bIsaFolderCompare = true;
 		bool bIsaFileCompare = true;
 		bool bInvalid[3] = {false, false, false};
+		bool bIsArchiveFile[3] = {false, false, false};
 		paths::PATH_EXISTENCE pathType[3] = {paths::DOES_NOT_EXIST, paths::DOES_NOT_EXIST, paths::DOES_NOT_EXIST};
 		int iStatusMsgId = IDS_OPEN_FILESDIRS;
 
@@ -1122,13 +1132,19 @@ static UINT UpdateButtonStatesThread(LPVOID lpParam)
 		{
 			for (int i = 0; i < paths.GetSize(); ++i)
 			{
-				pathType[i] = paths::DoesPathExist(paths[i], IsArchiveFile);
+				pathType[i] = paths::DoesPathExist(paths[i]);
+				bIsArchiveFile[i] = IsArchiveFile(paths[i]);
 				if (pathType[i] == paths::DOES_NOT_EXIST)
 				{
 					if (paths::IsURL(paths[i]) || paths::IsNullDeviceName(paths[i]))
 						pathType[i] = paths::IS_EXISTING_FILE;
 					else
-						bInvalid[i] = true;
+					{
+						if (bIsArchiveFile[i])
+							pathType[i] = paths::IS_EXISTING_FILE;
+						else
+							bInvalid[i] = true;
+					}
 				}
 			}
 		}
@@ -1154,7 +1170,13 @@ static UINT UpdateButtonStatesThread(LPVOID lpParam)
 				else if (!bInvalid[0] && !bInvalid[1])
 				{
 					if (pathType[0] != pathType[1])
-						iStatusMsgId = IDS_OPEN_MISMATCH;
+					{
+						if ((pathType[0] == paths::IS_EXISTING_DIR && bIsArchiveFile[1]) ||
+						    (pathType[1] == paths::IS_EXISTING_DIR && bIsArchiveFile[0]))
+							iStatusMsgId = IDS_OPEN_FILESDIRS;
+						else
+							iStatusMsgId = IDS_OPEN_MISMATCH;
+					}
 					else
 						iStatusMsgId = IDS_OPEN_FILESDIRS;
 				}
@@ -1178,20 +1200,39 @@ static UINT UpdateButtonStatesThread(LPVOID lpParam)
 				else if (!bInvalid[0] && !bInvalid[1] && !bInvalid[2])
 				{
 					if (pathType[0] != pathType[1] || pathType[0] != pathType[2])
-						iStatusMsgId = IDS_OPEN_MISMATCH;
+					{
+						bool bMatch = [&]() {
+							for (int i = 0; i < 3; ++i)
+							{
+								if (pathType[i] != paths::IS_EXISTING_DIR && !bIsArchiveFile[i])
+									return false;
+							}
+							return true;
+						}();
+						if (bMatch)
+							iStatusMsgId = IDS_OPEN_FILESDIRS;
+						else
+							iStatusMsgId = IDS_OPEN_MISMATCH;
+					}
 					else
 						iStatusMsgId = IDS_OPEN_FILESDIRS;
 				}
 			}
-			if (iStatusMsgId != IDS_OPEN_FILESDIRS)
-				pathsType = paths::DOES_NOT_EXIST;
-			bIsaFileCompare = (pathsType == paths::IS_EXISTING_FILE);
-			bIsaFolderCompare = (pathsType == paths::IS_EXISTING_DIR);
+			bIsaFileCompare = false;
+			bIsaFolderCompare = false;
+			for (int i = 0; i < paths.GetSize(); i++)
+			{
+				if (pathType[i] == paths::IS_EXISTING_FILE)
+					bIsaFileCompare = true;
+				if (pathType[i] == paths::IS_EXISTING_DIR || bIsArchiveFile[i])
+					bIsaFolderCompare = true;
+			}
 			// Both will be `false` if incompatibilities or something is missing
 			// Both will end up `true` if file validity isn't being checked
 		}
 
 		PostMessage(hWnd, WM_USER + 1, MAKEWPARAM(bIsaFolderCompare, bIsaFileCompare), MAKELPARAM(iStatusMsgId, bProject)); 
+	}
 	}
 
 	CoUninitialize();
@@ -1241,11 +1282,9 @@ void COpenView::TerminateThreadIfRunning()
 	PostThreadMessage(m_pUpdateButtonStatusThread->m_nThreadID, WM_QUIT, 0, 0);
 	DWORD dwResult = WaitForSingleObject(m_pUpdateButtonStatusThread->m_hThread, 100);
 	if (dwResult != WAIT_OBJECT_0)
-	{
-		m_pUpdateButtonStatusThread->SuspendThread();
-		TerminateThread(m_pUpdateButtonStatusThread->m_hThread, 0);
-	}
-	delete m_pUpdateButtonStatusThread;
+		theApp.AddZombieThread(m_pUpdateButtonStatusThread);
+	else
+		delete m_pUpdateButtonStatusThread;
 	m_pUpdateButtonStatusThread = nullptr;
 }
 
@@ -1384,13 +1423,13 @@ LRESULT COpenView::OnUpdateStatus(WPARAM wParam, LPARAM lParam)
 	{
 		for (auto nID : { IDC_FILES_DIRS_GROUP5, IDC_PREDIFFER_COMBO, IDC_SELECT_PREDIFFER })
 		{
-			GetDlgItem(nID)->ShowWindow(bIsaFileCompare ? SW_SHOW : SW_HIDE);
+			ShowDlgItem(nID, (bIsaFileCompare && !bIsaFolderCompare));
 			EnableDlgItem(nID, bIsaFileCompare);
 		}
 
 		for (auto nID : { IDC_FILES_DIRS_GROUP3, IDC_EXT_COMBO, IDC_SELECT_FILTER, IDC_RECURS_CHECK })
 		{
-			GetDlgItem(nID)->ShowWindow((bIsaFolderCompare || !bIsaFileCompare) ? SW_SHOW : SW_HIDE);
+			ShowDlgItem(nID, (bIsaFolderCompare || !bIsaFileCompare));
 			EnableDlgItem(nID, bIsaFolderCompare);
 		}
 	}
@@ -1579,6 +1618,23 @@ void COpenView::OnDiffIgnoreComments()
 void COpenView::OnUpdateDiffIgnoreComments(CCmdUI* pCmdUI)
 {
 	pCmdUI->SetCheck(m_bFilterCommentsLines);
+}
+
+/**
+ * @brief Toggle "Ignore missing trailing EOL" setting.
+ */
+void COpenView::OnDiffIgnoreMissingTrailingEol()
+{
+	m_bIgnoreMissingTrailingEol = !m_bIgnoreMissingTrailingEol;
+}
+
+/**
+ * @brief Update "Ignore missing trailing EOL" state.
+ * @param [in] pCmdUI UI component to update.
+ */
+void COpenView::OnUpdateDiffIgnoreMissingTrailingEol(CCmdUI* pCmdUI)
+{
+	pCmdUI->SetCheck(m_bIgnoreMissingTrailingEol);
 }
 
 /**

@@ -30,8 +30,10 @@ public :
 	const String& GetUpdatedTipText(CDC * pDC, int maxWidth);
 	const String& GetSelectedPath() const { return m_sFilepath; };
 
+	bool GetActive() const { return m_bActive; }
 	void SetActive(bool bActive);
 	void SetOriginalText(const String& sString );
+	COLORREF GetBackColor() const { return m_crBackGnd; }
 	void SetBackColor(COLORREF rgb);
 	void SetTextColor(COLORREF rgb);
 	void EnableFileSelection(bool enabled) { m_bEnabledFileSelection = enabled; }
@@ -51,6 +53,7 @@ protected:
 	afx_msg void OnEditUndo();
 	afx_msg void OnEditSelectAll();
 	afx_msg void OnContextMenuSelected(UINT nID);
+    afx_msg void OnSysColorChange();
 	HBRUSH CtlColor(CDC* pDC, UINT nCtlColor);
 	DECLARE_MESSAGE_MAP();
 

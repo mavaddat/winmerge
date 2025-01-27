@@ -8,15 +8,12 @@
 #include "paths.h"
 #include <windows.h>
 #include <cassert>
-#include <cstring>
-#include <direct.h>
 #pragma warning (push)			// prevent "warning C4091: 'typedef ': ignored on left of 'tagGPFIDL_FLAGS' when no variable is declared"
 #pragma warning (disable:4091)	// VC bug when using XP enabled toolsets.
 #include <shlobj.h>
 #pragma warning (pop)
 #include <shlwapi.h>
 #include "PathContext.h"
-#include "coretools.h"
 #include "TFile.h"
 
 namespace paths
@@ -770,6 +767,14 @@ String FromURL(const String& url)
 	DWORD size = static_cast<DWORD>(path.size());
 	PathCreateFromUrl(url.c_str(), path.data(), &size, 0);
 	return path.data();
+}
+
+String urlEncodeFileName(const String& filename)
+{
+	String encoded = filename;
+	strutils::replace(encoded, _T("%"), _T("%25"));
+	strutils::replace(encoded, _T("#"), _T("%23"));
+	return encoded;
 }
 
 bool IsDecendant(const String& path, const String& ancestor)

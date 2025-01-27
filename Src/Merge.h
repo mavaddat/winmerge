@@ -132,6 +132,7 @@ protected:
 	void ApplyCommandLineConfigOptions(MergeCmdLineInfo & cmdInfo);
 	bool ShowCompareAsMenu(MergeCmdLineInfo& cmdInfo);
 	void ShowDialog(MergeCmdLineInfo::DialogType type);
+	void ReloadCustomSysColors();
 
 	// End MergeArgs.cpp
 
@@ -165,6 +166,9 @@ protected:
 	LONG GetActiveOperations() const { return m_nActiveOperations; }
 	//@}
 
+	void AddZombieThread(CWinThread* pThread);
+	bool WaitZombieThreads();
+
 	//{{AFX_MSG(CMergeApp)
 	afx_msg BOOL OnOpenRecentFile(UINT nID);
 	afx_msg void OnAppAbout();
@@ -186,6 +190,7 @@ private:
 	CFont m_fontGUI;
 	ATL::CImage m_imageForInitializingGdiplus;
 	std::list<std::function<void()>> m_idleFuncs;
+	std::list<CWinThread*> m_threads;
 };
 
 extern CMergeApp theApp;

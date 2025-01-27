@@ -2,7 +2,6 @@
 #include "MergeApp.h"
 #include "Merge.h"
 #include "VersionInfo.h"
-#include "paths.h"
 #include "Constants.h"
 #include "unicoder.h"
 
@@ -98,6 +97,11 @@ void AppErrorMessageBox(const String& msg)
 	AppMsgBox::error(msg);
 }
 
+void* AppGetMainHWND()
+{
+	return AfxGetMainWnd()->GetSafeHwnd();
+}
+
 namespace AppMsgBox
 {
 
@@ -167,12 +171,12 @@ AboutInfo::AboutInfo()
 
 	if (version.find(_T(" - ")) != String::npos)
 	{
-		strutils::replace(version, _T(" - "), _T("\n"));
+		strutils::replace(version, _T(" - "), _T("\r\n"));
 		version += _T(" ");
 	}
 	else
 	{
-		version += _T("\n");
+		version += _T("\r\n");
 	}
 
 #if defined _M_IX86
