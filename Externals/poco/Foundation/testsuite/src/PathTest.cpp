@@ -19,20 +19,13 @@
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
-#if defined(_WIN32_WCE)
-#include "Poco/Path_WINCE.h"
-#else
 #include "Poco/Path_WIN32U.h"
-#endif
 #endif
 
 
 using Poco::Path;
 using Poco::PathSyntaxException;
 using Poco::Environment;
-using std::clog;
-using std::cout;
-using std::endl;
 
 
 PathTest::PathTest(const std::string& name): CppUnit::TestCase(name)
@@ -356,6 +349,9 @@ void PathTest::testParseUnix4()
 	assertTrue (!p.isDirectory());
 	assertTrue (p.isFile());
 	assertTrue (p.toString(Path::PATH_UNIX) == "a/b/c/d");
+
+	p.makeDirectory();
+	assertTrue (p.toString(Path::PATH_UNIX) == "a/b/c/d/");
 }
 
 
@@ -1239,7 +1235,6 @@ void PathTest::testParseVMS4()
 	assertTrue (p[0] == "foo");
 	assertTrue (!p.isDirectory());
 	assertTrue (p.isFile());
-	cout << "p.toString(Path::PATH_VMS)=" << p.toString(Path::PATH_VMS) << endl;
 	assertTrue (p.toString(Path::PATH_VMS) == "[foo]bar.txt;5");
 	assertTrue (p.version() == "5");
 
@@ -1301,7 +1296,6 @@ void PathTest::testParseGuess()
 	assertTrue (p.getDevice() == "foo");
 	assertTrue (!p.isDirectory());
 	assertTrue (p.isFile());
-	cout << "p.toString(Path::PATH_VMS)=" << p.toString(Path::PATH_VMS) << endl;
 	assertTrue (p.toString(Path::PATH_VMS) == "foo:bar.txt;5");
 	assertTrue (p.version() == "5");
 
@@ -1508,6 +1502,40 @@ void PathTest::testForDirectory()
 
 	p = Path::forDirectory("/usr/local/include/", Path::PATH_UNIX);
 	assertTrue (p.toString(Path::PATH_UNIX) == "/usr/local/include/");
+
+	p = Path::forDirectory("C:", Path::PATH_WINDOWS);
+	assertTrue (p.toString(Path::PATH_WINDOWS) == "C:\\");
+
+	p = Path::forDirectory("C:\\", Path::PATH_WINDOWS);
+	assertTrue (p.toString(Path::PATH_WINDOWS) == "C:\\");
+
+	p = Path::forDirectory("C:\\abc", Path::PATH_WINDOWS);
+	assertTrue (p.toString(Path::PATH_WINDOWS) == "C:\\abc\\");
+
+	p = Path::forDirectory("C:\\abc\\", Path::PATH_WINDOWS);
+	assertTrue (p.toString(Path::PATH_WINDOWS) == "C:\\abc\\");
+}
+
+
+void PathTest::testAddDirectorySeparator()
+{
+	std::string path = Path::addDirectorySeparator("C:", Path::PATH_WINDOWS);
+	assertTrue (path == "C:\\");
+
+	path = Path::addDirectorySeparator("C:\\", Path::PATH_WINDOWS);
+	assertTrue (path == "C:\\");
+
+	path = Path::addDirectorySeparator("C:\\abc", Path::PATH_WINDOWS);
+	assertTrue (path == "C:\\abc\\");
+
+	path = Path::addDirectorySeparator("C:\\abc\\", Path::PATH_WINDOWS);
+	assertTrue (path == "C:\\abc\\");
+
+	path = Path::addDirectorySeparator("/usr/local/include", Path::PATH_UNIX);
+	assertTrue (path == "/usr/local/include/");
+
+	path = Path::addDirectorySeparator("/usr/local/include/", Path::PATH_UNIX);
+	assertTrue (path == "/usr/local/include/");
 }
 
 
@@ -1554,9 +1582,6 @@ void PathTest::testFind()
 	bool found = Path::find(Environment::get("PATH"), "ls", p);
 	bool notfound = Path::find(Environment::get("PATH"), "xxxyyy123", p);
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#if defined(_WIN32_WCE)
-	return;
-#endif
 	bool found = Path::find(Environment::get("PATH"), "cmd.exe", p);
 	bool notfound = Path::find(Environment::get("PATH"), "xxxyyy123.zzz", p);
 #else
@@ -1624,6 +1649,30 @@ void PathTest::testWindowsSystem()
 #endif
 }
 
+void PathTest::testSelf()
+{
+	std::string self = Path::self();
+	std::cout << self << std::endl;
+
+#if POCO_OS == POCO_OS_MAC_OS_X      \
+    || POCO_OS == POCO_OS_FREE_BSD   \
+    || POCO_OS == POCO_OS_NET_BSD	 \
+	|| POCO_OS == POCO_OS_SOLARIS    \
+	|| POCO_OS == POCO_OS_LINUX      \
+	|| POCO_OS == POCO_OS_ANDROID    \
+    || POCO_OS == POCO_OS_WINDOWS_NT
+
+	assertTrue(!self.empty());
+	Path p(self);
+
+	assertTrue(p.isAbsolute());
+	assertTrue(p.isFile());
+	assertTrue(self.find("testrunner") != std::string::npos);
+#else
+	std::cout << "Path::self() not implemented for this platform."
+#endif
+}
+
 
 void PathTest::setUp()
 {
@@ -1660,6 +1709,7 @@ CppUnit::Test* PathTest::suite()
 	CppUnit_addTest(pSuite, PathTest, testRobustness);
 	CppUnit_addTest(pSuite, PathTest, testParent);
 	CppUnit_addTest(pSuite, PathTest, testForDirectory);
+	CppUnit_addTest(pSuite, PathTest, testAddDirectorySeparator);
 	CppUnit_addTest(pSuite, PathTest, testExpand);
 	CppUnit_addTest(pSuite, PathTest, testListRoots);
 	CppUnit_addTest(pSuite, PathTest, testFind);
@@ -1667,6 +1717,7 @@ CppUnit::Test* PathTest::suite()
 	CppUnit_addTest(pSuite, PathTest, testResolve);
 	CppUnit_addTest(pSuite, PathTest, testPushPop);
 	CppUnit_addTest(pSuite, PathTest, testWindowsSystem);
+	CppUnit_addTest(pSuite, PathTest, testSelf);
 
 	return pSuite;
 }

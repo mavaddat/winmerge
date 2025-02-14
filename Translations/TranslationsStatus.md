@@ -1,92 +1,92 @@
 # Translations Status
 
-Status from **2023-11-27**:
+Status from **2025-01-25**:
 
 ## WinMerge
 
 | Language             | Total | Translated | Fuzzy | Untranslated | Complete | Last Update |
 |:---------------------|------:|-----------:|------:|-------------:|---------:|:-----------:|
-| Arabic               |  1323 |        895 |     0 |          428 |     67 % |  2019-12-30 |
-| Basque               |  1323 |        638 |     0 |          685 |     48 % |  2013-02-03 |
-| Brazilian            |  1323 |       1323 |     0 |            0 |    100 % |  2023-09-10 |
-| Bulgarian            |  1323 |       1082 |     0 |          241 |     81 % |  2023-11-14 |
-| Catalan              |  1323 |       1179 |     0 |          144 |     89 % |             |
-| ChineseSimplified    |  1323 |       1323 |     0 |            0 |    100 % |             |
-| ChineseTraditional   |  1323 |       1298 |     0 |           25 |     98 % |  2022-02-19 |
-| Corsican             |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-26 |
-| Croatian             |  1323 |        630 |     1 |          692 |     47 % |  2009-02-13 |
-| Czech                |  1323 |        605 |     0 |          718 |     45 % |             |
-| Danish               |  1323 |        639 |     0 |          684 |     48 % |  2013-01-13 |
-| Dutch                |  1323 |       1285 |     0 |           38 |     97 % |  2023-05-02 |
-| English              |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-19 |
-| Finnish              |  1323 |       1190 |     0 |          133 |     89 % |             |
-| French               |  1323 |       1317 |     0 |            6 |     99 % |  2023-11-15 |
-| Galician             |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-24 |
-| German               |  1323 |       1308 |     0 |           15 |     98 % |  2023-08-08 |
-| Greek                |  1323 |        605 |     0 |          718 |     45 % |             |
-| Hungarian            |  1323 |       1321 |     0 |            2 |     99 % |  2021-03-15 |
-| Italian              |  1323 |       1101 |     0 |          222 |     83 % |  2022-06-01 |
-| Japanese             |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-19 |
-| Korean               |  1323 |       1317 |     0 |            6 |     99 % |  2023-11-07 |
-| Lithuanian           |  1323 |       1274 |     0 |           49 |     96 % |  2023-11-20 |
-| Norwegian            |  1323 |        730 |     0 |          593 |     55 % |             |
-| Persian              |  1323 |        641 |     0 |          682 |     48 % |  2013-08-15 |
-| Polish               |  1323 |       1301 |     0 |           22 |     98 % |  2023-05-24 |
-| Portuguese           |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-23 |
-| Romanian             |  1323 |       1311 |     0 |           12 |     99 % |  2023-11-07 |
-| Russian              |  1323 |       1284 |     0 |           39 |     97 % |  2023-04-27 |
-| Serbian              |  1323 |        632 |     0 |          691 |     47 % |             |
-| Sinhala              |  1323 |        563 |    58 |          702 |     46 % |  2010-12-12 |
-| Slovak               |  1323 |       1189 |     0 |          134 |     89 % |  2022-02-17 |
-| Slovenian            |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-20 |
-| Spanish              |  1323 |       1323 |     0 |            0 |    100 % |  2023-11-24 |
-| Swedish              |  1323 |       1237 |     2 |           84 |     93 % |  2023-02-08 |
-| Tamil                |  1323 |       1223 |     0 |          100 |     92 % |  2023-07-24 |
-| Turkish              |  1323 |       1323 |     0 |            0 |    100 % |  2023-10-28 |
-| Ukrainian            |  1323 |        708 |     0 |          615 |     53 % |  2009-06-13 |
+| Arabic               |  1420 |        895 |     0 |          525 |     63 % |  2019-12-30 |
+| Basque               |  1420 |        638 |     0 |          782 |     44 % |  2013-02-03 |
+| Brazilian            |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-22 |
+| Bulgarian            |  1420 |       1078 |     0 |          342 |     75 % |  2023-11-14 |
+| Catalan              |  1420 |       1328 |     0 |           92 |     93 % |             |
+| ChineseSimplified    |  1420 |       1420 |     0 |            0 |    100 % |             |
+| ChineseTraditional   |  1420 |       1299 |     0 |          121 |     91 % |  2022-02-19 |
+| Corsican             |  1420 |       1408 |     0 |           12 |     99 % |  2024-10-23 |
+| Croatian             |  1420 |        630 |     1 |          789 |     44 % |  2009-02-13 |
+| Czech                |  1420 |        605 |     0 |          815 |     42 % |             |
+| Danish               |  1420 |        639 |     0 |          781 |     45 % |  2013-01-13 |
+| Dutch                |  1420 |       1407 |     0 |           13 |     99 % |  2018-09-06 |
+| English              |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-20 |
+| Finnish              |  1420 |       1185 |     0 |          235 |     83 % |             |
+| French               |  1420 |       1419 |     0 |            1 |     99 % |  2025-01-12 |
+| Galician             |  1420 |       1317 |     0 |          103 |     92 % |  2023-11-24 |
+| German               |  1420 |       1342 |     0 |           78 |     94 % |  2023-08-08 |
+| Greek                |  1420 |        605 |     0 |          815 |     42 % |             |
+| Hungarian            |  1420 |       1419 |     0 |            1 |     99 % |  2021-03-15 |
+| Italian              |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-23 |
+| Japanese             |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-21 |
+| Korean               |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-25 |
+| Lithuanian           |  1420 |       1377 |     0 |           43 |     96 % |  2025-01-24 |
+| Norwegian            |  1420 |        730 |     0 |          690 |     51 % |             |
+| Persian              |  1420 |        641 |     0 |          779 |     45 % |  2013-08-15 |
+| Polish               |  1420 |       1355 |     0 |           65 |     95 % |  2023-11-28 |
+| Portuguese           |  1420 |       1419 |     0 |            1 |     99 % |  2025-01-13 |
+| Romanian             |  1420 |       1306 |     0 |          114 |     91 % |  2023-11-07 |
+| Russian              |  1420 |       1420 |     0 |            0 |    100 % |  2025-01-24 |
+| Serbian              |  1420 |        632 |     0 |          788 |     44 % |             |
+| Sinhala              |  1420 |        563 |    58 |          799 |     43 % |  2010-12-12 |
+| Slovak               |  1420 |       1184 |     0 |          236 |     83 % |  2022-02-17 |
+| Slovenian            |  1420 |       1320 |     0 |          100 |     92 % |  2024-01-28 |
+| Spanish              |  1420 |       1317 |     0 |          103 |     92 % |  2023-11-24 |
+| Swedish              |  1420 |       1232 |     2 |          186 |     86 % |  2023-02-08 |
+| Tamil                |  1420 |       1218 |     0 |          202 |     85 % |  2023-07-24 |
+| Turkish              |  1420 |       1326 |     0 |           94 |     93 % |  2023-10-28 |
+| Ukrainian            |  1420 |        708 |     0 |          712 |     49 % |  2009-06-13 |
 
 ## ShellExtension
 
 | Language             | Total | Translated | Fuzzy | Untranslated | Complete | Last Update |
 |:---------------------|------:|-----------:|------:|-------------:|---------:|:-----------:|
-| Arabic               |    11 |          3 |     0 |            8 |     27 % |             |
-| Basque               |    11 |          4 |     0 |            7 |     36 % |             |
-| Brazilian            |    11 |         11 |     0 |            0 |    100 % |             |
-| Bulgarian            |    11 |          4 |     0 |            7 |     36 % |             |
-| Catalan              |    11 |         10 |     0 |            1 |     90 % |             |
-| ChineseSimplified    |    11 |         11 |     0 |            0 |    100 % |             |
-| ChineseTraditional   |    11 |         10 |     0 |            1 |     90 % |             |
-| Corsican             |    11 |         11 |     0 |            0 |    100 % |  2023-03-12 |
-| Croatian             |    11 |          4 |     0 |            7 |     36 % |             |
-| Czech                |    11 |          4 |     0 |            7 |     36 % |             |
-| Danish               |    11 |          4 |     0 |            7 |     36 % |             |
-| Dutch                |    11 |         10 |     0 |            1 |     90 % |  2021-01-28 |
-| English              |    11 |         11 |     0 |            0 |    100 % |  2023-02-19 |
-| Finnish              |    11 |          4 |     0 |            7 |     36 % |             |
-| French               |    11 |         11 |     0 |            0 |    100 % |             |
-| Galician             |    11 |         11 |     0 |            0 |    100 % |  2023-11-03 |
-| German               |    11 |         11 |     0 |            0 |    100 % |  2023-02-20 |
-| Greek                |    11 |          4 |     0 |            7 |     36 % |             |
-| Hungarian            |    11 |         11 |     0 |            0 |    100 % |             |
-| Italian              |    11 |          4 |     0 |            7 |     36 % |             |
-| Japanese             |    11 |         11 |     0 |            0 |    100 % |             |
-| Korean               |    11 |         11 |     0 |            0 |    100 % |             |
-| Lithuanian           |    11 |         11 |     0 |            0 |    100 % |  2023-02-20 |
-| Norwegian            |    11 |          3 |     0 |            8 |     27 % |             |
-| Persian              |    11 |          4 |     0 |            7 |     36 % |             |
-| Polish               |    11 |         11 |     0 |            0 |    100 % |             |
-| Portuguese           |    11 |         11 |     0 |            0 |    100 % |  2023-02-28 |
-| Romanian             |    11 |         11 |     0 |            0 |    100 % |  2023-11-06 |
-| Russian              |    11 |         11 |     0 |            0 |    100 % |  2023-04-27 |
-| Serbian              |    11 |          4 |     0 |            7 |     36 % |             |
-| Sinhala              |    11 |          3 |     0 |            8 |     27 % |             |
-| Slovak               |    11 |          4 |     0 |            7 |     36 % |             |
-| Slovenian            |    11 |         11 |     0 |            0 |    100 % |  2023-07-27 |
-| Spanish              |    11 |         11 |     0 |            0 |    100 % |  2023-11-03 |
-| Swedish              |    11 |         10 |     0 |            1 |     90 % |             |
-| Tamil                |    11 |         10 |     0 |            1 |     90 % |             |
-| Turkish              |    11 |         11 |     0 |            0 |    100 % |  2023-07-06 |
-| Ukrainian            |    11 |         10 |     0 |            1 |     90 % |             |
+| Arabic               |    10 |          2 |     0 |            8 |     20 % |             |
+| Basque               |    10 |          3 |     0 |            7 |     30 % |             |
+| Brazilian            |    10 |         10 |     0 |            0 |    100 % |             |
+| Bulgarian            |    10 |         10 |     0 |            0 |    100 % |             |
+| Catalan              |    10 |          9 |     0 |            1 |     90 % |             |
+| ChineseSimplified    |    10 |         10 |     0 |            0 |    100 % |             |
+| ChineseTraditional   |    10 |          9 |     0 |            1 |     90 % |             |
+| Corsican             |    10 |         10 |     0 |            0 |    100 % |  2023-03-12 |
+| Croatian             |    10 |          3 |     0 |            7 |     30 % |             |
+| Czech                |    10 |          3 |     0 |            7 |     30 % |             |
+| Danish               |    10 |          3 |     0 |            7 |     30 % |             |
+| Dutch                |    10 |          9 |     0 |            1 |     90 % |  2021-01-28 |
+| English              |    10 |         10 |     0 |            0 |    100 % |  2024-02-12 |
+| Finnish              |    10 |          3 |     0 |            7 |     30 % |             |
+| French               |    10 |         10 |     0 |            0 |    100 % |  2024-03-30 |
+| Galician             |    10 |         10 |     0 |            0 |    100 % |  2023-11-03 |
+| German               |    10 |         10 |     0 |            0 |    100 % |  2023-02-20 |
+| Greek                |    10 |          3 |     0 |            7 |     30 % |             |
+| Hungarian            |    10 |         10 |     0 |            0 |    100 % |             |
+| Italian              |    10 |         10 |     0 |            0 |    100 % |  2024-03-09 |
+| Japanese             |    10 |         10 |     0 |            0 |    100 % |             |
+| Korean               |    10 |         10 |     0 |            0 |    100 % |             |
+| Lithuanian           |    10 |         10 |     0 |            0 |    100 % |  2024-05-07 |
+| Norwegian            |    10 |          2 |     0 |            8 |     20 % |             |
+| Persian              |    10 |          3 |     0 |            7 |     30 % |             |
+| Polish               |    10 |         10 |     0 |            0 |    100 % |             |
+| Portuguese           |    10 |         10 |     0 |            0 |    100 % |  2023-02-28 |
+| Romanian             |    10 |         10 |     0 |            0 |    100 % |  2023-11-06 |
+| Russian              |    10 |         10 |     0 |            0 |    100 % |  2023-04-27 |
+| Serbian              |    10 |          3 |     0 |            7 |     30 % |             |
+| Sinhala              |    10 |          2 |     0 |            8 |     20 % |             |
+| Slovak               |    10 |          3 |     0 |            7 |     30 % |             |
+| Slovenian            |    10 |         10 |     0 |            0 |    100 % |  2023-07-27 |
+| Spanish              |    10 |         10 |     0 |            0 |    100 % |  2023-11-03 |
+| Swedish              |    10 |          9 |     0 |            1 |     90 % |             |
+| Tamil                |    10 |          9 |     0 |            1 |     90 % |             |
+| Turkish              |    10 |         10 |     0 |            0 |    100 % |  2023-07-06 |
+| Ukrainian            |    10 |          9 |     0 |            1 |     90 % |             |
 
 ## InnoSetup
 
@@ -119,12 +119,15 @@ Status from **2023-11-27**:
 | Persian              |     - |          - |     - |            - |        - |             |
 | Polish               |     - |          - |     - |            - |        - |             |
 | Portuguese           |     - |          - |     - |            - |        - |             |
+| Romanian             |     - |          - |     - |            - |        - |             |
 | Russian              |     - |          - |     - |            - |        - |             |
 | Serbian              |     - |          - |     - |            - |        - |             |
+| Sinhala              |     - |          - |     - |            - |        - |             |
 | Slovak               |     - |          - |     - |            - |        - |             |
 | Slovenian            |     - |          - |     - |            - |        - |             |
 | Spanish              |     - |          - |     - |            - |        - |             |
 | Swedish              |     - |          - |     - |            - |        - |             |
+| Tamil                |     - |          - |     - |            - |        - |             |
 | Turkish              |     - |          - |     - |            - |        - |             |
 | Ukrainian            |     - |          - |     - |            - |        - |             |
 
@@ -194,6 +197,7 @@ Status from **2023-11-27**:
 
  * Catalan
    - [Jordi Vilar](mailto:jvilar%20at%20users.sourceforge.net)
+   - [Pere Orga](mailto:pere%20at%20orga.cat)
 
  * ChineseSimplified
    - [Liaobin](mailto:liaobin%20at%20jite.%20net)
@@ -211,7 +215,7 @@ Status from **2023-11-27**:
 
  * Corsican
    - [Patriccollu di Santa Maria è Sichè](mailto:patriccollu%20at%20gmail.com) *Maintainer*
-   - Patriccollu di Santa Maria è Sichè, 2021-2023
+   - Patriccollu di Santa Maria è Sichè, 2021-2024
 
  * Croatian
    - [Hasan Osmanagić](mailto:hasan.osmanagic%20at%20public.carnet.hr)
@@ -225,8 +229,7 @@ Status from **2023-11-27**:
    - [Rolf Egmose](mailto:R.Egmose%20at%20gmail.com)
 
  * Dutch
-   - Ronald Schaap
-   - Thomas De Rocker, 2023
+   - Thomas De Rocker, 2024
 
  * Finnish
    - Veikko
@@ -237,8 +240,8 @@ Status from **2023-11-27**:
    - [Laurent Ganier](mailto:ccganier%20at%20club-internet.fr)
    - [Dominique Saussereau](mailto:redguff%20at%20users.sourceforge.net)
    - [Jean-F Jolin](mailto:jean-f-j%20at%20users.sourceforge.net)
-   - [Lolo S.](mailto:slolo2000%20at%20hotmail.com)
    - [Need74](mailto:need74%20at%20free.fr)
+   - [Lolo S.](mailto:slolo2000%20at%20hotmail.com)
 
  * Galician
    - [Medulio](mailto:medulio%20at%20ciberirmandade.org)
@@ -263,13 +266,14 @@ Status from **2023-11-27**:
    - [Andrea Decorte](mailto:deco1985%20at%20hotmail.com)
    - [Antonio Angelo](mailto:antonio.angelo%20at%20gmail.com)
    - [Michele Locati](mailto:michele%20at%20locati.it)
+   - [bovirus](mailto:bovirus%20at%20gmail.com)
 
  * Japanese
    - [Takashi Sawanaka](mailto:sawanaka%20at%20d1.dion.ne.jp)
    - [Rukoto Luther](mailto:rukotolucies%20at%20hotmail.com)
 
  * Korean
-   - [VenusGirl](mailto:venusgirl%20at%20https://github.com/VenusGirl)
+   - [VenusGirl](mailto:VenusGirl%20at%20https://github.com/VenusGirl)
    - [Hwang Sukjoon](mailto:bbcool%20at%20gmail.com)
    - [Lee Jae-Hong](mailto:pyrasis%20at%20users.sourceforge.net)
    - [Sushizang](mailto:sushizang%20at%20empal.com)
@@ -299,7 +303,7 @@ Status from **2023-11-27**:
  * Portuguese
    - Nelson Simão
    - Lippe35
-   - [Hugo Carvalho](mailto:hugokarvalho@hotmail.com)
+   - [Hugo Carvalho](mailto:hugokarvalho%20at%20hotmail%20dot%20com)
 
  * Romanian
    - [Cristian Arghiroiu](mailto:cristi.arghiroiu%20at%20gmail.com)
@@ -363,9 +367,20 @@ Status from **2023-11-27**:
  * French
    - [Lolo S.](mailto:slolo2000%20at%20hotmail.com) *Maintainer*
    - [Lolo S.](mailto:slolo2000%20at%20hotmail.com)
+   - [Need74](mailto:need74%20at%20free.fr)
 
  * German
    - [Tim Gerundt](mailto:tim%20at%20gerundt.de) *Maintainer*
+
+ * Italian
+   - [Michele Merega](mailto:michele.merega%20at%20ifminfomaster.com)
+   - [Andrea Decorte](mailto:deco1985%20at%20hotmail.com)
+   - [Antonio Angelo](mailto:antonio.angelo%20at%20gmail.com)
+   - [Michele Locati](mailto:michele%20at%20locati.it)
+   - [bovirus](mailto:bovirus%20at%20gmail.com)
+
+ * Korean
+   - [VenusGirl](mailto:venusgirl%20at%20https://github.com/VenusGirl)
 
  * Lithuanian
    - [Dalius Guzauskas (aka Tichij)](mailto:tichij%20AT%20mail%20DOT%20com)

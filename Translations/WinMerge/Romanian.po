@@ -61,6 +61,18 @@ msgstr "Copiază în stânga rândurile selectate"
 msgid "Copy Selected Line(s) from Left"
 msgstr "Copiază din stânga rândurile selectate"
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 msgid "Select Line &Difference\tF4"
 msgstr "Selectează &diferențele din rând\tF4"
 
@@ -216,6 +228,15 @@ msgstr "&Setează culoarea fundalului"
 msgid "&Vector Image Scaling"
 msgstr "Scalarea imaginii &vectoriale"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Compară &textul extras din imagini"
 
@@ -243,7 +264,7 @@ msgstr "Mărime"
 msgid "Fit to Window"
 msgstr "Ajustează la fereastră"
 
-msgid "&Event Synchronization"
+msgid "&Event Sync"
 msgstr ""
 
 msgid "&Enabled"
@@ -336,11 +357,23 @@ msgstr "&Opțiuni..."
 msgid "&View"
 msgstr "&Vizualizare"
 
+msgid "Ta&b Bar"
+msgstr "&Bara de file"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "Bară de unel&te"
 
 msgid "&Small"
 msgstr "&Mic"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "Ma&re"
@@ -348,11 +381,11 @@ msgstr "Ma&re"
 msgid "&Huge"
 msgstr "Uriaș"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "Bară de &stare"
-
-msgid "Ta&b Bar"
-msgstr "&Bara de file"
 
 msgid "&Tools"
 msgstr "Unel&te"
@@ -840,6 +873,12 @@ msgstr "Aplică pre&diferențiator..."
 msgid "&Transform with editor script..."
 msgstr "&Transformă cu script editor..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "Divide"
 
@@ -1061,6 +1100,9 @@ msgstr "Ignoră numerele"
 msgid "Ignore c&omment differences"
 msgstr "Ignoră diferențele de c&omentarii"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "&Include subdirectoare"
 
@@ -1087,6 +1129,81 @@ msgstr "Mărime"
 
 msgid "&Load Project..."
 msgstr "Încarcă proiect..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "Despre WinMerge"
@@ -1200,6 +1317,9 @@ msgstr "&Reîncarcă automat fișierele modificate:"
 
 msgid "Language:"
 msgstr "Limba:"
+
+msgid "Defaults"
+msgstr "Implicite"
 
 msgid "Find"
 msgstr "Găsește"
@@ -1349,6 +1469,66 @@ msgstr "Diferență cuvânt:"
 msgid "Selected Word Diff:"
 msgstr "Diferență cuvânt selectată:"
 
+msgid "Dialog"
+msgstr "Dialog"
+
+msgid "Keywords:"
+msgstr "Cuvinte cheie:"
+
+msgid "Function names:"
+msgstr "Nume de funcții:"
+
+msgid "Comments:"
+msgstr "Comentarii:"
+
+msgid "Numbers:"
+msgstr "Numere:"
+
+msgid "Operators:"
+msgstr "Operatori:"
+
+msgid "Strings:"
+msgstr "Șiruri de caractere:"
+
+msgid "Preprocessor:"
+msgstr "Preprocesor:"
+
+msgid "User 1:"
+msgstr "Utilizator 1:"
+
+msgid "User 2:"
+msgstr "Utilizator 2:"
+
+msgid "Bold"
+msgstr "Aldine"
+
+msgid "&Use customized text colors"
+msgstr "Folosește c&ulori ale textului personalizate"
+
+msgid "Whitespace:"
+msgstr "Blancuri:"
+
+msgid "Regular text:"
+msgstr "Text normal:"
+
+msgid "Selection:"
+msgstr "Selecție:"
+
+msgid "Margin:"
+msgstr "Margine:"
+
+msgid "Search Marker:"
+msgstr "Marcatorul de căutare:"
+
+msgid "User Defined Marker1:"
+msgstr "Marcatorul definit utilizator 1:"
+
+msgid "User Defined Marker2:"
+msgstr "Marcatorul definit utilizator 2:"
+
+msgid "User Defined Marker3:"
+msgstr "Marcatorul definit utilizator 3:"
+
 msgid "&Use folder compare colors"
 msgstr "&Utilizează culorile de comparare a directoarelor"
 
@@ -1364,8 +1544,8 @@ msgstr "Elemente nu există toate:"
 msgid "Items filtered:"
 msgstr "Elemente filtrate:"
 
-msgid "Margin:"
-msgstr "Margine:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "Sistem"
@@ -1430,9 +1610,6 @@ msgstr "Inclu&de linia de comandă"
 msgid "Open to e&xternal editor"
 msgstr "Deschide în editor e&xtern"
 
-msgid "Defaults"
-msgstr "Implicite"
-
 msgid "Display Columns"
 msgstr "Afișează coloanele"
 
@@ -1448,20 +1625,14 @@ msgstr "Proprietăți suplimentare"
 msgid "Additional Properties"
 msgstr "Proprietăți suplimentare"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Selectează plugin"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "&Nume plugin:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "Listă extensii:"
@@ -1478,11 +1649,11 @@ msgstr "Afișează toate plugin-urile, nu verifica extensia"
 msgid "&Open files in the same window type after unpacking"
 msgstr "Deschide fișierele în același tip de fereastră după dezarhivare"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "Lanțul de &plugin-uri:"
 
-msgid "&Add pipe"
-msgstr "&Adaugă pipe"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "Stop"
@@ -1559,9 +1730,6 @@ msgstr "Editor"
 msgid "&Highlight syntax"
 msgstr "E&vidențiere sintaxă"
 
-msgid "&Automatic rescan"
-msgstr "Rescanare &automată"
-
 msgid "&Preserve original EOL chars"
 msgstr "&Păstrează caracterele EOL originale"
 
@@ -1577,6 +1745,15 @@ msgstr "&Inserează file"
 msgid "Insert &Spaces"
 msgstr "In&serează blancuri"
 
+msgid "&Rendering Mode:"
+msgstr "Mod de &randare:"
+
+msgid "&Automatic rescan"
+msgstr "Rescanare &automată"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "Colorarea diferențelor din rând"
 
@@ -1591,9 +1768,6 @@ msgstr "La nivel de cu&vânt:"
 
 msgid "W&ord break characters:"
 msgstr "Caractere de despărțire cuvinte:"
-
-msgid "&Rendering Mode:"
-msgstr "Mod de &randare:"
 
 msgid ""
 "WinMerge allows hiding some common message boxes. Press the Reset button to "
@@ -1699,51 +1873,6 @@ msgstr "Importă..."
 
 msgid "Export..."
 msgstr "Exportă..."
-
-msgid "Dialog"
-msgstr "Dialog"
-
-msgid "Keywords:"
-msgstr "Cuvinte cheie:"
-
-msgid "Function names:"
-msgstr "Nume de funcții:"
-
-msgid "Comments:"
-msgstr "Comentarii:"
-
-msgid "Numbers:"
-msgstr "Numere:"
-
-msgid "Operators:"
-msgstr "Operatori:"
-
-msgid "Strings:"
-msgstr "Șiruri de caractere:"
-
-msgid "Preprocessor:"
-msgstr "Preprocesor:"
-
-msgid "User 1:"
-msgstr "Utilizator 1:"
-
-msgid "User 2:"
-msgstr "Utilizator 2:"
-
-msgid "Bold"
-msgstr "Aldine"
-
-msgid "Search Marker:"
-msgstr "Marcatorul de căutare:"
-
-msgid "User Defined Marker1:"
-msgstr "Marcatorul definit utilizator 1:"
-
-msgid "User Defined Marker2:"
-msgstr "Marcatorul definit utilizator 2:"
-
-msgid "User Defined Marker3:"
-msgstr "Marcatorul definit utilizator 3:"
 
 msgid "Folder Compare Report"
 msgstr "Raport comparare directoare"
@@ -1892,18 +2021,6 @@ msgstr "Permite sfârșituri de rând în ghilimele"
 msgid "&Quote character:"
 msgstr "Caracterul de citare:"
 
-msgid "&Use customized text colors"
-msgstr "Folosește c&ulori ale textului personalizate"
-
-msgid "Whitespace:"
-msgstr "Blancuri:"
-
-msgid "Regular text:"
-msgstr "Text normal:"
-
-msgid "Selection:"
-msgstr "Selecție:"
-
 msgid "Backup Files"
 msgstr "Copii de siguranță"
 
@@ -1960,6 +2077,9 @@ msgstr "Plugin-uri"
 
 msgid "&Enable plugins"
 msgstr "Activ&ează plugin-uri"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "Filtre fișiere:"
@@ -2088,6 +2208,36 @@ msgstr "&Separă directoarele de date utilizator pentru fiecare panou"
 
 msgid "&Hex View"
 msgstr "Afișare &hexadecimală"
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
 
 msgid "EXT"
 msgstr "EXT"
@@ -2239,6 +2389,9 @@ msgid ""
 msgstr ""
 "Pentru a face vizibilă din nou această fereastră de dialog, apăsați butonul "
 "Reinițializare din pagina Ferestre mesaj a dialogului Opțiuni."
+
+msgid "Compare/Merge"
+msgstr ""
 
 msgid "Syntax"
 msgstr "Sintaxă"
@@ -2866,6 +3019,9 @@ msgstr "Toate în... (%1)"
 #, c-format
 msgid "Differences to... (%1)"
 msgstr "Diferențele în... (%1)"
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr ""
 
 #, c-format
 msgid "Left (%1)"
@@ -3911,8 +4067,8 @@ msgstr "Pagină &web"
 msgid "W&rap Text"
 msgstr "Înfășoa&ră textul"
 
-msgid "Frhed is not installed."
-msgstr "Frhed nu este instalat."
+msgid "%1 is not installed."
+msgstr "%1 nu este instalat."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4131,6 +4287,10 @@ msgstr "Numele fișierului plugin lipsește în lanțul de plugin-uri: %1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Ghilimele lipsă în lanțul de plugin-uri: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "Specificați argumente plugin"
 
@@ -4153,6 +4313,56 @@ msgid ""
 msgstr ""
 "Eroare la prediferențierea fișierului '%1' cu plugin-ul '%2'. "
 "Prediferențierea nu mai este aplicată."
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
+msgstr ""
 
 msgid "Filter applied"
 msgstr "Filtru aplicat"
@@ -4215,6 +4425,42 @@ msgstr ""
 msgid "Zoom &Out"
 msgstr ""
 
+msgid "Comparing..."
+msgstr ""
+
+msgid "Zoom:"
+msgstr ""
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "Înfrumusețare"
 
@@ -4235,6 +4481,9 @@ msgstr "Decompilare"
 
 msgid "URL Handling"
 msgstr "Tratare URL-urile"
+
+msgid "Decoding / Encoding"
+msgstr ""
 
 msgid "Make Uppercase"
 msgstr "Transformă în majuscule"
@@ -4350,6 +4599,12 @@ msgstr "Dezasamblează cod IL"
 msgid "Disassemble Native Code"
 msgstr "Dezasamblează cod nativ"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "Transformă caracterele în majuscule"
 
@@ -4374,20 +4629,16 @@ msgstr "Inversează coloanele"
 msgid "Reverse lines"
 msgstr "Inversează rânduri"
 
-msgid ""
-"Replace text with another text.\r\n"
-"Usage: Replace [-i] [-e] FIND REPLACE\r\n"
-"  FIND    - text to find\r\n"
-"  REPLACE - text to replace\r\n"
-"  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 "Înlocuiește textul cu alt text.\r\n"
 "Uz: Replace [-i] [-e] CAUTĂ ÎNLOCUIEȘTE\r\n"
+"   or: Replace -s\r\n"
 "  CAUTĂ    - textul de căutat\r\n"
 "  ÎNLOCUIEȘTE - textul de înlocuit\r\n"
 "  -i - ignoră minuscule/majuscule (doar pentru -e)\r\n"
-"  -e - tratează textul specificat ca expresie regulată"
+"  -e - tratează textul specificat ca expresie regulată\r\n"
+"  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid ""
@@ -4615,8 +4866,8 @@ msgstr ""
 msgid "Prediff Line Filter"
 msgstr "Filtru de rânduri prediferențiator"
 
-msgid "Basic text functions for the context menu"
-msgstr "Funcții text de bază pentru meniul contextual"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid ""
 "HTTP URL Scheme Handler with curl. \r\n"
@@ -4631,6 +4882,18 @@ msgid ""
 msgstr ""
 "Handler pentru schema URL 'regiștri Windows'. \r\n"
 "Argumente: Opțiunile linie de comandă furnizate comenzii reg.exe."
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
+msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr "Opțiuni plugin WinMerge CompareMSExcelFiles.sct"
@@ -4778,3 +5041,31 @@ msgid ""
 msgstr ""
 "Nu specificați opțiunea linie de comandă '-p0' pentru fișierul petic care "
 "include căi absolute"
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
+msgstr ""

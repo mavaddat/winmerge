@@ -8,15 +8,12 @@
 #include "paths.h"
 #include <windows.h>
 #include <cassert>
-#include <cstring>
-#include <direct.h>
 #pragma warning (push)			// prevent "warning C4091: 'typedef ': ignored on left of 'tagGPFIDL_FLAGS' when no variable is declared"
 #pragma warning (disable:4091)	// VC bug when using XP enabled toolsets.
 #include <shlobj.h>
 #pragma warning (pop)
 #include <shlwapi.h>
 #include "PathContext.h"
-#include "coretools.h"
 #include "TFile.h"
 
 namespace paths
@@ -164,7 +161,7 @@ static bool IsDirName(const String& sDir)
 	// http://msdn.microsoft.com/library/default.asp?url=/library/en-us/fileio/fs/findfirstfile.asp
 	// You cannot use root directories as the lpFileName input string for FindFirstFile - with or without a trailing backslash.
 	size_t count = 0;
-	if ((sDir[0] && sDir[1] == ':' && sDir[2] == '\0') ||
+	if ((sDir[0] && sDir[1] == ':' && (sDir[2] == '\0' || (sDir[2] == '\\' && sDir[3] == '\0'))) ||
 	    // \\host\share or \\host\share\ 
 	    (sDir[0] == '\\' && sDir[1] == '\\' && 
 	     (count = std::count(sDir.begin(), sDir.end(), ('\\'))) <= 4 &&
@@ -770,6 +767,14 @@ String FromURL(const String& url)
 	DWORD size = static_cast<DWORD>(path.size());
 	PathCreateFromUrl(url.c_str(), path.data(), &size, 0);
 	return path.data();
+}
+
+String urlEncodeFileName(const String& filename)
+{
+	String encoded = filename;
+	strutils::replace(encoded, _T("%"), _T("%25"));
+	strutils::replace(encoded, _T("#"), _T("%23"));
+	return encoded;
 }
 
 bool IsDecendant(const String& path, const String& ancestor)

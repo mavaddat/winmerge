@@ -20,7 +20,7 @@ Command Prompt window.</para>
 
     <variablelist>
       <varlistentry>
-        <term>From the WinMerge window</term>
+        <term>WinMergeウインドウから</term>
 
         <listitem>
           <para>Click <menuchoice> <guimenu>File</guimenu> <guimenuitem>Open</guimenuitem>
@@ -31,7 +31,7 @@ or Folder dialog, see <xref linkend="Open_paths" />.</para>
       </varlistentry>
 
       <varlistentry>
-        <term>From a Command Prompt window</term>
+        <term>コマンドプロンプトウインドウから</term>
 
         <listitem>
           <para>Run <command>WinMergeU.exe</command>, which is in your WinMerge install
@@ -257,13 +257,13 @@ linkend="CompareFiles_linediff-highlight" /> for details.</para>
               </indexterm></term>
 
             <listitem>
-              <para>WinMerge tries to match similar lines within difference blocks when you
-enable <option>Match similar lines</option> in the Options dialog Compare
+              <para>WinMerge tries to align similar lines within difference blocks when you
+enable <option>Align similar lines</option> in the Options dialog Compare
 page. What does <quote>similar</quote> mean? Generally, this feature works
 best in simple cases, for example where lines that have strong
 similarities. When detected, similar lines are adjusted to align in the File
 pane. The next figure shows comparisons of the same two files, before and
-after enabling the <option>Match similar lines</option> option:</para>
+after enabling the <option>Align similar lines</option> option:</para>
 
               <simplelist columns="2" type="horiz">
                 <member><emphasis role="strong">Disabled</emphasis>: <inlinemediaobject>
@@ -1232,8 +1232,8 @@ panes).</para>
   </section>
 
   <section id="Compare_files_syncpoints">
-    <title>同期ポイント<indexterm>
-        <primary>syncronization points</primary>
+    <title>Synchronization points<indexterm>
+        <primary>synchronization points</primary>
       </indexterm></title>
     <para>TBD</para>
   </section>
@@ -1253,10 +1253,10 @@ WinMerge's editing functions (described earlier in this topic).</para>
         </indexterm></title>
 
       <para>By default, the <guilabel>Automatic rescan</guilabel> option is enabled in
-the Editor page of WinMerge options. Rescanning keeps your your compare and
-merge operations up to date. Without rescanning, WinMerge differences does
-not detect changes that might occur to files while you are comparing them,
-for example in an external editor.</para>
+the Editor page of WinMerge options. Rescanning keeps your compare and merge
+operations up to date. Without rescanning, WinMerge differences does not
+detect changes that might occur to files while you are comparing them, for
+example in an external editor.</para>
 
       <para>Rescanning occurs when you perform certain actions (like merging a
 difference or editing a file) during a file compare. If a file has changed,

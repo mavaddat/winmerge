@@ -16,6 +16,7 @@
 #include "Win_VersionHelper.h"
 #include "MergeCmdLineInfo.h"
 #include "JumpList.h"
+#include "SuperComboBox.h"
 #include "Merge.h"
 
 #ifdef _DEBUG
@@ -100,7 +101,7 @@ static bool RegisterShellExtension(bool unregister, bool peruser)
 		ShellExecuteEx(&sei);
 
 		regsvr32 = paths::ConcatPath(szSysWow64, _T("regsvr32.exe"));
-		args = options + _T("\"") + paths::ConcatPath(progpath, _T("ShellExtensionU.dll")) + _T("\"");
+		args = options + _T(" \"") + paths::ConcatPath(progpath, _T("ShellExtensionU.dll")) + _T("\"");
 		sei.lpFile = regsvr32.c_str();
 		sei.lpParameters = args.c_str();
 		return !!ShellExecuteEx(&sei);
@@ -433,6 +434,23 @@ void PropShell::OnUnregisterWinMergeContextMenu()
 void PropShell::OnClearAllRecentItems()
 {
 	JumpList::RemoveRecentDocs();
+	for (const auto& name : {
+		_T("ReportFiles"),
+		_T("Files\\Left"),
+		_T("Files\\Right"),
+		_T("Files\\Option"),
+		_T("Files\\Ext"),
+		_T("Files\\Unpacker"),
+		_T("Files\\Prediffer"),
+		_T("Files\\EditorScript"),
+		_T("Files\\DiffFileResult"),
+		_T("Files\\DiffFile1"),
+		_T("Files\\DiffFile2"),
+		_T("PatchCreator\\DiffContext"),
+		})
+	{
+		CSuperComboBox::ClearState(name);
+	}
 }
 
 void PropShell::OnTimer(UINT_PTR nIDEvent)

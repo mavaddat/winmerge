@@ -62,6 +62,18 @@ msgstr "Kopíruje vybrané riadky doľava"
 msgid "Copy Selected Line(s) from Left"
 msgstr "Kopíruje vybrané riadky zľava"
 
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
+
 msgid "Select Line &Difference\tF4"
 msgstr "Vybrať riadky roz&dielov\tF4"
 
@@ -217,6 +229,15 @@ msgstr "Nastaviť farbu &pozadia"
 msgid "&Vector Image Scaling"
 msgstr "Zmena mierky &vektorového obrázka"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Porovnať extrahovaný &text z obrázka"
 
@@ -244,7 +265,7 @@ msgstr ""
 msgid "Fit to Window"
 msgstr ""
 
-msgid "&Event Synchronization"
+msgid "&Event Sync"
 msgstr ""
 
 msgid "&Enabled"
@@ -337,11 +358,23 @@ msgstr "&Nastavenia..."
 msgid "&View"
 msgstr "&Zobraziť"
 
+msgid "Ta&b Bar"
+msgstr "Lišta &záložiek"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "Lišta &nástrojov"
 
 msgid "&Small"
 msgstr "&Malá"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "&Veľká"
@@ -349,11 +382,11 @@ msgstr "&Veľká"
 msgid "&Huge"
 msgstr "&Obrovská"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "&Stavový riadok"
-
-msgid "Ta&b Bar"
-msgstr "Lišta &záložiek"
 
 msgid "&Tools"
 msgstr "&Nástroje"
@@ -841,6 +874,12 @@ msgstr "Použiť pre&dbežného spracovateľa rozdielov..."
 msgid "&Transform with editor script..."
 msgstr "&Transformovať so skriptom editora..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "Od&deliť"
 
@@ -1062,6 +1101,9 @@ msgstr "Ignorovať čí&sla"
 msgid "Ignore c&omment differences"
 msgstr "Ignorovať rozdielne &komentáre"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "&Zahrnúť podpriečinky"
 
@@ -1088,6 +1130,81 @@ msgstr "Veľkosť"
 
 msgid "&Load Project..."
 msgstr "&Načítať projekt..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "O aplikácii WinMerge"
@@ -1199,6 +1316,9 @@ msgstr ""
 
 msgid "Language:"
 msgstr "Jazyk:"
+
+msgid "Defaults"
+msgstr "Predvolené"
 
 msgid "Find"
 msgstr "Hľadať"
@@ -1344,6 +1464,66 @@ msgstr "Rozdiel slova:"
 msgid "Selected Word Diff:"
 msgstr "Rozdiel vybraného slova:"
 
+msgid "Dialog"
+msgstr "Dialóg"
+
+msgid "Keywords:"
+msgstr "Kľúčové slová:"
+
+msgid "Function names:"
+msgstr "Názvy funkcií:"
+
+msgid "Comments:"
+msgstr "Komentáre:"
+
+msgid "Numbers:"
+msgstr "Čísla:"
+
+msgid "Operators:"
+msgstr "Operátory:"
+
+msgid "Strings:"
+msgstr "Reťazce:"
+
+msgid "Preprocessor:"
+msgstr "Preprocesor:"
+
+msgid "User 1:"
+msgstr "Užívateľ 1:"
+
+msgid "User 2:"
+msgstr "Užívateľ 2:"
+
+msgid "Bold"
+msgstr "Tučné"
+
+msgid "&Use customized text colors"
+msgstr "&Použiť prispôsobené farby textu"
+
+msgid "Whitespace:"
+msgstr "Netlačiteľné znaky:"
+
+msgid "Regular text:"
+msgstr "Bežný text:"
+
+msgid "Selection:"
+msgstr "Výber:"
+
+msgid "Margin:"
+msgstr "Okraj:"
+
+msgid "Search Marker:"
+msgstr "Značka hľadania:"
+
+msgid "User Defined Marker1:"
+msgstr "Užívateľom definovaná značka1:"
+
+msgid "User Defined Marker2:"
+msgstr "Užívateľom definovaná značka2:"
+
+msgid "User Defined Marker3:"
+msgstr "Užívateľom definovaná značka3:"
+
 msgid "&Use folder compare colors"
 msgstr "&Použiť priečinky porovnania farieb"
 
@@ -1359,8 +1539,8 @@ msgstr "Všetky neexistujúce položky:"
 msgid "Items filtered:"
 msgstr "Filtrované položky:"
 
-msgid "Margin:"
-msgstr "Okraj:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "Systém"
@@ -1425,9 +1605,6 @@ msgstr "Zahrnúť príkazový ria&dok"
 msgid "Open to e&xternal editor"
 msgstr "Otvoriť v e&xternom editore"
 
-msgid "Defaults"
-msgstr "Predvolené"
-
 msgid "Display Columns"
 msgstr "Zobrazovať stĺpce"
 
@@ -1443,20 +1620,14 @@ msgstr "&Prídavné vlastnosti"
 msgid "Additional Properties"
 msgstr "Prídavné vlastnosti"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Vybrať rozšírenie"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "&Názov rozšírenia:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "Zoznam prípon:"
@@ -1473,11 +1644,11 @@ msgstr "Zobrazí všetky rozšírenia, nekontroluje príponu"
 msgid "&Open files in the same window type after unpacking"
 msgstr "Po rozbalení &otvoriť súbory v rovnakom type okna"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "Rozšírenie &potrubia:"
 
-msgid "&Add pipe"
-msgstr "P&ridať rúru"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "Zastaviť"
@@ -1554,9 +1725,6 @@ msgstr "Editor"
 msgid "&Highlight syntax"
 msgstr "Zvýrazňovanie syntaxe"
 
-msgid "&Automatic rescan"
-msgstr "Automatické p&reskenovanie"
-
 msgid "&Preserve original EOL chars"
 msgstr "&Zachovávať pôvodné znaky zakončenia riadkov"
 
@@ -1572,6 +1740,15 @@ msgstr "Vkladať &tabelátory"
 msgid "Insert &Spaces"
 msgstr "Vkladať &medzery"
 
+msgid "&Rendering Mode:"
+msgstr "&Režim vytvárania prevodu:"
+
+msgid "&Automatic rescan"
+msgstr "Automatické p&reskenovanie"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "Farebné odlíšenie riadkových rozdielov"
 
@@ -1586,9 +1763,6 @@ msgstr "Úroveň &slova:"
 
 msgid "W&ord break characters:"
 msgstr "Zalam&ovať slová:"
-
-msgid "&Rendering Mode:"
-msgstr "&Režim vytvárania prevodu:"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "WinMerge umožňuje skryť niektoré bežné okienka so správami. Stlačením tlačidla Obnoviť znova zviditeľníte všetky okienka správ."
@@ -1687,51 +1861,6 @@ msgstr "Importovať..."
 
 msgid "Export..."
 msgstr "Exportovať..."
-
-msgid "Dialog"
-msgstr "Dialóg"
-
-msgid "Keywords:"
-msgstr "Kľúčové slová:"
-
-msgid "Function names:"
-msgstr "Názvy funkcií:"
-
-msgid "Comments:"
-msgstr "Komentáre:"
-
-msgid "Numbers:"
-msgstr "Čísla:"
-
-msgid "Operators:"
-msgstr "Operátory:"
-
-msgid "Strings:"
-msgstr "Reťazce:"
-
-msgid "Preprocessor:"
-msgstr "Preprocesor:"
-
-msgid "User 1:"
-msgstr "Užívateľ 1:"
-
-msgid "User 2:"
-msgstr "Užívateľ 2:"
-
-msgid "Bold"
-msgstr "Tučné"
-
-msgid "Search Marker:"
-msgstr "Značka hľadania:"
-
-msgid "User Defined Marker1:"
-msgstr "Užívateľom definovaná značka1:"
-
-msgid "User Defined Marker2:"
-msgstr "Užívateľom definovaná značka2:"
-
-msgid "User Defined Marker3:"
-msgstr "Užívateľom definovaná značka3:"
 
 msgid "Folder Compare Report"
 msgstr "Správa o porovnaní priečinkov"
@@ -1880,18 +2009,6 @@ msgstr "&Povoliť nové riadky v úvodzovkách"
 msgid "&Quote character:"
 msgstr "Znak ú&vodzovky:"
 
-msgid "&Use customized text colors"
-msgstr "&Použiť prispôsobené farby textu"
-
-msgid "Whitespace:"
-msgstr "Netlačiteľné znaky:"
-
-msgid "Regular text:"
-msgstr "Bežný text:"
-
-msgid "Selection:"
-msgstr "Výber:"
-
 msgid "Backup Files"
 msgstr "Záložné súbory"
 
@@ -1948,6 +2065,9 @@ msgstr "Rozšírenia"
 
 msgid "&Enable plugins"
 msgstr "&Povoliť rozšírenia"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "Filtre súborov:"
@@ -2076,6 +2196,36 @@ msgstr ""
 
 msgid "&Hex View"
 msgstr "Zobraziť &hexadecimálne"
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
 
 msgid "EXT"
 msgstr "EXT"
@@ -2217,6 +2367,9 @@ msgstr "Už túto správu nezobrazovať."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "Ak chcete, aby sa toto okno správ opäť zobrazilo, stlačte tlačidlo Obnoviť na stránke Okienka správ v dialógovom okne Možnosti."
+
+msgid "Compare/Merge"
+msgstr ""
 
 msgid "Syntax"
 msgstr "Syntax"
@@ -2820,6 +2973,9 @@ msgstr "Všetky do... (%1)"
 #, c-format
 msgid "Differences to... (%1)"
 msgstr "Rozdiely do... (%1)"
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr ""
 
 #, c-format
 msgid "Left (%1)"
@@ -3803,8 +3959,8 @@ msgstr ""
 msgid "W&rap Text"
 msgstr ""
 
-msgid "Frhed is not installed."
-msgstr "Frhed nie je nainštalovaný."
+msgid "%1 is not installed."
+msgstr "%1 nie je nainštalovaný."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4022,6 +4178,10 @@ msgstr "Chýbajúci názov rozšírenia v potrubí rozšírení: %1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Chýbajúca úvodzovka v rozšírení: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "Určenie argumentov rozšírenia"
 
@@ -4039,6 +4199,56 @@ msgstr ""
 
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
+msgstr ""
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
 msgstr ""
 
 msgid "Filter applied"
@@ -4100,6 +4310,42 @@ msgstr ""
 msgid "Zoom &Out"
 msgstr ""
 
+msgid "Comparing..."
+msgstr ""
+
+msgid "Zoom:"
+msgstr ""
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "Prikrášlenie"
 
@@ -4119,6 +4365,9 @@ msgid "Decompilation"
 msgstr "Dekompilácia"
 
 msgid "URL Handling"
+msgstr ""
+
+msgid "Decoding / Encoding"
 msgstr ""
 
 msgid "Make Uppercase"
@@ -4235,6 +4484,12 @@ msgstr "Rozloženie IL kódu"
 msgid "Disassemble Native Code"
 msgstr "Rozloženie pôvodného kódu"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "Vytvoriť znaky veľkými písmenami"
 
@@ -4259,20 +4514,16 @@ msgstr "Prevrátiť stĺpce"
 msgid "Reverse lines"
 msgstr "Prevrátiť riadky"
 
-msgid ""
-"Replace text with another text.\r\n"
-"Usage: Replace [-i] [-e] FIND REPLACE\r\n"
-"  FIND    - text to find\r\n"
-"  REPLACE - text to replace\r\n"
-"  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 "Nahradenie textu iným textom.\r\n"
 "Použitie: Replace [-i] [-e] FIND REPLACE\r\n"
+"   or: Replace -s\r\n"
 "  FIND - text, ktorý sa má nájsť\r\n"
 "  REPLACE - text, ktorý sa má nahradiť\r\n"
 "  -i - ignorovať veľké a malé písmená (len pre -e)\r\n"
-"  -e - spracovať zadaný text ako regulárny výraz"
+"  -e - spracovať zadaný text ako regulárny výraz\r\n"
+"  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid ""
@@ -4466,13 +4717,25 @@ msgstr ""
 msgid "Prediff Line Filter"
 msgstr "Filter predbežného spracovania rozdielov riadku"
 
-msgid "Basic text functions for the context menu"
-msgstr "Základné textové funkcie pre kontextovú ponuku"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid "HTTP URL Scheme Handler with curl. \r\nArguments: Command line options passed to the curl command."
 msgstr ""
 
 msgid "Windows Registry URL Scheme Handler. \r\nArguments: Command line options passed to the reg.exe command."
+msgstr ""
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
 msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
@@ -4600,4 +4863,32 @@ msgid "Folder '%1' does not exist"
 msgstr ""
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
+msgstr ""
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
 msgstr ""

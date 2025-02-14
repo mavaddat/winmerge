@@ -9,7 +9,6 @@
 #include "ConfigLog.h"
 #include <cassert>
 #include <windows.h>
-#include <memory>
 #include "Constants.h"
 #include "VersionInfo.h"
 #include "UniFile.h"
@@ -17,7 +16,6 @@
 #include "TFile.h"
 #include "paths.h"
 #include "locality.h"
-#include "unicoder.h"
 #include "Environment.h"
 #include "MergeApp.h"
 #include "OptionsMgr.h"
@@ -71,6 +69,61 @@ static String GetCompilerVersion()
 	);
 }
 
+static String maskUserNameInPath(const String& filePath)
+{
+	tchar_t buf[256]{};
+	DWORD size = sizeof(buf) / sizeof(buf[0]);
+	GetUserName(buf, &size);
+	String userName(buf);
+	String maskedUserName(userName.length(), '*');
+	String maskedFilePath = filePath;
+	strutils::replace(maskedFilePath, userName, maskedUserName);
+	return maskedFilePath;
+}
+
+static const String prefixes[] = {
+	_T("/Executable"),
+	_T("Editor/FindText"),
+	_T("Editor/ReplaceText"),
+	_T("Files\\Left/Item_"),
+	_T("Files\\Right/Item_"),
+	_T("Files\\Option/Item_")
+};
+
+static bool startsWithPrefix(const String& str)
+{
+	for (const auto& prefix : prefixes)
+	{
+		if (str.find(prefix) == 0)
+			return true;
+	}
+	return false;
+}
+
+static String maskAfterEquals(const String& input)
+{
+	size_t equalsPos = input.find('=');
+	if (equalsPos != String::npos && startsWithPrefix(input))
+	{
+		String afterEquals = input.substr(equalsPos + 1);
+		String masked;
+		for (tchar_t ch : afterEquals)
+		{
+			if (tc::istlower(ch))
+				ch = 'a';
+			else if (tc::istupper(ch))
+				ch = 'A';
+			else if (ch >= 0x80)
+				ch = 'Z';
+			else if (tc::istdigit(ch))
+				ch = '0';
+			masked += ch;
+		}
+		return input.substr(0, equalsPos + 1) + masked;
+	}
+	return input;
+}
+
 /** 
  * @brief Get the Modified time of fully qualified file path and name
  */
@@ -114,34 +167,23 @@ void CConfigLog::WritePluginsInLogFile(const wchar_t *transformationEvent)
 	{
 		const PluginInfoPtr& plugin = piPluginArray->at(iPlugin);
 		String sPluginText;
-		if (plugin->m_filepath.find(':') != String::npos)
-		{
-			String sFileName = paths::GetLongPath(plugin->m_filepath);
-			if (sFileName.length() > sEXEPath.length())
-				if (sFileName.substr(0, sEXEPath.length()) == sEXEPath)
-					sFileName = _T(".") + sFileName.erase(0, sEXEPath.length());
+		String sFileName = paths::GetLongPath(plugin->m_filepath);
+		if (sFileName.length() > sEXEPath.length())
+			if (sFileName.substr(0, sEXEPath.length()) == sEXEPath)
+				sFileName = _T(".") + sFileName.erase(0, sEXEPath.length());
 
-			String sModifiedTime = _T("");
-			sModifiedTime = GetLastModified(plugin->m_filepath);
-			if (!sModifiedTime.empty())
-				sModifiedTime = _T("[") + sModifiedTime + _T("]");
+		String sModifiedTime = _T("");
+		sModifiedTime = GetLastModified(plugin->m_filepath);
+		if (!sModifiedTime.empty())
+			sModifiedTime = _T("[") + sModifiedTime + _T("]");
 
-			sPluginText = strutils::format
-			(_T("\r\n  %s%-36s path=%s  %s"),
-				plugin->m_disabled ? _T("!") : _T(" "),
-				plugin->m_name,
-				sFileName,
-				sModifiedTime
-			);
-		}
-		else
-		{
-			sPluginText = strutils::format
-			(_T("\r\n  %s%-36s"),
-				plugin->m_disabled ? _T("!") : _T(" "),
-				plugin->m_name
-			);
-		}
+		sPluginText = strutils::format
+		(_T("\r\n  %s%-36s path=%s  %s"),
+			plugin->m_disabled ? _T("!") : _T(" "),
+			plugin->m_name,
+			maskUserNameInPath(sFileName),
+			sModifiedTime
+		);
 		m_pfile->WriteString(sPluginText);
 	}
 }
@@ -262,7 +304,7 @@ void CConfigLog::WriteWinMergeConfig()
 		String prefix = _T("  ");
 		if (line[0] == _T('[') )
 			prefix = _T(" ");
-		FileWriteString(prefix + line + _T("\r\n"));
+		FileWriteString(prefix + maskAfterEquals(line) + _T("\r\n"));
 	}
 	ufile.Close();
 }
@@ -296,7 +338,7 @@ bool CConfigLog::DoFile(String &sError)
 	FileWriteString(_T("WinMerge Configuration Log\r\n"));
 	FileWriteString(_T("--------------------------\r\n"));
 	FileWriteString(_T("\r\nLog Saved to:         "));
-	FileWriteString(m_sFileName);
+	FileWriteString(maskUserNameInPath(m_sFileName));
 	FileWriteString(_T("\r\n                >> >> Please add this information (or attach this file) when reporting bugs << <<"));
 
 // Platform stuff
@@ -316,7 +358,7 @@ bool CConfigLog::DoFile(String &sError)
 	FileWriteString(_T("\r\n\r\nWinMerge Info:"));
 	String sEXEFullFileName = paths::GetLongPath(version.GetFullFileName(), false);
 	FileWriteString(_T("\r\n Code File:           "));
-	FileWriteString(sEXEFullFileName);
+	FileWriteString(maskUserNameInPath(sEXEFullFileName));
 
 	FileWriteString(_T("\r\n Version:             "));
 	FileWriteString(version.GetProductVersion());
@@ -361,12 +403,12 @@ bool CConfigLog::DoFile(String &sError)
 	}
 
 	FileWriteString(_T("\r\n\r\nCommand Line:        "));
-	FileWriteString(szCmdLine);
+	FileWriteString(maskUserNameInPath(szCmdLine));
 
 	tchar_t szCurrentDirectory[MAX_PATH]{};
 	GetCurrentDirectory(sizeof(szCurrentDirectory) / sizeof(tchar_t), szCurrentDirectory);
 	FileWriteString(_T("\r\n\r\nCurrent Directory:    "));
-	FileWriteString(szCurrentDirectory);
+	FileWriteString(maskUserNameInPath(szCurrentDirectory));
 
 	FileWriteString(_T("\r\n\r\nModule Names:         '~' prefix indicates module is loaded into the WinMerge process.\r\n"));
 	FileWriteString(_T(" Windows:\r\n"));
@@ -402,14 +444,14 @@ bool CConfigLog::DoFile(String &sError)
 	FileWriteString(_T("\r\nPlugins:                                '!' Prefix indicates the plugin is Disabled.\r\n"));
 	FileWriteString(    _T(" Unpackers:                             Path names are relative to the Code File's directory."));
 	WritePluginsInLogFile(L"URL_PACK_UNPACK");
-	WritePluginsInLogFile(L"FILE_PACK_UNPACK");
-	WritePluginsInLogFile(L"BUFFER_PACK_UNPACK");
-	WritePluginsInLogFile(L"FILE_FOLDER_PACK_UNPACK");
+	for (auto& event : plugin::UnpackerEventNames)
+		WritePluginsInLogFile(event.c_str());
 	FileWriteString(_T("\r\n Prediffers: "));
-	WritePluginsInLogFile(L"FILE_PREDIFF");
-	WritePluginsInLogFile(L"BUFFER_PREDIFF");
+	for (auto& event : plugin::PredifferEventNames)
+		WritePluginsInLogFile(event.c_str());
 	FileWriteString(_T("\r\n Editor scripts: "));
-	WritePluginsInLogFile(L"EDITOR_SCRIPT");
+	for (auto& event : plugin::EditorScriptEventNames)
+		WritePluginsInLogFile(event.c_str());
 	if (!plugin::IsWindowsScriptThere())
 		FileWriteString(_T("\r\n .sct scripts disabled (Windows Script Host not found)\r\n"));
 

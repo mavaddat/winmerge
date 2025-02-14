@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: WinMerge\n"
 "Report-Msgid-Bugs-To: https://bugs.winmerge.org/\n"
 "POT-Creation-Date: 2023-03-13 09:30-0300\n"
-"PO-Revision-Date: 2023-09-10 18:30-0300\n"
+"PO-Revision-Date: 2025-01-22 23:10-0300\n"
 "Last-Translator: Marcello <marcello.mco@gmail.com>\n"
 "Language-Team: Felipe\n"
 "Language: pt_BR\n"
@@ -61,6 +61,18 @@ msgstr "Copiar a(s) linha(s) selecionada(s) pra esquerda"
 
 msgid "Copy Selected Line(s) from Left"
 msgstr "Copiar a(s) linha(s) selecionada(s) da esquerda"
+
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr "Copiar as Diferenças Selecionadas (da Esquerda) para a Área de Transferência\tCtrl+&1"
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr "Copiar as Diferenças Selecionadas (da Direita) para a Área de Transferência\tCtrl+&2"
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr "Copiar as Diferenças Selecionadas (do Meio) para a Área de Transferência\tCtrl+&2"
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr "Copiar as Diferenças Selecionadas (da Direita) para a Área de Transferência\tCtrl+&3"
 
 msgid "Select Line &Difference\tF4"
 msgstr "Selecionar a &Diferença da Linha\tF4"
@@ -217,6 +229,15 @@ msgstr "&Definir a Cor do 2º Plano"
 msgid "&Vector Image Scaling"
 msgstr "&Dimensionamento da Imagem Vetorial"
 
+msgid "&Animation Settings"
+msgstr "Configurações de &Animação"
+
+msgid "&Blink interval"
+msgstr "Frequência de intermitência"
+
+msgid "&Overlay animation interval"
+msgstr "Intervalo de superposição de animação"
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Comparar o Texto &Extraído da Imagens"
 
@@ -244,8 +265,8 @@ msgstr "Tamanho"
 msgid "Fit to Window"
 msgstr "Ajustar à Janela"
 
-msgid "&Event Synchronization"
-msgstr "Sincronização de &Eventos"
+msgid "&Event Sync"
+msgstr "Sincronismo de &Eventos"
 
 msgid "&Enabled"
 msgstr "Habilitado"
@@ -337,11 +358,23 @@ msgstr "&Opções..."
 msgid "&View"
 msgstr "&Visualizar"
 
+msgid "Ta&b Bar"
+msgstr "Ba&rra das Abas"
+
+msgid "&View Tab Bar"
+msgstr "&Visualizar Barra das Abas"
+
+msgid "&On Title Bar"
+msgstr "Na Barra de Títul&os"
+
 msgid "&Toolbar"
 msgstr "&Barra de ferramentas"
 
 msgid "&Small"
 msgstr "&Pequeno"
+
+msgid "&Medium"
+msgstr "@Médio"
 
 msgid "&Big"
 msgstr "&Grande"
@@ -349,11 +382,11 @@ msgstr "&Grande"
 msgid "&Huge"
 msgstr "&Enorme"
 
+msgid "Men&u Bar"
+msgstr "Barra de Men&u"
+
 msgid "&Status Bar"
 msgstr "&Barra de Status"
-
-msgid "Ta&b Bar"
-msgstr "Ba&rra das Abas"
 
 msgid "&Tools"
 msgstr "&Ferramentas"
@@ -841,6 +874,12 @@ msgstr "Aplicar pré&diferenciação..."
 msgid "&Transform with editor script..."
 msgstr "&Transformar com o script do editor..."
 
+msgid "Scripts for &copying"
+msgstr "Scripts para &copiar"
+
+msgid "Select &editor script..."
+msgstr "Selecionar script do &editor..."
+
 msgid "Sp&lit"
 msgstr "Di&vidir"
 
@@ -1062,6 +1101,9 @@ msgstr "Ignorar números"
 msgid "Ignore c&omment differences"
 msgstr "Ignorar as d&iferenças dos comentários"
 
+msgid "Ignore &missing trailing EOL"
+msgstr "Ignorar a falta do caractere EOL no final"
+
 msgid "&Include subfolders"
 msgstr "&Incluir as Sub-Pastas"
 
@@ -1088,6 +1130,81 @@ msgstr "Tamanho"
 
 msgid "&Load Project..."
 msgstr "&Carregar Projeto..."
+
+msgid "${*} - All arguments"
+msgstr "${*} - Todos os parâmetros"
+
+msgid "${1} - The first argument"
+msgstr "${1} - Primeiro argumento"
+
+msgid "${2} - The second argument"
+msgstr "${2} - Segundo argumento"
+
+msgid "${3} - The third argument"
+msgstr "${3} - Terceiro argumento"
+
+msgid "${4} - The fourth argument"
+msgstr "${4} - Quarto argumento"
+
+msgid "${5} - The fifth argument"
+msgstr "${5} - Quinto argumento"
+
+msgid "${6} - The sixth argument"
+msgstr "${6} - Sexto argumento"
+
+msgid "${7} - The seventh argument"
+msgstr "${7} - Sétimo argumento"
+
+msgid "${8} - The eighth argument"
+msgstr "${8} - Oitavo argumento"
+
+msgid "${9} - The ninth argument"
+msgstr "${9} - Nono argumento"
+
+msgid "${SRC_FILE} - Source file"
+msgstr "${SRC_FILE} - Arquivo origem"
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr "${SRC_FOLDER} - Pasta origem"
+
+msgid "${SRC_URL} - Source URL"
+msgstr "${SRC_URL} - URL origem"
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr "${SRC_URL_PROTOCOL} - Protocolo da URL origem"
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr "${SRC_URL_SUFFIX} - Sufixo da URL origem"
+
+msgid "${DST_FILE} - Destination file"
+msgstr "${DST_FILE} - Arquivo destino"
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr "${DST_FOLDER} - Pasta destino"
+
+msgid "${DST_URL} - Destination URL"
+msgstr "${DST_URL} - URL destino"
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr "${DST_URL_PROTOCOL} - Protocolo da URL destino"
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr "${DST_URL_SUFFIX} - Sufixo da URL destino"
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr "${WINMERGE_HOME} - Pasta de instalação do WinMerge"
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr "${SCRIPT_FILE} - Arquivo de Script"
+
+msgid "Add &unpacker plugin..."
+msgstr "Adicionar pl&ugin de desempacotamento..."
+
+msgid "Add &prediffer plugin..."
+msgstr "Adicionar plugin de &pré-diferenciação..."
+
+msgid "&Duplicate plugin..."
+msgstr "&Duplicar plugin..."
 
 msgid "About WinMerge"
 msgstr "Sobre o WinMerge"
@@ -1199,6 +1316,9 @@ msgstr "Auto-&recarregar arquivos modificados:"
 
 msgid "Language:"
 msgstr "Idioma:"
+
+msgid "Defaults"
+msgstr "Padrões"
 
 msgid "Find"
 msgstr "Achar"
@@ -1344,6 +1464,66 @@ msgstr "Diferença das Palavras:"
 msgid "Selected Word Diff:"
 msgstr "Diferenciação das Palavras Selecionadas:"
 
+msgid "Dialog"
+msgstr "Diálogo"
+
+msgid "Keywords:"
+msgstr "Palavras-chave:"
+
+msgid "Function names:"
+msgstr "Nomes das funções:"
+
+msgid "Comments:"
+msgstr "Comentários:"
+
+msgid "Numbers:"
+msgstr "Números:"
+
+msgid "Operators:"
+msgstr "Operadores:"
+
+msgid "Strings:"
+msgstr "Strings:"
+
+msgid "Preprocessor:"
+msgstr "Pré-processador:"
+
+msgid "User 1:"
+msgstr "Usuário 1:"
+
+msgid "User 2:"
+msgstr "Usuário 2:"
+
+msgid "Bold"
+msgstr "Negrito"
+
+msgid "&Use customized text colors"
+msgstr "&Usar cores de texto personalizadas"
+
+msgid "Whitespace:"
+msgstr "Espaço em branco:"
+
+msgid "Regular text:"
+msgstr "Texto regular:"
+
+msgid "Selection:"
+msgstr "Seleção:"
+
+msgid "Margin:"
+msgstr "Margem:"
+
+msgid "Search Marker:"
+msgstr "Procurar Marcador:"
+
+msgid "User Defined Marker1:"
+msgstr "Marcador Definido pelo Usuário 1:"
+
+msgid "User Defined Marker2:"
+msgstr "Marcador Definido pelo Usuário 2:"
+
+msgid "User Defined Marker3:"
+msgstr "Marcador Definido pelo Usuário 3:"
+
 msgid "&Use folder compare colors"
 msgstr "&Usar cores pra comparar as pastas"
 
@@ -1359,8 +1539,8 @@ msgstr "Itens não existentes:"
 msgid "Items filtered:"
 msgstr "Itens filtrados:"
 
-msgid "Margin:"
-msgstr "Margem:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr "&Usar cores personalizadas do sistema (Alguns elementos de interface de usuário podem não ser aplicadas)"
 
 msgid "System"
 msgstr "Sistema"
@@ -1425,9 +1605,6 @@ msgstr "Inclu&ir a linha de comando"
 msgid "Open to e&xternal editor"
 msgstr "Abrir no e&ditor externo"
 
-msgid "Defaults"
-msgstr "Padrões"
-
 msgid "Display Columns"
 msgstr "Exibir Colunas"
 
@@ -1443,20 +1620,14 @@ msgstr "Propriedades &Adicionais"
 msgid "Additional Properties"
 msgstr "Propriedades Adicionais"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Selecionar Plugin"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "Nome do &Plugin:"
+
+msgid "&Target files:"
+msgstr "Arquivos des&tino:"
 
 msgid "Extensions list:"
 msgstr "Lista das extensões:"
@@ -1473,11 +1644,11 @@ msgstr "Exibir todos os plugins, não verificar a extensão"
 msgid "&Open files in the same window type after unpacking"
 msgstr "&Abrir arquivos no mesmo tipo de janela após desempacotar"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "&Tubulação dos Plugins:"
 
-msgid "&Add pipe"
-msgstr "&Adicionar barra vertical"
+msgid "&Alias..."
+msgstr "&Apelido..."
 
 msgid "Stop"
 msgstr "Parar"
@@ -1554,9 +1725,6 @@ msgstr "Editor"
 msgid "&Highlight syntax"
 msgstr "&Destacar a sintaxe"
 
-msgid "&Automatic rescan"
-msgstr "&Re-escaneamento automático"
-
 msgid "&Preserve original EOL chars"
 msgstr "&Preservar os caracteres EOL originais"
 
@@ -1572,6 +1740,15 @@ msgstr "&Inserir Abas"
 msgid "Insert &Spaces"
 msgstr "Inserir &Espaços"
 
+msgid "&Rendering Mode:"
+msgstr "&Modo de Renderização:"
+
+msgid "&Automatic rescan"
+msgstr "&Re-escaneamento automático"
+
+msgid "Copy &granularity for selected differences:"
+msgstr "Copiar &granularidade para diferenças selecionadas:"
+
 msgid "Line Difference Coloring"
 msgstr "Coloração das Diferenças das Linhas"
 
@@ -1586,9 +1763,6 @@ msgstr "&Nível das palavras:"
 
 msgid "W&ord break characters:"
 msgstr "C&aracteres da quebra de linha:"
-
-msgid "&Rendering Mode:"
-msgstr "&Modo de Renderização:"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "O WinMerge permite esconder algumas caixas de mensagens comuns. Pressione o botão Resetar pra tornar todas as caixas de mensagens visíveis de novo."
@@ -1679,51 +1853,6 @@ msgstr "Importar..."
 
 msgid "Export..."
 msgstr "Exportar..."
-
-msgid "Dialog"
-msgstr "Diálogo"
-
-msgid "Keywords:"
-msgstr "Palavras-chave:"
-
-msgid "Function names:"
-msgstr "Nomes das funções:"
-
-msgid "Comments:"
-msgstr "Comentários:"
-
-msgid "Numbers:"
-msgstr "Números:"
-
-msgid "Operators:"
-msgstr "Operadores:"
-
-msgid "Strings:"
-msgstr "Strings:"
-
-msgid "Preprocessor:"
-msgstr "Pré-processador:"
-
-msgid "User 1:"
-msgstr "Usuário 1:"
-
-msgid "User 2:"
-msgstr "Usuário 2:"
-
-msgid "Bold"
-msgstr "Negrito"
-
-msgid "Search Marker:"
-msgstr "Procurar Marcador:"
-
-msgid "User Defined Marker1:"
-msgstr "Marcador Definido pelo Usuário 1:"
-
-msgid "User Defined Marker2:"
-msgstr "Marcador Definido pelo Usuário 2:"
-
-msgid "User Defined Marker3:"
-msgstr "Marcador Definido pelo Usuário 3:"
 
 msgid "Folder Compare Report"
 msgstr "Relatório sobre a Comparação das Pastas"
@@ -1872,18 +2001,6 @@ msgstr "&Permitir linhas novas nas citações"
 msgid "&Quote character:"
 msgstr "&Caractere de citação:"
 
-msgid "&Use customized text colors"
-msgstr "&Usar cores de texto personalizadas"
-
-msgid "Whitespace:"
-msgstr "Espaço em branco:"
-
-msgid "Regular text:"
-msgstr "Texto regular:"
-
-msgid "Selection:"
-msgstr "Seleção:"
-
 msgid "Backup Files"
 msgstr "Arquivos de Backup"
 
@@ -1940,6 +2057,9 @@ msgstr "Plugins"
 
 msgid "&Enable plugins"
 msgstr "&Ativar plugins"
+
+msgid "Plugin &type:"
+msgstr "&Tipo de Plugin:"
 
 msgid "File filters:"
 msgstr "Filtros dos arquivo:"
@@ -2069,6 +2189,36 @@ msgstr "&Separar pastas de dados do usuário para cada painel"
 msgid "&Hex View"
 msgstr "&Visualização Hex"
 
+msgid "Edit Plugin"
+msgstr "Editar Plugin"
+
+msgid "&Category:"
+msgstr "&Categoria:"
+
+msgid "&Menu caption:"
+msgstr "Legenda do &menu:"
+
+msgid "&Window type:"
+msgstr "Tipo de &janela"
+
+msgid "&Unpacked file extension:"
+msgstr "E&xtensão do arquivo desempacotado:"
+
+msgid "&Require arguments"
+msgstr "Solicita&r argumentos"
+
+msgid "&Generate editor script"
+msgstr "&Gerar editor de script"
+
+msgid "Command &line:"
+msgstr "&Linha de comando:"
+
+msgid "&Script file extension:"
+msgstr "Exten&são de arquivo de script:"
+
+msgid "Script &body:"
+msgstr "Cor&po do script:"
+
 msgid "EXT"
 msgstr "EXT"
 
@@ -2161,6 +2311,9 @@ msgstr "Não exibir esta &mensagem de novo."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "Pra tornar esta caixa de mensagem visível de novo pressione o botão Resetar na página Caixas das Mensagens no diálogo das Opções."
+
+msgid "Compare/Merge"
+msgstr "Comparar/Unir"
 
 msgid "Syntax"
 msgstr "Sintaxe"
@@ -2613,6 +2766,9 @@ msgstr "De Todos pra... (%1)"
 msgid "Differences to... (%1)"
 msgstr "Das Diferenças pra... (%1)"
 
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr "Alguns itens selecionados são idênticos ou foram ignorados.\nDeseja copiar apenas os itenc com diferenças?"
+
 #, c-format
 msgid "Left (%1)"
 msgstr "Esquerda (%1)"
@@ -2679,7 +2835,7 @@ msgid "You are about to close the window that is comparing folders. Are you sure
 msgstr "Você está pra fechar a janela que está comparando as pastas. Você tem certeza que você quer fechar a janela?"
 
 msgid "You are about to close the folder comparison window that took a significant amount of time. Are you sure you want to close the window?"
-msgstr "Você está prestes a fechar a janela de comparação de pastas que demorou um tempo considerável para ser montada. Tem certea que deseja fechar a janela?"
+msgstr "Você está prestes a fechar a janela de comparação de pastas que demorou um tempo considerável para ser montada. Tem certeza que deseja fechar a janela?"
 
 msgid "The file or folder name is invalid."
 msgstr "Nome de arquivo ou pasta inválido."
@@ -3451,8 +3607,8 @@ msgstr "Página Web"
 msgid "W&rap Text"
 msgstr "O&rganizar Texto"
 
-msgid "Frhed is not installed."
-msgstr "O Frhed não está instalado."
+msgid "%1 is not installed."
+msgstr "O %1 não está instalado."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -3664,6 +3820,10 @@ msgstr "Nome do plugin ausente na tubulação do plugin: %1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Marca das aspas ausentes na tubulação do plugin: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr "O nome de plugin '%1' já existe."
+
 msgid "Specify plugin arguments"
 msgstr "Especificar os argumentos do plugin"
 
@@ -3682,6 +3842,56 @@ msgstr "'%1' não é um plugin de pré-diferenciação"
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
 msgstr "Ocorreu um erro na pré-diferenciação do arquivo '%1' com o plugin '%2'. A pré-diferenciação não vai mais ser aplicada."
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr "Referência circular no encadeamento do plugin: %1"
+
+msgid "URL Handler"
+msgstr "Manipulador de URL"
+
+msgid "File Unpacker"
+msgstr "Desempacotador de Arquivo"
+
+msgid "File or Folder Unpacker"
+msgstr "Desempacotador de arquivo ou pasta"
+
+msgid "Alias for Unpacker"
+msgstr "Apelido para o desempacotador"
+
+msgid "Alias for Prediffer"
+msgstr "Apelido para o Pré-diferenciador"
+
+msgid "Alias for Editor script"
+msgstr "Apelido para o Editor de script"
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr "Apelido para o encadeamento de plugin '%1'"
+
+msgid "New plugin description"
+msgstr "Descrição de novo plugin"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "1st"
+msgstr "1º"
+
+msgid "2nd"
+msgstr "2º"
+
+msgid "3rd"
+msgstr "3º"
+
+msgid "1st and 2nd"
+msgstr "1º e 2º"
+
+msgid "1st and 3rd"
+msgstr "1º e 3º"
+
+msgid "2nd and 3rd"
+msgstr "2º e 3º"
 
 msgid "Filter applied"
 msgstr "Filtro aplicado"
@@ -3738,6 +3948,42 @@ msgstr "Mais Zoom"
 msgid "Zoom &Out"
 msgstr "Menos Zoom"
 
+msgid "Comparing..."
+msgstr "Comparando..."
+
+msgid "Zoom:"
+msgstr "Zoom:"
+
+msgid "Diff hunk"
+msgstr "Trecho de diferença"
+
+msgid "Inline diff"
+msgstr "Diferença em linha"
+
+msgid "Line"
+msgstr "Linha"
+
+msgid "Character"
+msgstr "Caracter"
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr "\nDiferença Anterior (Alt+Pra Cima)\n(Botão Direito+Rolagem Pra Cima)\n(Alt+Rolagem Pra Cima)"
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr "\nDiferença Seguinte (Alt+Pra Baixo)\n(Botão Direito+Rolagem Pra Baixo)\n(Alt+Rolagem Pra Baixo)"
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr "\nCopiar para a Direita (Alt+Direita)\n(Botão Direito+Rolagem Pra Direita)\n(Alt+Rolagem Pra Direita)\n(Alt+Shift+Rolagem Pra Baixo)"
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr "\nCopiar para a Esquerda (Alt+Esquerda)\n(Botão Direito+Rolagem Pra Esquerda)\n(Alt+Rolagem Pra Esquerda)\n(Alt+Shift+Rolagem Pra Cima)"
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr "\nCopiar para a Direita e Avançar (Ctrl+Alt+Direita)\n(Ctrl+Alt+Rolagem Pra Direita)\n(Ctrl+Alt+Shift+Rolagem Pra Baixo)"
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr "\nCopiar para a Esquerda e Avançar (Ctrl+Alt+Esquerda)\n(Ctrl+Alt+Rolagem Pra Esquerda)\n(Ctrl+Alt+Shift+Rolagem Pra Cima)"
+
 msgid "Prettification"
 msgstr "Embelezamento"
 
@@ -3758,6 +4004,9 @@ msgstr "Descompilação"
 
 msgid "URL Handling"
 msgstr "Manipulaçãode URL"
+
+msgid "Decoding / Encoding"
+msgstr "Decodificação / Decodificação"
 
 msgid "Make Uppercase"
 msgstr "Tornar Maiúscula"
@@ -3873,6 +4122,12 @@ msgstr "Desmontar Código IL"
 msgid "Disassemble Native Code"
 msgstr "Desmontar Código Nativo"
 
+msgid "Convert Text with AI..."
+msgstr "Converter Texto com Inteligência Artificial..."
+
+msgid "Unescape Java properties files"
+msgstr "Remover escape de arquivos de propriedades Java."
+
 msgid "Make characters uppercase"
 msgstr "Converter caracteres para maiúsculos"
 
@@ -3897,8 +4152,8 @@ msgstr "Reverter colunas"
 msgid "Reverse lines"
 msgstr "Reverter linhas"
 
-msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression"
-msgstr "Substituir texto por outro texto.\r\nUso: Replace [-i] [-e] FIND REPLACE\r\n  FIND    - texto a procurar\r\n  REPLACE - texto para substituir\r\n  -i - ignorar maiúsculas/minúsculas (apenas para -e)\r\n  -e - trata o texto especificado como expressão regular"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
+msgstr "Substituir texto por outro texto.\r\nUso: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - texto a procurar\r\n  REPLACE - texto para substituir\r\n  -i - ignorar maiúsculas/minúsculas (apenas para -e)\r\n  -e - trata o texto especificado como expressão regular\r\n  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid "Apply filter command. \r\nUsage: ExecFilterCommand COMMAND\r\n  COMMAND - command to execute. %1 in the command is replaced with the filename."
@@ -3994,14 +4249,26 @@ msgstr "Este plugin ignora os números de linha no começo em arquivos texto (Po
 msgid "Prediff Line Filter"
 msgstr "Filtro de Linha Prediff"
 
-msgid "Basic text functions for the context menu"
-msgstr "Funções de texto básicas para o menu de contexto"
+msgid "Date and time insertion function"
+msgstr "Função de inserção de Data e Hora"
 
 msgid "HTTP URL Scheme Handler with curl. \r\nArguments: Command line options passed to the curl command."
 msgstr "Manipulador de esquema de URL HTTP com curl. \r\nArgumentos: Opções de linha de comando passadas ao comando curl."
 
 msgid "Windows Registry URL Scheme Handler. \r\nArguments: Command line options passed to the reg.exe command."
 msgstr "Manipulador de esquema de URL de Registro do Windows. \r\nArgumentos: Opções de linha de comando passadas ao comando reg.exe."
+
+msgid "Basic text functions"
+msgstr "Funções básicas de texto"
+
+msgid "AI-assisted text conversion functions"
+msgstr "Funções de conversão de texto com auxílio de IA"
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr "Conversor de texto usando a API do OpenAI.\r\nUso: AIConvertText PROMPT"
+
+msgid "Unescape and display escaped Java properties files."
+msgstr "Remover e mostrar arquivos de propriedades Java com escape."
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr "Opções do Plugin do WinMerge para CompareMSExcelFiles.sct"
@@ -4129,3 +4396,31 @@ msgstr "Pasta '%1' não existe"
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
 msgstr "Não use a opção de linha de comando '-p0' para o arquivo de correção que inclui caminhos absolutos"
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr "AI.sct Opções de Plugin do WinMerge"
+
+msgid "Enter prompt"
+msgstr "Digite o prompt"
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr "Digite sua chave de API OpenAI.\r\n - O uso deste plugin requer registro na OpenAI e está sujeito a pagamento de taxas.\r\n - A chave API é armazenada na variável de ambiente %1."
+
+msgid "Environment variable name for OpenAI API key"
+msgstr "Nome de variável de ambiente para a chave da API da OpenAI"
+
+msgid "OpenAI API key"
+msgstr "Chave da API da OpenAI"
+
+msgid "Temperature"
+msgstr "Temperature"
+
+msgid "Maximum length"
+msgstr "Comprimento máximo"
+
+msgid "Model"
+msgstr "Modelo"
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
+msgstr "A chave da API da OpenAI mudou. Por favor, reinicie o WinMerge para que as alterações entrem em funcionamento."

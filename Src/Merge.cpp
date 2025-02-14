@@ -62,6 +62,11 @@
 #include "OptionsProject.h"
 #include "MergeAppCOMClass.h"
 #include "RegKey.h"
+#include "Win_VersionHelper.h"
+#include "BCMenu.h"
+#include "MouseHook.h"
+#include "SysColorHook.h"
+#include <../src/mfc/afximpl.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -208,7 +213,6 @@ std::vector<JumpList::Item> CMergeApp::CreateUserTasks(MergeCmdLineInfo::usertas
 
 CMergeApp::~CMergeApp()
 {
-	strdiff::Close();
 }
 /////////////////////////////////////////////////////////////////////////////
 // The one and only CMergeApp object
@@ -346,6 +350,7 @@ BOOL CMergeApp::InitInstance()
 	// Initialize i18n (multiple language) support
 	m_pLangDlg->InitializeLanguage((WORD)GetOptionsMgr()->GetInt(OPT_SELECTED_LANGUAGE));
 
+	SysColorHook::Init();
 	charsets_init();
 	UpdateCodepageModule();
 
@@ -400,8 +405,13 @@ BOOL CMergeApp::InitInstance()
 		}
 	}
 
+	ReloadCustomSysColors();
+
 	strdiff::Init(); // String diff init
 	strdiff::SetBreakChars(GetOptionsMgr()->GetString(OPT_BREAK_SEPARATORS).c_str());
+
+	if (IsWin11_OrGreater())
+		BCMenu::DisableOwnerDraw();
 
 	m_bMergingMode = GetOptionsMgr()->GetBool(OPT_MERGE_MODE);
 
@@ -418,6 +428,9 @@ BOOL CMergeApp::InitInstance()
 		if (!ShowCompareAsMenu(cmdInfo))
 			return FALSE;
 	}
+
+	if (GetOptionsMgr()->GetBool(OPT_MOUSE_HOOK_ENABLED))
+		CMouseHook::SetMouseHook();
 
 	// create main MDI Frame window
 	CMainFrame* pMainFrame = new CMainFrame;
@@ -557,6 +570,8 @@ void CMergeApp::OnAppAbout()
  */
 int CMergeApp::ExitInstance()
 {
+	CMouseHook::UnhookMouseHook();
+
 	charsets_cleanup();
 
 	//  Save registry keys if existing WinMerge.reg
@@ -571,22 +586,14 @@ int CMergeApp::ExitInstance()
 	// WinMerge did not delete temp files this makes sure they are removed.
 	CleanupWMtemp();
 
+	strdiff::Close();
 	delete m_mainThreadScripts;
 	CWinApp::ExitInstance();
 	
-#ifndef _DEBUG
-	// There is a problem that OleUninitialize() in mfc/oleinit.cpp, which is called just before the process exits,
-	// hangs in rare cases.
-	// To deal with this problem, force the process to exit
-	// if the process does not exit within 2 seconds after the call to CMergeApp::ExitInstance().
-	_beginthreadex(0, 0,
-		[](void*) -> unsigned int {
-			Sleep(2000);
-			ExitProcess(0);
-		}, nullptr, 0, nullptr);
-#endif
-
-	return m_bEnableExitCode ? ConvertLastCompareResultToExitCode(m_nLastCompareResult) : 0;
+	const int exitstatus = m_bEnableExitCode ? ConvertLastCompareResultToExitCode(m_nLastCompareResult) : 0;
+	if (!WaitZombieThreads())
+		TerminateProcess(GetCurrentProcess(), exitstatus);
+	return exitstatus;
 }
 
 int CMergeApp::DoMessageBox(const tchar_t* lpszPrompt, UINT nType, UINT nIDPrompt)
@@ -1221,9 +1228,7 @@ bool CMergeApp::CreateBackup(bool bFolder, const String& pszPath)
 			< MAX_PATH_FULL)
 		{
 			success = true;
-			bakPath = paths::ConcatPath(bakPath, filename);
-			bakPath += _T(".");
-			bakPath += ext;
+			bakPath = paths::ConcatPath(bakPath, filename + _T(".") + ext);
 		}
 
 		if (success)
@@ -1744,3 +1749,31 @@ BOOL CMergeApp::WriteProfileString(const tchar_t* lpszSection, const tchar_t* lp
 	}
 	return TRUE;
 }
+
+void CMergeApp::AddZombieThread(CWinThread* pThread)
+{ 
+	m_threads.push_back(pThread);
+}
+
+bool CMergeApp::WaitZombieThreads()
+{ 
+	bool terminated = true;
+	for (auto* pThread : m_threads)
+	{
+		DWORD dwResult = WaitForSingleObject(pThread->m_hThread, 1000);
+		if (dwResult != WAIT_OBJECT_0)
+			terminated = false;
+		delete pThread;
+	}
+	return terminated;
+}
+
+void CMergeApp::ReloadCustomSysColors()
+{
+	SysColorHook::Unhook(AfxGetInstanceHandle());
+	SysColorHook::Deserialize(GetOptionsMgr()->GetString(OPT_SYSCOLOR_HOOK_COLORS));
+	if (GetOptionsMgr()->GetBool(OPT_SYSCOLOR_HOOK_ENABLED))
+		SysColorHook::Hook(AfxGetInstanceHandle());
+	afxData.UpdateSysColors();
+}
+

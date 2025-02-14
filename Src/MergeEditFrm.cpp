@@ -14,11 +14,9 @@
 #include "stdafx.h"
 #include "MergeEditFrm.h"
 #include "Merge.h"
-#include "MainFrm.h"
 #include "MergeDoc.h"
 #include "MergeEditView.h"
 #include "LocationView.h"
-#include "DiffViewBar.h"
 #include "OptionsDef.h"
 #include "OptionsMgr.h"
 
@@ -233,38 +231,6 @@ BOOL CMergeEditFrame::OnBarCheck(UINT nID)
 	return result;
 }
 
-/**
- * @brief We must use this function before a call to SetDockState
- *
- * @note Without this, SetDockState will assert or crash if a bar from the 
- * CDockState is missing in the current CMergeEditFrame.
- * The bars are identified with their ID. This means the missing bar bug is triggered
- * when we run WinMerge after changing the ID of a bar. 
- */
-bool CMergeEditFrame::EnsureValidDockState(CDockState& state) 
-{
-	for (int i = (int) state.m_arrBarInfo.GetSize()-1 ; i >= 0; i--) 
-	{
-		bool barIsCorrect = true;
-		CControlBarInfo* pInfo = (CControlBarInfo*)state.m_arrBarInfo[i];
-		if (pInfo == nullptr) 
-			barIsCorrect = false;
-		else
-		{
-			if (! pInfo->m_bFloating) 
-			{
-				pInfo->m_pBar = GetControlBar(pInfo->m_nBarID);
-				if (pInfo->m_pBar == nullptr) 
-					barIsCorrect = false; //toolbar id's probably changed	
-			}
-		}
-
-		if (! barIsCorrect)
-			state.m_arrBarInfo.RemoveAt(i);
-	}
-	return true;
-}
-
 void CMergeEditFrame::ActivateFrame(int nCmdShow) 
 {
 	CMergeFrameCommon::ActivateFrame(nCmdShow);
@@ -352,9 +318,9 @@ void CMergeEditFrame::UpdateHeaderSizes()
 			w[pane] = (w2 - 4 * pDoc->m_nBuffers) / pDoc->m_nBuffers;
 	}
 
-	if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + pDoc->m_nBuffers - 1, w))
+	if (!std::equal(m_nLastSplitPos, m_nLastSplitPos + pDoc->m_nBuffers, w))
 	{
-		std::copy_n(w, pDoc->m_nBuffers - 1, m_nLastSplitPos);
+		std::copy_n(w, pDoc->m_nBuffers, m_nLastSplitPos);
 
 		// resize controls in header dialog bar
 		m_wndFilePathBar.Resize(w);

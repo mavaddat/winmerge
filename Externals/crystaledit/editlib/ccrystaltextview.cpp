@@ -126,17 +126,6 @@ using CrystalLineParser::TEXTBLOCK;
 #endif
 
 
-// The vcruntime.h version of _countf() gives syntax errors starting with VS 15.7.2,
-// but only with `CCrystalTextView::m_SourceDefs` (which is local to this .cpp file), 
-// and only for X64 compilations (Win32 is ok, probably because no alignment issues
-// are involved).  I think that this could be related to C++17 compliance issues.
-// This patch reverts to a 'traditional' definition of _countf(), a pre-existing 
-// part of the CCrystalTextView package.
-#undef _countof
-#ifndef _countof
-#define _countof(array) (sizeof(array)/sizeof(array[0]))
-#endif
-
 #define DEFAULT_PRINT_MARGIN        1000    //  10 millimeters
 
 #ifndef WM_MOUSEHWHEEL
@@ -325,7 +314,7 @@ DoSetTextType (CrystalLineParser::TextDefinition *def)
 bool CCrystalTextView::
 SetTextType (const tchar_t* pszExt)
 {
-  m_CurSourceDef = CrystalLineParser::m_SourceDefs;
+  m_CurSourceDef = &CrystalLineParser::m_SourceDefs[0];
 
   CrystalLineParser::TextDefinition *def = CrystalLineParser::GetTextType (pszExt);
 
@@ -337,8 +326,8 @@ SetTextType (CrystalLineParser::TextType enuType)
 {
   CrystalLineParser::TextDefinition *def;
 
-  m_CurSourceDef = def = CrystalLineParser::m_SourceDefs;
-  for (int i = 0; i < _countof (CrystalLineParser::m_SourceDefs); i++, def++)
+  m_CurSourceDef = def = &CrystalLineParser::m_SourceDefs[0];
+  for (size_t i = 0; i < CrystalLineParser::m_SourceDefs.size(); i++, def++)
     {
       if (def->type == enuType)
         {
@@ -660,7 +649,7 @@ GetLineActualLength (int nLineIndex)
                         nActualLength ++;
                       else
                         nActualLength += GetCharCellCountFromChar (pszChars + i);
-                      if (nColumn < nColumnCount && nActualLength > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                      if (nColumn < nColumnCount - 1 && nActualLength > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                         nActualLength = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn);
                     }
                 }
@@ -2870,7 +2859,13 @@ UpdateCaret ()
           CreateSolidCaret (nCaretWidth, nCaretHeight);
         }
       else
-        CreateSolidCaret (2, nCaretHeight);
+        {
+          DWORD caretWidth = 1;
+          SystemParametersInfo (SPI_GETCARETWIDTH, 0, &caretWidth, 0);
+          const int dpi = CClientDC (this).GetDeviceCaps (LOGPIXELSX);
+          const int nCaretWidth = MulDiv (caretWidth, dpi, 96);
+          CreateSolidCaret (nCaretWidth, nCaretHeight);
+        }
 
       SetCaretPos (TextToClient (m_ptCursorPos));
       ShowCaret ();
@@ -3083,7 +3078,7 @@ int CCrystalTextView::CursorPointToCharPos( int nLineIndex, const CEPoint &curPo
                     nOffset = 1;
                   else
                     nOffset = GetCharCellCountFromChar (szLine + nIndex);
-                  if (nColumn < nColumnCount && nCurPos + nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                  if (nColumn < nColumnCount - 1 && nCurPos + nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                     nOffset = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn) - nXPos;
                 }
               nXPos += nOffset;
@@ -4411,7 +4406,7 @@ ClientToText (const CPoint & point)
                     nOffset = 1;
                   else
                     nOffset = GetCharCellCountFromChar (pszLine + nIndex);
-                  if (nColumn < nColumnCount && nCurPos + nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                  if (nColumn < nColumnCount - 1 && nCurPos + nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                     nOffset = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn) - nCurPos;
                 }
               n += nOffset;
@@ -4628,7 +4623,7 @@ TextToClient (const CEPoint & point)
                     pt.x ++;
                   else
                     pt.x += GetCharCellCountFromChar(pszLine + nIndex);
-                  if (nColumn < nColumnCount && pt.x > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                  if (nColumn < nColumnCount - 1 && pt.x > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                     pt.x = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn);
                 }
             }
@@ -4813,7 +4808,7 @@ CalculateActualOffset (int nLineIndex, int nCharIndex, bool bAccumulate)
                     nOffset ++;
                   else
                     nOffset += GetCharCellCountFromChar (pszChars + I);
-                  if (nColumn < nColumnCount && nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                  if (nColumn < nColumnCount - 1 && nOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                     nOffset = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn);
                 }
             }
@@ -4920,7 +4915,7 @@ ApproxActualOffset (int nLineIndex, int nOffset)
                     nCurrentOffset ++;
                   else
                     nCurrentOffset += GetCharCellCountFromChar (pszChars + I);
-                  if (nColumn < nColumnCount && nCurrentOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
+                  if (nColumn < nColumnCount - 1 && nCurrentOffset > nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn))
                     nCurrentOffset = nColumnTotalWidth + m_pTextBuffer->GetColumnWidth (nColumn);
                 }
               if (nCurrentOffset >= nOffset)
@@ -5510,10 +5505,10 @@ HighlightText (const CEPoint & ptStartPos, int nLength,
     {
       while (nLength > nCount)
         {
-          nLength -= nCount + 1;
+          nLength -= nCount + GetTextBufferEol (ptEndPos.y).GetLength ();
           nCount = GetLineLength (++ptEndPos.y);
         }
-      ptEndPos.x = nLength;
+      ptEndPos.x = (nLength < 0) ? 0 : nLength;
     }
   ASSERT_VALIDTEXTPOS (m_ptCursorPos);  //  Probably 'nLength' is bigger than expected...
 
@@ -5556,29 +5551,29 @@ FindText (const tchar_t* pszText, const CEPoint & ptStartPos, DWORD dwFlags,
                           dwFlags, bWrapSearch, pptFoundPos);
 }
 
-int HowManyStr (const tchar_t* s, const tchar_t* m)
+int HowManyEOLs (const tchar_t* s, size_t length)
 {
-  const tchar_t* p = s;
-  int n = 0;
-  const int l = (int) tc::tcslen (m);
-  while ((p = tc::tcsstr (p, m)) != nullptr)
+  int newlineCount = 0;
+  bool wasCR = false;
+  for (size_t i = 0; i < length; ++i)
     {
-      n++;
-      p += l;
-    }
-  return n;
-}
-
-int HowManyStr (const tchar_t* s, tchar_t c)
-{
-  const tchar_t* p = s;
-  int n = 0;
-  while ((p = tc::tcschr (p, c)) != nullptr)
-    {
-      n++;
-      p++;
-    }
-  return n;
+      tchar_t ch = s[i];
+      if (ch == '\n')
+        {
+	      if (wasCR)
+            wasCR = false;
+          else
+            newlineCount++;
+        }
+	  else if (ch == '\r')
+      {
+        newlineCount++;
+        wasCR = true;
+      }
+    else
+      wasCR = false;
+  }
+  return newlineCount;
 }
 
 bool CCrystalTextView::
@@ -5605,7 +5600,10 @@ FindTextInBlock (const tchar_t* pszText, const CEPoint & ptStartPosition,
   int nEolns;
   if (dwFlags & FIND_REGEXP)
     {
-      nEolns = HowManyStr (what, _T("\\n"));
+      CString what2 = what;
+      what2.Replace(_T("\\r"), _T("\r"));
+      what2.Replace(_T("\\n"), _T("\n"));
+      nEolns = HowManyEOLs (what2, what2.GetLength ());
     }
   else
     {
@@ -5636,7 +5634,7 @@ FindTextInBlock (const tchar_t* pszText, const CEPoint & ptStartPosition,
                         {
                           nLineLength = GetLineLength (ptCurrentPos.y - i);
                           ptCurrentPos.x = 0;
-                          line = _T ('\n') + line;
+                          line = GetTextBufferEol (ptCurrentPos.y - i) + line;
                         }
                       else
                         {
@@ -5684,6 +5682,7 @@ FindTextInBlock (const tchar_t* pszText, const CEPoint & ptStartPosition,
               if( nFoundPos != -1 )	// Found text!
                 {
                   ptCurrentPos.x = static_cast<int>(nFoundPos);
+                  ptCurrentPos.y -= nEolns;
                   *pptFoundPos = ptCurrentPos;
                   return true;
                 }
@@ -5719,7 +5718,7 @@ FindTextInBlock (const tchar_t* pszText, const CEPoint & ptStartPosition,
                       nLineLength = GetLineLength (ptCurrentPos.y + i);
                       if (i)
                         {
-                          line += _T ('\n');
+                          line += GetTextBufferEol (ptCurrentPos.y + i - 1);
                         }
                       if (nLineLength > 0)
                         {
@@ -5753,11 +5752,13 @@ FindTextInBlock (const tchar_t* pszText, const CEPoint & ptStartPosition,
                     {
                       CString item = line.Left (static_cast<LONG>(nPos));
                       const tchar_t* current = tc::tcsrchr (item, _T('\n'));
+                      if (!current)
+                        current = tc::tcsrchr (item, _T('\r'));
                       if (current)
                         current++;
                       else
                         current = item;
-                      nEolns = HowManyStr (item, _T('\n'));
+                      nEolns = HowManyEOLs (item, item.GetLength ());
                       if (nEolns)
                         {
                           ptCurrentPos.y += nEolns;
@@ -6295,7 +6296,7 @@ OnSourceType (UINT nId)
 void CCrystalTextView::
 OnUpdateSourceType (CCmdUI * pCmdUI)
 {
-  pCmdUI->SetRadio (CrystalLineParser::m_SourceDefs + (pCmdUI->m_nID - ID_SOURCE_PLAIN) == m_CurSourceDef);
+  pCmdUI->SetRadio (&CrystalLineParser::m_SourceDefs[(pCmdUI->m_nID - ID_SOURCE_PLAIN)] == m_CurSourceDef);
 }
 
 int

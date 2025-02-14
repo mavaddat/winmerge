@@ -144,6 +144,7 @@ void Format7zDLL::Interface::Inspector::Init(HWND hwndParent)
 
 	CThreadArchiveOpen t;
 	t.OpenCallbackSpec = new COpenCallbackImp;
+	t.OpenCallbackSpec->Callback = &t.OpenArchiveCallbackSpec;
 	t.OpenCallback = t.OpenCallbackSpec;
 	t.OpenArchiveCallbackSpec.PasswordIsDefined = false;
 	t.OpenArchiveCallbackSpec.ParentWindow = hwndParent;
@@ -322,7 +323,7 @@ void Format7zDLL::Interface::Updater::Init(HWND hwndParent)
 {
 	(outArchive = format->GetOutArchive()) -> AddRef();
 	static_cast<IOutStream*>(file = new COutFileStream) -> AddRef();
-	if COMPLAIN(!file->Create(path, true))
+	if COMPLAIN(!file->Create_ALWAYS(path))
 	{
 		Complain(ERROR_CANNOT_MAKE, path);
 	}

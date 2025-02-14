@@ -42,6 +42,7 @@ Localization:
   Jordi Vilar <jvilar@users.sourceforge.net>
   Domènec <domenec72 at gmail.com>
   Josep Maria Antolín Segura 
+  Pere Orga <pere at orga.cat>
 
 * Simplified Chinese:
   Liaobin <liaobin@jite. net>
@@ -99,6 +100,7 @@ Localization:
   Winfried Peter <winfried.peter@omicron.at>
   Joerg Schneider <tonda@users.sourceforge.net>
   Mr-Update
+  uliahn
 
 * Greek:
   Polyvios J. Simopoulos <polyvios.j.simopoulos@gmail.com>
@@ -211,6 +213,7 @@ Localization:
   Afyonlu <afyonlu@users.sourceforge.net>
   Ozkan UNVER <turquaz37915@users.sourceforge.net>
   Kaya Zeren <kaya.zeren at zeron.net>
+  iLyax
 
 * Ukranian
   Vitaliy Stopchans'kyy <stopcha@gmail.com>
@@ -279,7 +282,7 @@ Other Contributors (code, ideas, testing..):
 * stonee-K
 * yuanshouyan1823
 * Mauricio Gracia Gutierrez
-* HaroldPetersInskipp (Midnight color schema)
+* HaroldPetersInskipp (Midnight color scheme)
 * srgank
 * baka0815
 * Yurii Hordiienko 
@@ -287,6 +290,15 @@ Other Contributors (code, ideas, testing..):
 * wilfzim
 * Mavaddat Javid
 * Yutaka-Sawada
+* myss
+* vlakoff
+* Tuomas Hietanen
+* Dirk Stolle
+* lededev
+* petacreepers23
+* libraplanet
+* Steve Lambillion
+* Rob Kodey (VS Dark color scheme)
 
 WinMerge includes code from:
 * Jared Breland <jbreland@legroom.net> (Installer's modpath script)

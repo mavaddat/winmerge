@@ -58,14 +58,15 @@ void ArrayTest::testConstruction()
 	typedef Poco::Array<Element,10> ElementArray;
 	ElementArray g;
 
-	for (unsigned i=0; i<g.size(); ++i) {
+	for (std::size_t i=0; i<g.size(); ++i)
+	{
 		g[i]._data = i;
 	}
 
-	for (unsigned i=0; i<g.size(); ++i) {
+	for (std::size_t i=0; i<g.size(); ++i)
+	{
 		assertTrue (g[i]._data == i);
 	}
-
 
 }
 
@@ -90,7 +91,7 @@ void ArrayTest::testOperations()
 	}
 
 	// swap
-	Array b; 
+	Array b;
 	b.assign(10);
 	for(int i=0; i<SIZE; i++){
 		assertTrue (a[i] == 100);
@@ -226,6 +227,6 @@ CppUnit::Test* ArrayTest::suite()
 	CppUnit_addTest(pSuite, ArrayTest, testIterator);
 	CppUnit_addTest(pSuite, ArrayTest, testAlgorithm);
 	CppUnit_addTest(pSuite, ArrayTest, testMultiLevelArray);
-	
+
 	return pSuite;
 }

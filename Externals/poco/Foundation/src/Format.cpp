@@ -20,6 +20,7 @@
 #include <locale>
 #endif
 #include <cstddef>
+#include <string_view>
 
 
 namespace Poco {
@@ -62,8 +63,8 @@ namespace
 		}
 		if (width > 0) str.width(width);
 	}
-	
-	
+
+
 	void parsePrec(std::ostream& str, std::string::const_iterator& itFmt, const std::string::const_iterator& endFmt, std::vector<Any>::const_iterator& itVal)
 	{
 		if (itFmt != endFmt && *itFmt == '.')
@@ -86,7 +87,7 @@ namespace
 			if (prec >= 0) str.precision(prec);
 		}
 	}
-	
+
 	char parseMod(std::string::const_iterator& itFmt, const std::string::const_iterator& endFmt)
 	{
 		char mod = 0;
@@ -96,13 +97,13 @@ namespace
 			{
 			case 'l':
 			case 'h':
-			case 'L': 
+			case 'L':
 			case '?': mod = *itFmt++; break;
 			}
 		}
 		return mod;
 	}
-	
+
 	std::size_t parseIndex(std::string::const_iterator& itFmt, const std::string::const_iterator& endFmt)
 	{
 		int index = 0;
@@ -129,8 +130,8 @@ namespace
 		case 'f': str << std::fixed; break;
 		}
 	}
-	
-	
+
+
 	void writeAnyInt(std::ostream& str, const Any& any)
 	{
 		if (any.type() == typeid(char))
@@ -222,8 +223,11 @@ namespace
 				case 's':
 					str << RefAnyCast<std::string>(*itVal++);
 					break;
+				case 'v':
+					str << RefAnyCast<std::string_view>(*itVal++);
+					break;
 				case 'z':
-					str << AnyCast<std::size_t>(*itVal++); 
+					str << AnyCast<std::size_t>(*itVal++);
 					break;
 				case 'I':
 				case 'D':
@@ -241,7 +245,7 @@ namespace
 }
 
 
-std::string format(const std::string& fmt, const Any& value) 
+std::string format(const std::string& fmt, const Any& value)
 {
 	std::string result;
 	format(result, fmt, value);
@@ -260,7 +264,7 @@ void format(std::string& result, const std::string& fmt, const std::vector<Any>&
 	std::string::const_iterator itFmt  = fmt.begin();
 	std::string::const_iterator endFmt = fmt.end();
 	std::vector<Any>::const_iterator itVal  = values.begin();
-	std::vector<Any>::const_iterator endVal = values.end(); 
+	std::vector<Any>::const_iterator endVal = values.end();
 	while (itFmt != endFmt)
 	{
 		switch (*itFmt)

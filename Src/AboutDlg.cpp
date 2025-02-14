@@ -9,7 +9,8 @@
 #include "stdafx.h"
 #include "AboutDlg.h"
 #include "TrDialogs.h"
-#include "Bitmap.h"
+#include "paths.h"
+#include "Environment.h"
 #include "resource.h" // IDD_ABOUTBOX
 
  // https://www.gnu.org/graphics/gnu-ascii.html
@@ -100,11 +101,11 @@ void CAboutDlg::Impl::DoDataExchange(CDataExchange* pDX)
 /** 
  * @brief Read version info from resource to dialog.
  */
-BOOL CAboutDlg::Impl::OnInitDialog() 
+BOOL CAboutDlg::Impl::OnInitDialog()
 {
 	CTrDialog::OnInitDialog();
 
-	if (!LoadImageFromResource(m_image, MAKEINTRESOURCE(IDR_SPLASH), _T("IMAGE")))
+	if (!m_image.Load(paths::ConcatPath(env::GetProgPath(), _T("Resources\\splash.png")).c_str()))
 	{
 		// FIXME: LoadImageFromResource() seems to fail when running on Wine 5.0.
 	}
@@ -116,7 +117,7 @@ BOOL CAboutDlg::Impl::OnInitDialog()
 	String link;
 	GetDlgItemText(IDC_WWW, link);
 	link = _T("<a href=\"") + m_p->m_info.website + _T("\">") + link + _T("</a>");
-	SetDlgItemText(IDC_WWW, link);	
+	SetDlgItemText(IDC_WWW, link);
 
 	UpdateData(FALSE);
 	
@@ -128,10 +129,21 @@ HBRUSH CAboutDlg::Impl::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 {
 	if (nCtlColor == CTLCOLOR_STATIC)
 	{
-		if (pWnd->GetDlgCtrlID() == IDC_GNU_ASCII)
+		const int ctrlId = pWnd->GetDlgCtrlID();
+		if (ctrlId == IDC_GNU_ASCII)
+		{
 			pDC->SetTextColor(RGB(128, 128, 128));
-		pDC->SetBkMode(TRANSPARENT);
-		return (HBRUSH)GetStockObject(NULL_BRUSH);
+			pDC->SetBkMode(TRANSPARENT);
+			return (HBRUSH)GetStockObject(NULL_BRUSH);
+		}
+		else if (ctrlId == IDC_COMPANY)
+		{
+			return (HBRUSH)GetStockObject(NULL_BRUSH);
+		}
+		else if (ctrlId == IDC_VERSION)
+		{
+			return (HBRUSH)GetStockObject(WHITE_BRUSH);
+		}
 	}
 	return CTrDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 }

@@ -71,21 +71,34 @@ static const tchar_t * s_apszCppKeywordList[] =
     _T ("_syscall"),
     _T ("alignas"),
     _T ("alignof"),
+    _T ("and"),
+    _T ("and_eq"),
+    _T ("asm"),
     _T ("auto"),
+    _T ("bitand"),
+    _T ("bitor"),
     _T ("bool"),
     _T ("break"),
     _T ("case"),
     _T ("catch"),
+    _T ("char"),
     _T ("char16_t"),
     _T ("char32_t"),
-    _T ("char"),
+    _T ("char8_t"),
     _T ("class"),
+    _T ("co_await"),
+    _T ("co_return"),
+    _T ("co_yield"),
+    _T ("compl"),
+    _T ("concept"),
     _T ("const"),
     _T ("const_cast"),
+    _T ("consteval"),
     _T ("constexpr"),
+    _T ("constinit"),
     _T ("continue"),
-    _T ("decltype"),
     _T ("cset"),
+    _T ("decltype"),
     _T ("default"),
     _T ("delete"),
     _T ("depend"),
@@ -97,33 +110,43 @@ static const tchar_t * s_apszCppKeywordList[] =
     _T ("else"),
     _T ("enum"),
     _T ("explicit"),
+    _T ("export"),
     _T ("extern"),
     _T ("false"),
+    _T ("final"),
     _T ("float"),
     _T ("for"),
     _T ("friend"),
     _T ("goto"),
     _T ("if"),
+    _T ("import"),
     _T ("indexdef"),
     _T ("inline"),
     _T ("int"),
     _T ("interface"),
     _T ("long"),
     _T ("main"),
+    _T ("module"),
     _T ("mutable"),
     _T ("naked"),
     _T ("namespace"),
     _T ("new"),
     _T ("noexcept"),
+    _T ("not"),
+    _T ("not_eq"),
     _T ("nullptr"),
     _T ("ondemand"),
     _T ("operator"),
+    _T ("or"),
+    _T ("or_eq"),
+    _T ("override"),
     _T ("persistent"),
     _T ("private"),
     _T ("protected"),
     _T ("public"),
     _T ("register"),
     _T ("reinterpret_cast"),
+    _T ("requires"),
     _T ("return"),
     _T ("short"),
     _T ("signed"),
@@ -139,7 +162,6 @@ static const tchar_t * s_apszCppKeywordList[] =
     _T ("thread_local"),
     _T ("throw"),
     _T ("transient"),
-    _T ("transient"),
     _T ("true"),
     _T ("try"),
     _T ("typedef"),
@@ -153,9 +175,12 @@ static const tchar_t * s_apszCppKeywordList[] =
     _T ("virtual"),
     _T ("void"),
     _T ("volatile"),
+    _T ("wchar_t"),
     _T ("while"),
     _T ("wmain"),
     _T ("xalloc"),
+    _T ("xor"),
+    _T ("xor_eq"),
   };
 
 static const tchar_t * s_apszUser1KeywordList[] =
@@ -180,7 +205,6 @@ static const tchar_t * s_apszUser1KeywordList[] =
     _T ("LPBYTE"),
     _T ("LPCSTR"),
     _T ("LPCTSTR"),
-    _T ("LPCTSTR"),
     _T ("LPCWSTR"),
     _T ("LPDWORD"),
     _T ("LPINT"),
@@ -188,12 +212,9 @@ static const tchar_t * s_apszUser1KeywordList[] =
     _T ("LPRECT"),
     _T ("LPSTR"),
     _T ("LPTSTR"),
-    _T ("LPTSTR"),
-    _T ("LPVOID"),
     _T ("LPVOID"),
     _T ("LPWORD"),
     _T ("LPWSTR"),
-    _T ("LRESULT"),
     _T ("LRESULT"),
     _T ("PBOOL"),
     _T ("PBYTE"),
@@ -239,6 +260,44 @@ IsUser1Keyword (const tchar_t *pszChars, int nLength)
   return ISXKEYWORD (s_apszUser1KeywordList, pszChars, nLength);
 }
 
+static inline void
+DefineIdentiferBlock(const tchar_t *pszChars, int nLength, CrystalLineParser::TEXTBLOCK * pBuf, int &nActualItems, int nIdentBegin, int I,
+    bool (*IsKeyword)(const tchar_t *pszChars, int nLength),
+    bool (*IsUser1Keyword)(const tchar_t *pszChars, int nLength))
+{
+  if (IsKeyword (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
+    }
+  else if (IsUser1Keyword && IsUser1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER1);
+    }
+  else if (CrystalLineParser::IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
+    {
+      DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
+    }
+  else
+    {
+      bool bFunction = false;
+
+      for (int j = I; j < nLength; j++)
+        {
+          if (!xisspace (pszChars[j]))
+            {
+              if (pszChars[j] == '(')
+                {
+                  bFunction = true;
+                }
+              break;
+            }
+        }
+      if (bFunction)
+        {
+          DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
+        }
+    }
+}
 unsigned
 CrystalLineParser::ParseLineC (unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems)
 {
@@ -420,38 +479,7 @@ out:
         {
           if (nIdentBegin >= 0)
             {
-              if (IsKeyword (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
-                }
-              else if (IsUser1Keyword && IsUser1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER1);
-                }
-              else if (IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
-                {
-                  DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
-                }
-              else
-                {
-                  bool bFunction = false;
-
-                  for (int j = I; j < nLength; j++)
-                    {
-                      if (!xisspace (pszChars[j]))
-                        {
-                          if (pszChars[j] == '(')
-                            {
-                              bFunction = true;
-                            }
-                          break;
-                        }
-                    }
-                  if (bFunction)
-                    {
-                      DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
-                    }
-                }
+              DefineIdentiferBlock(pszChars, nLength, pBuf, nActualItems, nIdentBegin, I, IsKeyword, IsUser1Keyword);
               bRedefineBlock = true;
               bDecIndex = true;
               nIdentBegin = -1;
@@ -461,38 +489,7 @@ out:
 
   if (nIdentBegin >= 0)
     {
-      if (IsKeyword (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_KEYWORD);
-        }
-      else if (IsUser1Keyword && IsUser1Keyword (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_USER1);
-        }
-      else if (IsXNumber (pszChars + nIdentBegin, I - nIdentBegin))
-        {
-          DEFINE_BLOCK (nIdentBegin, COLORINDEX_NUMBER);
-        }
-      else
-        {
-          bool bFunction = false;
-
-          for (int j = I; j < nLength; j++)
-            {
-              if (!xisspace (pszChars[j]))
-                {
-                  if (pszChars[j] == '(')
-                    {
-                      bFunction = true;
-                    }
-                  break;
-                }
-            }
-          if (bFunction)
-            {
-              DEFINE_BLOCK (nIdentBegin, COLORINDEX_FUNCNAME);
-            }
-        }
+      DefineIdentiferBlock(pszChars, nLength, pBuf, nActualItems, nIdentBegin, I, IsKeyword, IsUser1Keyword);
     }
 
   if (pszChars[nLength - 1] != '\\' || IsMBSTrail(pszChars, nLength - 1))

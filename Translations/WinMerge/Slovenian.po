@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: WinMerge\n"
 "Report-Msgid-Bugs-To: https://bugs.winmerge.org/\n"
 "POT-Creation-Date: 2023-08-05 10:45+0000\n"
-"PO-Revision-Date: 2023-11-20 20:39+0100\n"
+"PO-Revision-Date: 2024-01-28 21:33+0100\n"
 "Last-Translator: Jadran Rudec <jrudec@gmail.com>\n"
 "Language-Team: Slovenian <winmerge-translate@lists.sourceforge.net>\n"
 "Language: sl\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../../Src\n"
-"X-Generator: Poedit 3.4.1\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #. LANGUAGE, SUBLANGUAGE
 msgid "LANG_ENGLISH, SUBLANG_ENGLISH_US"
@@ -61,6 +61,18 @@ msgstr "Kopiraj izbrane vrstice na levo"
 
 msgid "Copy Selected Line(s) from Left"
 msgstr "Kopiraj izbrane vrstice z leve"
+
+msgid "Copy Selected Diff (Left) to Clipboard\tCtrl+&1"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Middle) to Clipboard\tCtrl+&2"
+msgstr ""
+
+msgid "Copy Selected Diff (Right) to Clipboard\tCtrl+&3"
+msgstr ""
 
 msgid "Select Line &Difference\tF4"
 msgstr "Izberi &razliko vrstice\tF4"
@@ -217,6 +229,15 @@ msgstr "Nas&tavi barvo ozadja"
 msgid "&Vector Image Scaling"
 msgstr "Prilagoditev &vektorskih slik"
 
+msgid "&Animation Settings"
+msgstr ""
+
+msgid "&Blink interval"
+msgstr ""
+
+msgid "&Overlay animation interval"
+msgstr ""
+
 msgid "Compare Extracted &Text From Images"
 msgstr "Primerjaj razširjeno &besedilo s slike"
 
@@ -244,7 +265,7 @@ msgstr "&Velikost"
 msgid "Fit to Window"
 msgstr "Prilagodi oknu"
 
-msgid "&Event Synchronization"
+msgid "&Event Sync"
 msgstr "Sinhronizacija do&godkov"
 
 msgid "&Enabled"
@@ -337,11 +358,23 @@ msgstr "&Možnosti..."
 msgid "&View"
 msgstr "&Prikaz"
 
+msgid "Ta&b Bar"
+msgstr "Ta&bulatorska vrstica"
+
+msgid "&View Tab Bar"
+msgstr ""
+
+msgid "&On Title Bar"
+msgstr ""
+
 msgid "&Toolbar"
 msgstr "&Orodna vrstica"
 
 msgid "&Small"
 msgstr "&Male"
+
+msgid "&Medium"
+msgstr ""
 
 msgid "&Big"
 msgstr "&Velike"
@@ -349,11 +382,11 @@ msgstr "&Velike"
 msgid "&Huge"
 msgstr "O&gromne"
 
+msgid "Men&u Bar"
+msgstr ""
+
 msgid "&Status Bar"
 msgstr "&Statusna vrstica"
-
-msgid "Ta&b Bar"
-msgstr "Ta&bulatorska vrstica"
 
 msgid "&Tools"
 msgstr "&Orodja"
@@ -841,6 +874,12 @@ msgstr "Uporabi Prediffer..."
 msgid "&Transform with editor script..."
 msgstr "P&reoblikuj z urejevalnikom skriptov..."
 
+msgid "Scripts for &copying"
+msgstr ""
+
+msgid "Select &editor script..."
+msgstr ""
+
 msgid "Sp&lit"
 msgstr "Ra&zdeli"
 
@@ -1062,6 +1101,9 @@ msgstr "Prezri š&tevilke"
 msgid "Ignore c&omment differences"
 msgstr "Prezri razlike v k&omentarjih"
 
+msgid "Ignore &missing trailing EOL"
+msgstr ""
+
 msgid "&Include subfolders"
 msgstr "&Vključi podmape"
 
@@ -1088,6 +1130,81 @@ msgstr "Velikost"
 
 msgid "&Load Project..."
 msgstr "Na&loži projekt..."
+
+msgid "${*} - All arguments"
+msgstr ""
+
+msgid "${1} - The first argument"
+msgstr ""
+
+msgid "${2} - The second argument"
+msgstr ""
+
+msgid "${3} - The third argument"
+msgstr ""
+
+msgid "${4} - The fourth argument"
+msgstr ""
+
+msgid "${5} - The fifth argument"
+msgstr ""
+
+msgid "${6} - The sixth argument"
+msgstr ""
+
+msgid "${7} - The seventh argument"
+msgstr ""
+
+msgid "${8} - The eighth argument"
+msgstr ""
+
+msgid "${9} - The ninth argument"
+msgstr ""
+
+msgid "${SRC_FILE} - Source file"
+msgstr ""
+
+msgid "${SRC_FOLDER} - Source folder"
+msgstr ""
+
+msgid "${SRC_URL} - Source URL"
+msgstr ""
+
+msgid "${SRC_URL_PROTOCOL} - Source URL protocol"
+msgstr ""
+
+msgid "${SRC_URL_SUFFIX} - Source URL suffix"
+msgstr ""
+
+msgid "${DST_FILE} - Destination file"
+msgstr ""
+
+msgid "${DST_FOLDER} - Destination folder"
+msgstr ""
+
+msgid "${DST_URL} - Destination URL"
+msgstr ""
+
+msgid "${DST_URL_PROTOCOL} - Destination URL protocol"
+msgstr ""
+
+msgid "${DST_URL_SUFFIX} - Destination URL suffix"
+msgstr ""
+
+msgid "${WINMERGE_HOME} - WinMerge home directory"
+msgstr ""
+
+msgid "${SCRIPT_FILE} - Script file"
+msgstr ""
+
+msgid "Add &unpacker plugin..."
+msgstr ""
+
+msgid "Add &prediffer plugin..."
+msgstr ""
+
+msgid "&Duplicate plugin..."
+msgstr ""
 
 msgid "About WinMerge"
 msgstr "Vizitka"
@@ -1199,6 +1316,9 @@ msgstr "Samodejno &znova naloži spremenjene datoteke:"
 
 msgid "Language:"
 msgstr "Jezik:"
+
+msgid "Defaults"
+msgstr "Privzeto"
 
 msgid "Find"
 msgstr "Najdi"
@@ -1344,6 +1464,66 @@ msgstr "Besedne razlike:"
 msgid "Selected Word Diff:"
 msgstr "Izbrane razlike besed:"
 
+msgid "Dialog"
+msgstr "Pogovorno okno"
+
+msgid "Keywords:"
+msgstr "Ključne besede:"
+
+msgid "Function names:"
+msgstr "Imena funkcij:"
+
+msgid "Comments:"
+msgstr "Komentarji:"
+
+msgid "Numbers:"
+msgstr "Številke:"
+
+msgid "Operators:"
+msgstr "Operatorji:"
+
+msgid "Strings:"
+msgstr "Nizi:"
+
+msgid "Preprocessor:"
+msgstr "Predobdelano:"
+
+msgid "User 1:"
+msgstr "Uporabnik 1:"
+
+msgid "User 2:"
+msgstr "Uporabnik 2:"
+
+msgid "Bold"
+msgstr "Krepko"
+
+msgid "&Use customized text colors"
+msgstr "&Uporabi prilagojene barve besedila"
+
+msgid "Whitespace:"
+msgstr "Prazen znak:"
+
+msgid "Regular text:"
+msgstr "Redno besedilo:"
+
+msgid "Selection:"
+msgstr "Izbor:"
+
+msgid "Margin:"
+msgstr "Rob:"
+
+msgid "Search Marker:"
+msgstr "Iskalni označev.:"
+
+msgid "User Defined Marker1:"
+msgstr "Uporabn. določen1:"
+
+msgid "User Defined Marker2:"
+msgstr "Uporabn. določen2:"
+
+msgid "User Defined Marker3:"
+msgstr "Uporabn. določen3:"
+
 msgid "&Use folder compare colors"
 msgstr "&Uporabi barve primerjav map"
 
@@ -1359,8 +1539,8 @@ msgstr "Vseh neobstoječih vnosov:"
 msgid "Items filtered:"
 msgstr "Filtriranih vnosov:"
 
-msgid "Margin:"
-msgstr "Rob:"
+msgid "&Use custom system colors (Some UI elements may not apply)"
+msgstr ""
 
 msgid "System"
 msgstr "Sistem"
@@ -1425,9 +1605,6 @@ msgstr "&Vključi ukazno vrstico"
 msgid "Open to e&xternal editor"
 msgstr "Odpri v zu&nanjem urejevalniku"
 
-msgid "Defaults"
-msgstr "Privzeto"
-
 msgid "Display Columns"
 msgstr "Prikaži stolpce"
 
@@ -1443,20 +1620,14 @@ msgstr "&Dodatne lastnosti"
 msgid "Additional Properties"
 msgstr "Dodatne lastnosti"
 
-msgid "&>"
-msgstr "&>"
-
-msgid "&<"
-msgstr "&<"
-
-msgid "<<"
-msgstr "<<"
-
 msgid "Select Plugin"
 msgstr "Izberi vtičnik"
 
-msgid "Plugin &Name:"
+msgid "Plugin &name:"
 msgstr "I&me vtičnita:"
+
+msgid "&Target files:"
+msgstr ""
 
 msgid "Extensions list:"
 msgstr "Seznam končnic:"
@@ -1473,11 +1644,11 @@ msgstr "Prikaži vse vtičnike, ne preverjaj končnico"
 msgid "&Open files in the same window type after unpacking"
 msgstr "P&o razpakiranju odpri datoteke v isti vrsti okna"
 
-msgid "&Plugin Pipeline:"
+msgid "&Plugin pipeline:"
 msgstr "Cevovo&d vtičnika:"
 
-msgid "&Add pipe"
-msgstr "&Dodaj cevovod"
+msgid "&Alias..."
+msgstr ""
 
 msgid "Stop"
 msgstr "Ustavi"
@@ -1554,9 +1725,6 @@ msgstr "Urejevalnik"
 msgid "&Highlight syntax"
 msgstr "Ozn&ači sintakso"
 
-msgid "&Automatic rescan"
-msgstr "&Samodejni ponovni pregled"
-
 msgid "&Preserve original EOL chars"
 msgstr "Ohrani izvorne znake za konec vrstice (EOL)"
 
@@ -1572,6 +1740,15 @@ msgstr "&Vstavi tabulatorje"
 msgid "Insert &Spaces"
 msgstr "&Vstavi presledke"
 
+msgid "&Rendering Mode:"
+msgstr "Način upodab&ljanja:"
+
+msgid "&Automatic rescan"
+msgstr "&Samodejni ponovni pregled"
+
+msgid "Copy &granularity for selected differences:"
+msgstr ""
+
 msgid "Line Difference Coloring"
 msgstr "Barvanje razlike v vrstici"
 
@@ -1586,9 +1763,6 @@ msgstr "&Besedilna raven:"
 
 msgid "W&ord break characters:"
 msgstr "&Znaki za prelom besed:"
-
-msgid "&Rendering Mode:"
-msgstr "Način upodab&ljanja:"
 
 msgid "WinMerge allows hiding some common message boxes. Press the Reset button to make all message boxes visible again."
 msgstr "WinMerge omogoča skrivanje nekaterih skupnih sporočilnih oken. Pritisnite 'Ponastavi', da bodo postala vsa sporočilna okna spet vidna."
@@ -1687,51 +1861,6 @@ msgstr "Uvozi..."
 
 msgid "Export..."
 msgstr "Izvozi..."
-
-msgid "Dialog"
-msgstr "Pogovorno okno"
-
-msgid "Keywords:"
-msgstr "Ključne besede:"
-
-msgid "Function names:"
-msgstr "Imena funkcij:"
-
-msgid "Comments:"
-msgstr "Komentarji:"
-
-msgid "Numbers:"
-msgstr "Številke:"
-
-msgid "Operators:"
-msgstr "Operatorji:"
-
-msgid "Strings:"
-msgstr "Nizi:"
-
-msgid "Preprocessor:"
-msgstr "Predobdelano:"
-
-msgid "User 1:"
-msgstr "Uporabnik 1:"
-
-msgid "User 2:"
-msgstr "Uporabnik 2:"
-
-msgid "Bold"
-msgstr "Krepko"
-
-msgid "Search Marker:"
-msgstr "Iskalni označev.:"
-
-msgid "User Defined Marker1:"
-msgstr "Uporabn. določen1:"
-
-msgid "User Defined Marker2:"
-msgstr "Uporabn. določen2:"
-
-msgid "User Defined Marker3:"
-msgstr "Uporabn. določen3:"
 
 msgid "Folder Compare Report"
 msgstr "Poročilo primerjanja datotek"
@@ -1880,18 +2009,6 @@ msgstr "&Dovoli nove vrstice v narekovajih"
 msgid "&Quote character:"
 msgstr "Z&nak narekovaja:"
 
-msgid "&Use customized text colors"
-msgstr "&Uporabi prilagojene barve besedila"
-
-msgid "Whitespace:"
-msgstr "Prazen znak:"
-
-msgid "Regular text:"
-msgstr "Redno besedilo:"
-
-msgid "Selection:"
-msgstr "Izbor:"
-
 msgid "Backup Files"
 msgstr "Datoteke varnostnih kopij"
 
@@ -1948,6 +2065,9 @@ msgstr "Vtičniki"
 
 msgid "&Enable plugins"
 msgstr "&Omogoči vtičnike"
+
+msgid "Plugin &type:"
+msgstr ""
 
 msgid "File filters:"
 msgstr "Filtri datotek:"
@@ -2076,6 +2196,36 @@ msgstr "&Ločene mape z uporabniškimi podtaki za vsako podokno"
 
 msgid "&Hex View"
 msgstr "16-tiški prikaz"
+
+msgid "Edit Plugin"
+msgstr ""
+
+msgid "&Category:"
+msgstr ""
+
+msgid "&Menu caption:"
+msgstr ""
+
+msgid "&Window type:"
+msgstr ""
+
+msgid "&Unpacked file extension:"
+msgstr ""
+
+msgid "&Require arguments"
+msgstr ""
+
+msgid "&Generate editor script"
+msgstr ""
+
+msgid "Command &line:"
+msgstr ""
+
+msgid "&Script file extension:"
+msgstr ""
+
+msgid "Script &body:"
+msgstr ""
 
 msgid "EXT"
 msgstr "KON"
@@ -2217,6 +2367,9 @@ msgstr "Tega sporočila ne kaži več."
 
 msgid "To make this message box visible again, press the Reset button on the Message Boxes page of the Options dialog."
 msgstr "Za ponovno vidnost tega sporočilnega okna pritisnite gumb 'Ponastavi' na strani 'Sporočilna okna' v pogovornem oknu 'Možnosti'."
+
+msgid "Compare/Merge"
+msgstr ""
 
 msgid "Syntax"
 msgstr "Sintaksa"
@@ -2822,6 +2975,9 @@ msgstr "Vse v... (%1)"
 #, c-format
 msgid "Differences to... (%1)"
 msgstr "Razlike v... (%1)"
+
+msgid "Some selected items are identical or skipped.\nDo you want to copy only the items with differences?"
+msgstr ""
 
 #, c-format
 msgid "Left (%1)"
@@ -3826,8 +3982,8 @@ msgstr "&Spletna stran"
 msgid "W&rap Text"
 msgstr "Pre&lom besedila"
 
-msgid "Frhed is not installed."
-msgstr "Frhed ni nameščen."
+msgid "%1 is not installed."
+msgstr "%1 ni nameščen."
 
 #, c-format
 msgid "%1 does not exist. Do you want to create it?"
@@ -4045,6 +4201,10 @@ msgstr "Manjkajoče ime vtičnika v cevovodu vtičnika:%1"
 msgid "Missing quotation mark in plugin pipeline: %1"
 msgstr "Manjka narekovaj v cevovodu vtičnika: %1"
 
+#, c-format
+msgid "The plugin name '%1' already exists."
+msgstr ""
+
 msgid "Specify plugin arguments"
 msgstr "Določi argumente vtičnika"
 
@@ -4063,6 +4223,56 @@ msgstr "'%1' ni vtičnik preddifereja"
 #, c-format
 msgid "An error occurred while prediffing the file '%1' with the plugin '%2'. The prediffing is not applied any more."
 msgstr "Med preddifiranjem datoteke '%1' z vtičnikom '%2' je prišlo do napake. Prednastavitev se ne uporablja več."
+
+#, c-format
+msgid "Circular reference in plugin pipeline: %1"
+msgstr ""
+
+msgid "URL Handler"
+msgstr ""
+
+msgid "File Unpacker"
+msgstr ""
+
+msgid "File or Folder Unpacker"
+msgstr ""
+
+msgid "Alias for Unpacker"
+msgstr ""
+
+msgid "Alias for Prediffer"
+msgstr ""
+
+msgid "Alias for Editor script"
+msgstr ""
+
+#, c-format
+msgid "Alias for plugin pipeline '%1'"
+msgstr ""
+
+msgid "New plugin description"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "1st"
+msgstr ""
+
+msgid "2nd"
+msgstr ""
+
+msgid "3rd"
+msgstr ""
+
+msgid "1st and 2nd"
+msgstr ""
+
+msgid "1st and 3rd"
+msgstr ""
+
+msgid "2nd and 3rd"
+msgstr ""
 
 msgid "Filter applied"
 msgstr "Filter je uporabljen"
@@ -4123,6 +4333,42 @@ msgstr "Po&večaj"
 msgid "Zoom &Out"
 msgstr "Pom&njšaj"
 
+msgid "Comparing..."
+msgstr "Primerjanje..."
+
+msgid "Zoom:"
+msgstr "Povečava:"
+
+msgid "Diff hunk"
+msgstr ""
+
+msgid "Inline diff"
+msgstr ""
+
+msgid "Line"
+msgstr ""
+
+msgid "Character"
+msgstr ""
+
+msgid "\nPrevious Difference (Alt+Up)\n(Right Button+Wheel Up)\n(Alt+Wheel Up)"
+msgstr ""
+
+msgid "\nNext Difference (Alt+Down)\n(Right Button+Wheel Down)\n(Alt+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Right (Alt+Right)\n(Right Button+Wheel Right)\n(Alt+Wheel Right)\n(Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left (Alt+Left)\n(Right Button+Wheel Left)\n(Alt+Wheel Left)\n(Alt+Shift+Wheel Up)"
+msgstr ""
+
+msgid "\nCopy to Right and Advance (Ctrl+Alt+Right)\n(Ctrl+Alt+Wheel Right)\n(Ctrl+Alt+Shift+Wheel Down)"
+msgstr ""
+
+msgid "\nCopy to Left and Advance (Ctrl+Alt+Left)\n(Ctrl+Alt+Wheel Left)\n(Ctrl+Alt+Shift+Wheel Up)"
+msgstr ""
+
 msgid "Prettification"
 msgstr "Polepšanje"
 
@@ -4143,6 +4389,9 @@ msgstr "Decompilation"
 
 msgid "URL Handling"
 msgstr "Upravljanje URL-jev"
+
+msgid "Decoding / Encoding"
+msgstr ""
 
 msgid "Make Uppercase"
 msgstr "VELIKE ČRKE"
@@ -4258,6 +4507,12 @@ msgstr "Razstavi kodo IL"
 msgid "Disassemble Native Code"
 msgstr "Razstavi naravno kodo"
 
+msgid "Convert Text with AI..."
+msgstr ""
+
+msgid "Unescape Java properties files"
+msgstr ""
+
 msgid "Make characters uppercase"
 msgstr "Naredi znake z velikimi črkami"
 
@@ -4282,20 +4537,16 @@ msgstr "Obrni stolpce"
 msgid "Reverse lines"
 msgstr "Obrni vrstice"
 
-msgid ""
-"Replace text with another text.\r\n"
-"Usage: Replace [-i] [-e] FIND REPLACE\r\n"
-"  FIND    - text to find\r\n"
-"  REPLACE - text to replace\r\n"
-"  -i - ignore case (only for -e)\r\n"
-"  -e - treat the specified text as a regular expression"
+msgid "Replace text with another text.\r\nUsage: Replace [-i] [-e] FIND REPLACE\r\n   or: Replace -s\r\n  FIND    - text to find\r\n  REPLACE - text to replace\r\n  -i - ignore case (only for -e)\r\n  -e - treat the specified text as a regular expression\r\n  -s - replace using Substitution Filters patterns"
 msgstr ""
 "Zamenjaj besedilo z drugim besedilom.\r\n"
 "Uporaba: Zamenjaj [-i] [-e] FIND REPLACE\r\n"
+"   or: Replace -s\r\n"
 "  FIND    - besedilo za iskanje\r\n"
 "  REPLACE - besedilo za zamenjavo\r\n"
 "  -i - prezri velike in male črke (samo za -e)\r\n"
-"  -e - obravnavaj navedeno besedilo kot regularni izraz"
+"  -e - obravnavaj navedeno besedilo kot regularni izraz\r\n"
+"  -s - replace using Substitution Filters patterns"
 
 #, c-format
 msgid ""
@@ -4501,8 +4752,8 @@ msgstr "Ta vtičnik prezre številke začetnih vrstic v besedilnih datotekah (np
 msgid "Prediff Line Filter"
 msgstr "Filter vrstic Prediff"
 
-msgid "Basic text functions for the context menu"
-msgstr "Osnovne funkcije besedila za priročni meni"
+msgid "Date and time insertion function"
+msgstr ""
 
 msgid ""
 "HTTP URL Scheme Handler with curl. \r\n"
@@ -4517,6 +4768,18 @@ msgid ""
 msgstr ""
 "Upravljavec sheme URL registra Windows.\n"
 "Argumenti: možnosti ukazne vrstice, posredovane ukazu reg.exe."
+
+msgid "Basic text functions"
+msgstr ""
+
+msgid "AI-assisted text conversion functions"
+msgstr ""
+
+msgid "Text converter using OpenAI API.\r\nUsage: AIConvertText PROMPT"
+msgstr ""
+
+msgid "Unescape and display escaped Java properties files."
+msgstr ""
 
 msgid "CompareMSExcelFiles.sct WinMerge Plugin Options"
 msgstr "Možnosti vtičnika WinMerge CompareMSExcelFiles.sct"
@@ -4654,3 +4917,31 @@ msgstr "Mapa '%1' ne obstaja"
 
 msgid "Do not specify the '-p0' command line option for the patch file which includes absolute paths"
 msgstr "Ne podajaj možnosti ukazne vrstice '-p0' za datoteko popravka, ki vključuje absolutne poti"
+
+msgid "AI.sct WinMerge Plugin Options"
+msgstr ""
+
+msgid "Enter prompt"
+msgstr ""
+
+#, c-format
+msgid "Enter your OpenAI API key.\r\n - Use of this plugin requires registration with OpenAI and incurs fees.\r\n - The API key is stored in the environment variable %1."
+msgstr ""
+
+msgid "Environment variable name for OpenAI API key"
+msgstr ""
+
+msgid "OpenAI API key"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Maximum length"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "OpenAI API key has changed. Please restart WinMerge to apply the changes."
+msgstr ""

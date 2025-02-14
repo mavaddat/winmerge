@@ -15,6 +15,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)parsers\ada.cpp">
+      <Filter>Parsers\Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)parsers\asp.cpp">
       <Filter>Parsers\Source Files</Filter>
     </ClCompile>
@@ -49,6 +52,9 @@
       <Filter>Parsers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)parsers\fortran.cpp">
+      <Filter>Parsers\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)parsers\fsharp.cpp">
       <Filter>Parsers\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)parsers\go.cpp">

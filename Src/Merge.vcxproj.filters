@@ -705,9 +705,6 @@
     <ClCompile Include="PropCompareWebPage.cpp">
       <Filter>MFCGui\PropertyPages\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WebPageDiffBar.cpp">
-      <Filter>MFCGui\MDIChild\WebPageCompare\Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="DirWatcher.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -717,7 +714,45 @@
     <ClCompile Include="MergeAppCOMClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Externals\googletest\googletest\src\gtest-all.cc" />
+    <ClCompile Include="PropEditorCompareMerge.cpp">
+      <Filter>MFCGui\PropertyPages\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MergeDocDiffCopy.cpp">
+      <Filter>MFCGui\MDIChild\TextTableCompare\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditPluginDlg.cpp">
+      <Filter>MFCGui\Dialogs\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\RoundedRectWithShadow.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicFlatStatusBar.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuBar.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyReBar.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleBarHelper.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseHook.cpp">
+      <Filter>MFCGui\Main\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\SysColorHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PropSysColors.cpp">
+      <Filter>MFCGui\PropertyPages\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ColorSchemes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AccentColor.cpp">
+      <Filter>MFCGui\Common\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="charsets.h">
@@ -1338,9 +1373,6 @@
     <ClInclude Include="PropCompareWebPage.h">
       <Filter>MFCGui\PropertyPages\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WebPageDiffBar.h">
-      <Filter>MFCGui\MDIChild\WebPageCompare\Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DirWatcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -1370,6 +1402,45 @@
     </ClInclude>
     <ClInclude Include="Common\DebugNew.h">
       <Filter>Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropEditorCompareMerge.h">
+      <Filter>MFCGui\PropertyPages\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InternalPlugins.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditPluginDlg.h">
+      <Filter>MFCGui\Dialogs\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\RoundedRectWithShadow.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicFlatStatusBar.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuBar.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MyReBar.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleBarHelper.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseHook.h">
+      <Filter>MFCGui\Main\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropSysColors.h">
+      <Filter>MFCGui\PropertyPages\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\SysColorHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ColorSchemes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\AccentColor.h">
+      <Filter>MFCGui\Common\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1822,5 +1893,10 @@
     <Xml Include="res\WinMergeU.VisualElementsManifest.xml">
       <Filter>Resource Files</Filter>
     </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="MergeAppLib.idl">
+      <Filter>Source Files</Filter>
+    </Midl>
   </ItemGroup>
 </Project>

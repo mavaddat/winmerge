@@ -2,6 +2,7 @@
 
 #include "../utils/ctchar.h"
 #include <cassert>
+#include <array>
 
 #define ISXKEYWORD(keywordlist, key, keylen) CrystalLineParser::IsXKeyword(key, keylen, keywordlist, sizeof(keywordlist)/sizeof(keywordlist[0]), tc::tcsncmp)
 #define ISXKEYWORDI(keywordlist, key, keylen) CrystalLineParser::IsXKeyword(key, keylen, keywordlist, sizeof(keywordlist)/sizeof(keywordlist[0]), tc::tcsnicmp)
@@ -78,6 +79,7 @@ typedef enum
 {
 	SRC_PLAIN = 0,
 	SRC_ABAP,
+	SRC_ADA,
 	SRC_ASP,
 	SRC_AUTOIT,
 	SRC_BASIC,
@@ -88,6 +90,7 @@ typedef enum
 	SRC_DCL,
 	SRC_DLANG,
 	SRC_FORTRAN,
+	SRC_FSHARP,
 	SRC_GO,
 	SRC_HTML,
 	SRC_INI,
@@ -130,8 +133,9 @@ TextType;
 struct TextDefinition
 {
 	TextType type;
-	tchar_t name[256];
-	tchar_t exts[256];
+	const tchar_t* name;
+	tchar_t* exts;
+	bool extsIsDynamic;
 	unsigned (* ParseLineX) (unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 	unsigned flags;
 //        unsigned tabsize;
@@ -141,7 +145,7 @@ struct TextDefinition
 	unsigned encoding;
 };
 
-extern TextDefinition m_SourceDefs[SRC_MAX_ENTRY];
+extern std::array<TextDefinition, SRC_MAX_ENTRY> m_SourceDefs;
 
 bool IsXKeyword(const tchar_t *pszKey, size_t nKeyLen, const tchar_t *pszKeywordList[], size_t nKeywordListCount, int(*compare)(const tchar_t *, const tchar_t *, size_t));
 bool IsXNumber(const tchar_t* pszChars, int nLength);
@@ -155,6 +159,7 @@ void SetExtension(int index, const tchar_t *pszExts);
 
 unsigned ParseLinePlain(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineAbap(unsigned dwCookie, const tchar_t* pszChars, int nLength, TEXTBLOCK* pBuf, int& nActualItems);
+unsigned ParseLineAda(unsigned dwCookie, const tchar_t* pszChars, int nLength, TEXTBLOCK* pBuf, int& nActualItems);
 unsigned ParseLineAsp(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineAutoIt(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineBasic(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
@@ -166,6 +171,7 @@ unsigned ParseLineCss(unsigned dwCookie, const tchar_t *pszChars, int nLength, T
 unsigned ParseLineDcl(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineDlang(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineFortran(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
+unsigned ParseLineFSharp(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineGo(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineHtml(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems);
 unsigned ParseLineHtmlEx(unsigned dwCookie, const tchar_t *pszChars, int nLength, TEXTBLOCK * pBuf, int &nActualItems, int nEmbeddedLanguage);

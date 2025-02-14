@@ -12,6 +12,7 @@
 #pragma once
 
 #include "EditorFilepathBar.h"
+#include "BasicFlatStatusBar.h"
 #include "MergeFrameCommon.h"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -36,7 +37,7 @@ public:
 	void SetStatus(const tchar_t* szStatus);
 	void SetCompareMethodStatusDisplay(int nCompMethod);
 	void SetFilterStatusDisplay(const tchar_t* szFilter);
-	CStatusBar  m_wndStatusBar;
+	CBasicFlatStatusBar m_wndStatusBar;
 	IHeaderBar * GetHeaderInterface();
 	void UpdateResources();
 

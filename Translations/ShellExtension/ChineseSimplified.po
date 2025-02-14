@@ -30,12 +30,6 @@ msgstr "AFX_TARG_CHS"
 msgid "LANG_ENGLISH, SUBLANG_ENGLISH_US"
 msgstr "LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED"
 
-#. Codepage
-#: ShellExtension.rc:21
-#, c-format
-msgid "1252"
-msgstr "65001"
-
 #: ShellExtension.rc:111
 #, c-format
 msgid "ShellExtension"
@@ -54,7 +48,7 @@ msgstr "比较方式(&A)"
 #: ShellExtension.rc:114
 #, c-format
 msgid "&Compare"
-msgstr "比较(&C)"
+msgstr "比较(&B)"
 
 #: ShellExtension.rc:115
 #, c-format
